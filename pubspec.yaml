@@ -68,6 +68,15 @@ flutter:
   assets:
     - logo.jpg
     - avatar.jpg
+    - ttd.jpg
+    - pic1.jpg
+    - pic2.jpg
+    - pic3.jpg
+    - pic4.jpg
+    - pic5.jpg
+    - pic6.jpg
+    - pic7.jpg
+    - pic8.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

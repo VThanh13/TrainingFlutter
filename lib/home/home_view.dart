@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:code/home/detail_job.dart';
 import 'package:code/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +16,8 @@ class HomeView extends StatefulWidget {
 class _HomeView extends State<HomeView> with HomeViewModel {
   final List<HomeModel> items = [];
 
-  void _handleAddTask(String name) {
-    final newItem = HomeModel(id: DateTime.now(), name: name);
+  void _handleAddTask(String name, String image) {
+    final newItem = HomeModel(id: DateTime.now(), name: name, image: image);
     setState(() {
       items.add(newItem);
     });
@@ -89,7 +91,7 @@ class _HomeView extends State<HomeView> with HomeViewModel {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(
                   children: items
                       .map((item) => _HomeBody(
@@ -130,9 +132,6 @@ class _HomeBody extends StatelessWidget {
   dynamic item;
   final Function deleteTask;
 
-  get job => null;
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -141,53 +140,96 @@ class _HomeBody extends StatelessWidget {
           onTap: () {
             print('tapne');
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => DetailJob(item: item.id, item2: item.name)
+                builder: (context) => DetailJob(item: item.id, item2: item.name, item3: item.image)
             ));
             },
           child: Container(
             width: double.infinity,
-            height: 70,
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: Colors.lightBlue,
-              borderRadius: BorderRadius.circular(12),
+            height: 250,
+            margin: const EdgeInsets.only(bottom: 5),
+            decoration: const BoxDecoration(
+              color: Color(0xffE8E8E8),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20), bottom: Radius.circular(15),),
             ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Expanded(
-                    child: Text(
-                    item.name,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    //overflow: TextOverflow.ellipsis,
-                    //overflow: TextOverflow.fade,
-                  ),),
-                    InkWell(
-                      onTap: () async {
-                        if (await confirm(context)) {
-                          deleteTask(item.id.toString());
-                        }
-                        return;
-                      },
-                      child: const Icon(
-                        Icons.delete_outline,
-                        color: Colors.white,
-                        size: 30,
+                  Stack(
+                    alignment: Alignment.topCenter,
+                    children: <Widget>[
+                      Container(
+                        child:  ClipRRect(
+                          borderRadius: const BorderRadius.only(topRight: Radius.circular(20),
+                          topLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(50),),
+                          child: Image(
+                            height: 190,
+                            width: double.infinity,
+                            image: AssetImage(item.image),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      const Padding(padding: EdgeInsets.fromLTRB(10, 0, 10, 0)),
+                      Expanded(
+                        child: Text(
+                          item.name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          //overflow: TextOverflow.ellipsis,
+                          //overflow: TextOverflow.fade,
+                        ),),
+                      InkWell(
+                        onTap: () async {
+                          if (await confirm(context)) {
+                            deleteTask(item.id.toString());
+                          }
+                          return;
+                        },
+                        child: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.lightBlue,
+                          size: 30,
+                        ),
                       ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: const Text('This is a picture!',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500
                     ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: const Text('Click to see all, or choose the bin to delete.',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontStyle: FontStyle.italic,
+                    ),
+                    ),
+                  ),
                 ],
+
               ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -199,10 +241,22 @@ class BottomView extends StatelessWidget with HomeViewModel {
   final TextEditingController _addController = TextEditingController();
   void _addTask(BuildContext context) {
     final name = _addController.text;
+    var image ;
+    String getpic(){
+      var a;
+      var b = ['assets/pic1.jpg', 'assets/pic2.jpg', 'assets/pic3.jpg', 'assets/pic4.jpg',
+        'assets/pic5.jpg', 'assets/pic6.jpg', 'assets/pic7.jpg', 'assets/pic8.jpg',];
+      a = Random().nextInt(b.length);
+      image = b[a];
+      print(image);
+      return image;
+    }
+
     if (name.isEmpty) {
       return;
     }
-    addTask(name);
+    image = getpic();
+    addTask(name, image);
     Navigator.pop(context);
   }
 
@@ -218,7 +272,7 @@ class BottomView extends StatelessWidget with HomeViewModel {
               controller: _addController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Your task',
+                labelText: 'Thêm mô tả',
               ),
             ),
             const SizedBox(
@@ -229,7 +283,7 @@ class BottomView extends StatelessWidget with HomeViewModel {
               height: 50,
               child: ElevatedButton(
                 onPressed: () => _addTask(context),
-                child: const Text('ADD'),
+                child: const Text('Thêm'),
               ),
             ),
           ],
