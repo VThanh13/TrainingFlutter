@@ -1,10 +1,9 @@
+import 'package:code/week2/splash_week2.dart';
 import 'package:flutter/material.dart';
-
-import 'home/home_view.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: HomeView(),
+    home: SplashWeek2(),
     debugShowCheckedModeBanner: false,
   ));
 }
