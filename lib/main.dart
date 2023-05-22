@@ -1,10 +1,10 @@
-import 'package:code/week2/splash_week2.dart';
-import 'package:code/week3/home_week3.dart';
+import 'package:code/week5/demo%20rest%20API/views/home_demo_api.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: HomeWeek3(),
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp( const MaterialApp(
+    home: HomeDemoAPI(),
     debugShowCheckedModeBanner: false,
   ));
 }
