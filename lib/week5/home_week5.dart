@@ -17,7 +17,7 @@ class _HomeWeek5State extends State<HomeWeek5>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(
@@ -123,5 +123,4 @@ class _HomeWeek5State extends State<HomeWeek5>{
       ),
     );
   }
-
 }

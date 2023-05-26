@@ -46,7 +46,6 @@ class HomeDemoAPI extends StatelessWidget{
                   child: CircularProgressIndicator(),
                 );
               }else {
-
                 return StaggeredGridView.countBuilder(
              // shrinkWrap: true,
                   crossAxisCount: 2,
