@@ -95,7 +95,7 @@ class _CartState extends State<Cart> {
 
             default:
           }
-          return Container();
+          return const SizedBox();
         },
       ),
     );

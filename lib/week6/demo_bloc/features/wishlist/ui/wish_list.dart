@@ -89,7 +89,7 @@ class _WishListState extends State<WishList> {
                 );
               }
           }
-          return Container();
+          return const SizedBox();
         },
       )
     );
