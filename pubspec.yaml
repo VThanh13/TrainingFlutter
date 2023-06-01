@@ -85,6 +85,17 @@ flutter:
     - assets/images/week2/car.png
     - assets/images/week2/unitedStates1.png
     - assets/images/week2/image1.png
+    - assets/images/biz_design/Ellipse_18.png
+    - assets/images/biz_design/Ellipse_19.png
+    - assets/images/biz_design/loading.png
+    - assets/images/biz_design/n-Biz.png
+    - assets/images/biz_design/Rectangle_5.jpg
+    - assets/images/biz_design/image_41.png
+    - assets/images/biz_design/image_1.png
+    - assets/images/biz_design/image_40.png
+    - assets/images/biz_design/Vector_1.png
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

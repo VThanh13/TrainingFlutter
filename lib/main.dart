@@ -1,14 +1,11 @@
-import 'package:code/week6/demo_bloc/features/home/ui/home.dart';
+import 'package:code/biz_design/id_a/id_a_1/loading_page.dart';
 
 import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(  MaterialApp(
-    home: const HomeDemoBloc(),
-    theme: ThemeData(
-      primarySwatch: Colors.teal,
-    ),
+  runApp(  const MaterialApp(
+    home: LoadingPage(),
     debugShowCheckedModeBanner: false,
   ));
 }
