@@ -13,11 +13,11 @@ class Footer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          GetFooterItem(textValue: 'ホーム', iconValue: Icons.home, size: 35),
+          const GetFooterItem(textValue: 'ホーム', iconValue: Icons.home, size: 35),
           Stack(
-            children: [
+            children: const [
               GetFooterItem(textValue: 'マイページ', iconValue: Icons.account_circle_outlined, size: 32),
-              const Positioned(
+              Positioned(
                 top: 10,
                 right: 7,
                 child: CircleAvatar(
@@ -28,9 +28,9 @@ class Footer extends StatelessWidget {
             ],
           ),
           Stack(
-            children: [
+            children: const [
               GetFooterItem(textValue: 'ユーザー告知', iconValue: Icons.volume_up_outlined, size: 32),
-              const Positioned(
+              Positioned(
                 top: 10,
                 right: 7,
                 child: CircleAvatar(
@@ -41,9 +41,9 @@ class Footer extends StatelessWidget {
             ],
           ),
           Stack(
-            children: [
+            children: const [
               GetFooterItem(textValue: 'イベント\nコミュニティ', iconValue: Icons.calendar_today_outlined, size: 28),
-              const Positioned(
+              Positioned(
                 top: 10,
                 right: 7,
                 child: CircleAvatar(
@@ -53,11 +53,11 @@ class Footer extends StatelessWidget {
               ),
             ],
           ),
-          GetFooterItem(textValue: '会員一覧', iconValue: Icons.groups_outlined, size: 30),
+          const GetFooterItem(textValue: '会員一覧', iconValue: Icons.groups_outlined, size: 30),
           Stack(
-            children: [
+            children: const [
               GetFooterItem(textValue: 'メッセージ', iconValue: Icons.message_outlined, size: 28),
-              const Positioned(
+              Positioned(
                 top: 10,
                 right: 7,
                 child: CircleAvatar(
@@ -65,7 +65,7 @@ class Footer extends StatelessWidget {
                   backgroundColor: Color(0xffFF3C3C),
                 ),
               ),
-              const Positioned(
+              Positioned(
                   top: 12,
                   right: 9,
 
@@ -82,19 +82,17 @@ class Footer extends StatelessWidget {
 }
 
 class GetFooterItem extends StatelessWidget {
-  GetFooterItem(
+  const GetFooterItem(
       {required this.textValue, required this.iconValue, required this.size, super.key});
 
-  late String textValue;
-  late IconData iconValue;
-  late double size;
+  final String textValue;
+  final IconData iconValue;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.start,
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
           onPressed: () {},

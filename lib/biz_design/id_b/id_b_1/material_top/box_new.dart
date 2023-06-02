@@ -20,7 +20,6 @@ class BoxNew extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),),
       ),
-
     );
   }
 }

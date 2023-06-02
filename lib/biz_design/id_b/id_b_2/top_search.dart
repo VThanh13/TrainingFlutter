@@ -2,6 +2,7 @@ import 'package:code/biz_design/id_b/id_b_2/top_search_material/blue_button.dart
 import 'package:code/biz_design/id_b/id_b_2/top_search_material/row_add.dart';
 import 'package:code/biz_design/id_b/id_b_2/top_search_material/textfield_no_icon.dart';
 import 'package:code/biz_design/id_b/id_b_2/top_search_material/textfield_search.dart';
+import 'package:code/biz_design/id_c/id_c_1/search_result.dart';
 import 'package:flutter/material.dart';
 
 class TopSearch extends StatefulWidget {
@@ -175,7 +176,10 @@ class _TopSearchState extends State<TopSearch> {
                           borderRadius: BorderRadius.circular(24.0),
                         ),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => const SearchResult()));
+                      },
                       child: const Text('検索する', style: TextStyle(
                         fontWeight: FontWeight.w700, fontSize: 14
                       ),

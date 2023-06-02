@@ -5,6 +5,7 @@ import 'package:code/biz_design/id_b/id_b_1/material_top/icon_and_text.dart';
 import 'package:code/biz_design/id_b/id_b_1/material_top/text_info.dart';
 import 'package:code/biz_design/id_b/id_b_1/material_top/top_divider.dart';
 import 'package:code/biz_design/id_b/id_b_2/top_search.dart';
+import 'package:code/biz_design/id_d/id_d_1/user_top.dart';
 import 'package:flutter/material.dart';
 
 import 'material_top/bottom_sheet_top_menu.dart';
@@ -146,6 +147,8 @@ class _TopScreenState extends State<TopScreen> {
                                     ),
                                   ),
                                   onPressed: (){
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => const UserTop()));
                                   },
                                   child: const Text('プロフィールをみる',style: TextStyle(
                                       fontSize: 10,

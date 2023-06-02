@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Header02 extends StatefulWidget {
   const Header02({Key? key}) : super(key: key);
 
+
   @override
   State<Header02> createState() => _Header02State();
 }
@@ -25,7 +26,9 @@ class _Header02State extends State<Header02> {
             width: 12,
             child: IconButton(
               icon: const Icon(Icons.arrow_back_ios),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pop(context);
+              },
               color: const Color(0xff212862),
             ),
           ),),
