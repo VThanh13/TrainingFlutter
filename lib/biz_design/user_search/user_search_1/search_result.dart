@@ -24,9 +24,9 @@ class _SearchResultState extends State<SearchResult>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;
-  List<String> items = List.generate(1000, (index) => "Item $index");
   int _visibleItemCount = 20;
   final ScrollController _scrollController = ScrollController();
+
 
   @override
   void initState() {
@@ -62,10 +62,10 @@ class _SearchResultState extends State<SearchResult>
               height: 37,
               width: double.maxFinite,
               color: const Color(0xffEAE9E9),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(
                     Icons.search,
                     size: 17,
@@ -184,10 +184,10 @@ class _SearchResultState extends State<SearchResult>
                       ),
                       itemCount: _visibleItemCount,
                       itemBuilder: (BuildContext context, int index) {
-                        return SizedBox(
+                        return const SizedBox(
                           width: double.maxFinite,
                           child: Stack(
-                            children: const [
+                            children: [
                               SizedBox(
                                 height: double.maxFinite,
                                 width: double.maxFinite,

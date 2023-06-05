@@ -168,13 +168,13 @@ class _HomeWeek2State extends State<HomeWeek2>
                               height: 60,
                               child: Container(
                                 margin: const EdgeInsets.only(top: 16),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: const [
+                                      children: [
                                         SizedBox(
                                           width: 86,
                                           height: 22,

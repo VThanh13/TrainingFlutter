@@ -25,12 +25,12 @@ class _TopSearchState extends State<TopSearch> {
       onTap: () {
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
-      child: Scaffold(
+      child: const Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 TopSearchHeader(),
                 SearchJob(),
                 SearchIndustry(),

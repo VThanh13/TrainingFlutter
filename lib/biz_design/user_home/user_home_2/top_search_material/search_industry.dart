@@ -14,9 +14,9 @@ class SearchIndustry extends StatefulWidget {
 class _SearchIndustryState extends State<SearchIndustry> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         BlueButton(height: 17, width: 76, textValue: '業種・職種'),
         SizedBox(
           height: 10,

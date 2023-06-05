@@ -13,16 +13,16 @@ class SearchAnnualIncome extends StatefulWidget {
 class _SearchAnnualIncomeState extends State<SearchAnnualIncome> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const BlueButton(height: 17, width: 41, textValue: '年収'),
-        const SizedBox(
+        BlueButton(height: 17, width: 41, textValue: '年収'),
+        SizedBox(
           height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Padding(
               padding: EdgeInsets.only(left: 8),
               child: TextFieldNoIcon(
@@ -47,7 +47,7 @@ class _SearchAnnualIncomeState extends State<SearchAnnualIncome> {
             ),
           ],
         ),
-        const SizedBox(
+        SizedBox(
           height: 40,
         ),
       ],

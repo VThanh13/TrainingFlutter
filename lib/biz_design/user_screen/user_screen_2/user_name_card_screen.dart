@@ -2,7 +2,6 @@ import 'package:code/biz_design/user_screen/user_screen_2/user_name_card_materia
 import 'package:flutter/material.dart';
 
 import '../../user_home/user_home_1/material_top/button3.dart';
-import '../../user_login/user_login_1/footer.dart';
 
 class UserNameCardScreen extends StatefulWidget {
   const UserNameCardScreen({Key? key}) : super(key: key);
@@ -94,7 +93,6 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
               ),
             ),
           ),
-          const Footer(),
         ],
       ),
     );

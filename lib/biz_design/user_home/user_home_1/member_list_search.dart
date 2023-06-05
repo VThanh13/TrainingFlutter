@@ -48,8 +48,8 @@ class _MemberListSearchState extends State<MemberListSearch> {
             onTap: () {
               navigateToTopSearch();
             },
-            child: Row(
-              children: const [
+            child: const Row(
+              children: [
                 Image(
                   image: AssetImage(
                       'assets/images/biz_design/image_41.png'),

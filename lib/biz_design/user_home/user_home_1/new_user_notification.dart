@@ -21,9 +21,9 @@ class _NewUserNotificationState extends State<NewUserNotification> {
           height: 38,
           width: double.maxFinite,
           color: const Color(0xffFFF8F3),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               IconAndText(
                   textValue: '新着ユーザー告知',
                   iconValue: Icons.volume_up_outlined,
@@ -32,12 +32,12 @@ class _NewUserNotificationState extends State<NewUserNotification> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 175,
           width: double.maxFinite,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: BoxNew(),

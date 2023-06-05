@@ -16,7 +16,7 @@ class EventCommunity extends StatelessWidget {
           height: 46,
           width: double.maxFinite,
           color: const Color(0xffFFF8F3),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconAndText(

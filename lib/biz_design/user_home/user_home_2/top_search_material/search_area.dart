@@ -14,9 +14,9 @@ class SearchArea extends StatefulWidget {
 class _SearchAreaState extends State<SearchArea> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         BlueButton(height: 17, width: 51, textValue: 'エリア'),
         SizedBox(
           height: 10,

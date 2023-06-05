@@ -1,12 +1,5 @@
-import 'package:code/biz_design/user_screen/user_screen_1/user_profile_screen.dart';
-import 'package:code/biz_design/user_screen/user_screen_1/user_top_material/item_menu.dart';
-import 'package:code/biz_design/user_screen/user_screen_1/user_top_material/user_info.dart';
-import 'package:code/biz_design/user_screen/user_screen_1/user_top_material/user_top_divider.dart';
-import 'package:code/biz_design/user_screen/user_screen_2/user_name_card_screen.dart';
-import 'package:code/biz_design/user_screen/user_screen_3/user_message_screen.dart';
+import 'package:code/biz_design/user_screen/user_screen_1/user_top_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../user_login/user_login_1/header_02.dart';
 
 class UserTop extends StatefulWidget {
   const UserTop({Key? key}) : super(key: key);
@@ -36,6 +29,36 @@ class _UserTopState extends State<UserTop> with SingleTickerProviderStateMixin {
     'アプリ情報',
   ];
 
+  final List<IconData> _listBottomIconItems = <IconData>[
+    Icons.home,
+    Icons.account_circle_outlined,
+    Icons.volume_up_outlined,
+    Icons.calendar_today_outlined,
+    Icons.groups_outlined,
+    Icons.message_outlined,
+  ];
+
+  final List _listBottomLabelItems = [
+    'ホーム',
+    'マイページ',
+    'ユーザー告知',
+    'イベントコミュニティ',
+    '会員一覧',
+    'メッセージ',
+  ];
+
+  int _selectedIndex = 0;
+
+  final List<Widget> _widgetOptions = <Widget>[
+    const UserTopScreen(),
+    const Text('Info Page'),
+    const Text('Sound Page'),
+    const Text('Home Page'),
+    const Text('Info Page'),
+    const Text('Sound Page'),
+  ];
+
+
   @override
   void initState() {
     _tabController = TabController(length: listTabItem.length, vsync: this);
@@ -48,72 +71,45 @@ class _UserTopState extends State<UserTop> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const Header02(),
-            const UserInfo(),
-            const Divider(
-              height: 0,
-              color: Color(0xffDD4A30),
-              indent: 0,
-              thickness: 1,
-            ),
-            SizedBox(
-              height: 48,
-              width: double.maxFinite,
-              child: TabBar(
-                isScrollable: true,
-                controller: _tabController,
-                indicator: const UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    color: Color(0xffDD4A30),
-                    width: 3,
-                  ),
-                ),
-                tabs: [
-                  ...List.generate(
-                    listTabItem.length,
-                    (index) {
-                      return Tab(
-                        child: ItemMenu(
-                          itemName: listTabItem[index],
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            const UserTopDivider(),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children:  const [
-                  UserProfileScreen(),
-                  UserNameCardScreen(),
-                  UserMessageScreen(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                ],
-              ),
-            ),
-          ],
+        child: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          ...List.generate(_listBottomIconItems.length, (index){
+            return BottomNavigationBarItem(
+                icon: Icon(_listBottomIconItems[index]),
+            label: _listBottomLabelItems[index],
+              backgroundColor: const Color(0xffF1F1F1),
+            );
+          }),
+        ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color(0xff212862),
+          unselectedItemColor: const Color(0xff212862),
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(
+            fontSize: 6, fontWeight: FontWeight.w700,
+            color: Color(0xff212862),
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontSize: 6, fontWeight: FontWeight.w700,
+            color: Color(0xff212862),
+          ),
+          iconSize: 28,
+          onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }

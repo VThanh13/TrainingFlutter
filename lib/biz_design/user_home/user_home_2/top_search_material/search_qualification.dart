@@ -14,9 +14,9 @@ class SearchQualification extends StatefulWidget {
 class _SearchQualificationState extends State<SearchQualification> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         BlueButton(height: 17, width: 65, textValue: '保有資格'),
         SizedBox(
           height: 10,

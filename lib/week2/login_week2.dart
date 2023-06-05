@@ -287,10 +287,10 @@ class _LoginWeek2State extends State<LoginWeek2> {
                     height: 22,
                     width: 203,
                     margin: const EdgeInsets.only(top: 158),
-                    child: FittedBox(
+                    child: const FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Row(
-                        children: const <Widget>[
+                        children: <Widget>[
                           Text(
                             'Don’t have an account? ',
                             style: TextStyle(

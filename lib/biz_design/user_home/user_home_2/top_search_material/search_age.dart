@@ -13,9 +13,9 @@ class SearchAge extends StatefulWidget {
 class _SearchAgeState extends State<SearchAge> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         BlueButton(height: 17, width: 41, textValue: '年齢'),
         SizedBox(
           height: 10,

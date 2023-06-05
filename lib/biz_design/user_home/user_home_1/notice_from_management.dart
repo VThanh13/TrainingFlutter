@@ -15,9 +15,9 @@ class NoticeFromManagement extends StatelessWidget {
           height: 46,
           width: double.maxFinite,
           color: const Color(0xffFFF8F3),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               IconAndText(
                   textValue: '運営からのお知らせ',
                   iconValue: Icons.newspaper_rounded,

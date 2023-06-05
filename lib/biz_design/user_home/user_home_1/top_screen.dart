@@ -1,13 +1,6 @@
-import 'package:code/biz_design/user_home/user_home_1/event_community.dart';
-import 'package:code/biz_design/user_home/user_home_1/member_list_search.dart';
-import 'package:code/biz_design/user_home/user_home_1/n_biz_channel.dart';
-import 'package:code/biz_design/user_home/user_home_1/new_user_notification.dart';
-import 'package:code/biz_design/user_home/user_home_1/notice_from_management.dart';
-import 'package:code/biz_design/user_home/user_home_1/pick_up_person.dart';
+import 'package:code/biz_design/user_home/user_home_1/top_screen_content.dart';
 import 'package:flutter/material.dart';
 
-import '../../user_login/user_login_1/footer.dart';
-import 'material_top/top_divider.dart';
 
 class TopScreen extends StatefulWidget {
   const TopScreen({Key? key}) : super(key: key);
@@ -17,65 +10,74 @@ class TopScreen extends StatefulWidget {
 }
 
 class _TopScreenState extends State<TopScreen> {
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<IconData> _listBottomIconItems = <IconData>[
+    Icons.home,
+    Icons.account_circle_outlined,
+    Icons.volume_up_outlined,
+    Icons.calendar_today_outlined,
+    Icons.groups_outlined,
+    Icons.message_outlined,
+  ];
+
+  final List _listBottomLabelItems = [
+    'ホーム',
+    'マイページ',
+    'ユーザー告知',
+    'イベントコミュニティ',
+    '会員一覧',
+    'メッセージ',
+  ];
+
+  int _selectedIndex = 0;
+
+  final List<Widget> _widgetOptions = <Widget>[
+    const TopScreenContent(),
+    const Text('Info Page'),
+    const Text('Sound Page'),
+    const Text('Home Page'),
+    const Text('Info Page'),
+    const Text('Sound Page'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 82,
-                  width: double.maxFinite,
-                  color: const Color(0xffF2F2F2),
-                ),
-                Positioned(
-                  top: 37,
-                  left: 150,
-                  child: Container(
-                    height: 34,
-                    width: 81,
-                    padding: const EdgeInsets.only(bottom: 13),
-                    child: const FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Image(
-                        image: AssetImage('assets/images/biz_design/n-Biz.png'),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: double.maxFinite,
-              height: 600,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: const [
-                    MemberListSearch(),
-                    Divider(
-                      height: 0,
-                      color: Color(0xff060606),
-                      indent: 0,
-                      thickness: 1,
-                    ),
-                    PickUpPerson(),
-                    TopDivider(),
-                    NBizChannel(),
-                    TopDivider(),
-                    NewUserNotification(),
-                    TopDivider(),
-                    EventCommunity(),
-                    TopDivider(),
-                    NoticeFromManagement(),
-                  ],
-                ),
-              ),
-            ),
-            const Footer(),
-          ],
+        child:  Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          ...List.generate(_listBottomIconItems.length, (index){
+            return BottomNavigationBarItem(
+              icon: Icon(_listBottomIconItems[index]),
+              label: _listBottomLabelItems[index],
+              backgroundColor: const Color(0xffF1F1F1),
+            );
+          }),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color(0xff212862),
+        unselectedItemColor: const Color(0xff212862),
+        showUnselectedLabels: true,
+        selectedLabelStyle: const TextStyle(
+          fontSize: 6, fontWeight: FontWeight.w700,
+          color: Color(0xff212862),
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 6, fontWeight: FontWeight.w700,
+          color: Color(0xff212862),
+        ),
+        iconSize: 28,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }

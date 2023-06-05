@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../user_login/user_login_1/footer.dart';
-
 class UserMessageScreen extends StatefulWidget {
   const UserMessageScreen({Key? key}) : super(key: key);
 
@@ -23,7 +21,7 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: SizedBox(
-                  height: 374,
+                  height: 400,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -40,8 +38,8 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                         ),
                         Row(
                           children: [
-                            Column(
-                              children: const [
+                            const Column(
+                              children: [
                                 SizedBox(
                                   height: 51,
                                   width: 54,
@@ -80,10 +78,10 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                       Radius.circular(10),
                                     ),
                                   ),
-                                  child: Column(
+                                  child: const Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
+                                    children: [
                                       Padding(
                                         padding: EdgeInsets.only(left: 20),
                                         child: Text(
@@ -115,9 +113,9 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                           width: 280,
                           margin: const EdgeInsets.only(top: 38),
                           color: const Color(0xffE3E3E3),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 '名刺交換が取り消しされたためメッセージのやりとりはできません。',
                                 style: TextStyle(
@@ -189,7 +187,6 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                   ],
                 ),
               ),
-              const Footer(),
             ],
           ),
         ),

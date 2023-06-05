@@ -6,8 +6,6 @@ import 'package:code/biz_design/user_screen/user_screen_1/user_top_material/text
 import 'package:code/biz_design/user_screen/user_screen_1/user_top_material/user_top_divider.dart';
 import 'package:flutter/material.dart';
 
-import '../../user_login/user_login_1/footer.dart';
-
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
 
@@ -17,7 +15,7 @@ class UserProfileScreen extends StatelessWidget {
       children: [
         SizedBox(
           width: double.maxFinite,
-          height: 449,
+          height: 460,
           child: SingleChildScrollView(
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Column(
@@ -42,10 +40,10 @@ class UserProfileScreen extends StatelessWidget {
                   child: UserTopDivider(),
                 ),
                 const BlueTag(value: '繋がりたい業種・職種', width: 133),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
+                const Padding(
+                  padding: EdgeInsets.only(top: 5),
                   child: Row(
-                    children: const [
+                    children: [
                       RedBorderTag(textValue: 'IT', width: 31),
                       RedBorderTag(
                         textValue: 'IT > WEB制作',
@@ -66,10 +64,10 @@ class UserProfileScreen extends StatelessWidget {
                   value: 'エリア',
                   width: 51,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
+                const Padding(
+                  padding: EdgeInsets.only(top: 5),
                   child: Row(
-                    children: const [
+                    children: [
                       RedBorderTag(textValue: '東京都', width: 55),
                       RedBorderTag(textValue: '千葉県', width: 55),
                       RedBorderTag(textValue: '大阪府', width: 55),
@@ -93,8 +91,8 @@ class UserProfileScreen extends StatelessWidget {
                 const SizedBox(
                   height: 6,
                 ),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     RedBorderTag2(textValue: '営業', width: 45),
                     RedBorderTag2(textValue: 'CAD', width: 41),
                     RedBorderTag2(textValue: '英語', width: 41),
@@ -183,7 +181,6 @@ class UserProfileScreen extends StatelessWidget {
             ),
           ),
         ),
-        const Footer(),
       ],
     );
   }
