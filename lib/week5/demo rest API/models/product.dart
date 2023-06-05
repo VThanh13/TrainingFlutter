@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -96,10 +93,10 @@ class Product {
   };
 }
 
-enum Brand { MAYBELLINE }
+enum Brand { mayBellLine }
 
 final brandValues = EnumValues({
-  "maybelline": Brand.MAYBELLINE
+  "maybelline": Brand.mayBellLine
 });
 
 class ProductColor {

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 class UserAvatar extends StatefulWidget{
   const UserAvatar({super.key});
 
+  @override
   State<UserAvatar> createState() => _UserAvatar();
 }
 

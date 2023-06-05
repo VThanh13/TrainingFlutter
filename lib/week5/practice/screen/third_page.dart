@@ -12,7 +12,7 @@ class ThirdPage extends StatelessWidget{
     // TODO: implement build
     TabControllerR controller = Get.find();
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(

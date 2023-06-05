@@ -48,7 +48,7 @@ class _LoginWeek2State extends State<LoginWeek2> {
                     child: const FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Text(
-                        'Enter your creditional to continue!',
+                        'Enter your traditional to continue!',
                         style: TextStyle(
                           fontSize: 14,
                           fontStyle: FontStyle.normal,

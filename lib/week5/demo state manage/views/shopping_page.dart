@@ -8,7 +8,6 @@ class ShoppingPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final shoppingController = Get.put(ShoppingController());
     final cardController = Get.put(CardController());
 
     // TODO: implement build
@@ -73,7 +72,7 @@ class ShoppingPage extends StatelessWidget{
                 color: Colors.white
               ),);
             }),
-            SizedBox(
+            const SizedBox(
               height: 100,
             )
           ],

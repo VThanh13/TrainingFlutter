@@ -17,10 +17,10 @@ class FirstPage extends StatelessWidget{
           onPressed: (){
             Get.back();
           },
-          icon: Icon(Icons.arrow_back,color: Colors.black,),
+          icon: const Icon(Icons.arrow_back,color: Colors.black,),
         ),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(

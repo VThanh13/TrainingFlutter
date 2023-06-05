@@ -1,7 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:code/week2/custom_icons.dart';
 import 'package:code/week2/material/home_title.dart';
-import 'package:code/week2/material/row_ictext.dart';
+import 'package:code/week2/material/row_icon_text.dart';
 import 'package:code/week2/material/row_with_3part.dart';
 import 'package:code/week2/material/user_avatar.dart';
 import 'package:flutter/material.dart';
@@ -204,7 +204,7 @@ class _HomeWeek2State extends State<HomeWeek2>
                                         ),
                                       ],
                                     ),
-                                    const Divider(
+                                    Divider(
                                       height: 0,
                                       color: Color(0xffAAAAAA),
                                       indent: 0,
