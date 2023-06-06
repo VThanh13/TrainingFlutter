@@ -20,7 +20,6 @@ class _DetailPhotoState extends State<DetailPhoto>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -40,7 +39,6 @@ class _DetailPhotoState extends State<DetailPhoto>{
                     child: Image.network('${photos.url}'),
                   ),
                 ),
-
                 Positioned(
                   top: 55,
                   child: Padding(padding: const EdgeInsets.only(left: 10),
@@ -94,5 +92,4 @@ class _DetailPhotoState extends State<DetailPhoto>{
       ),
     );
   }
-
 }

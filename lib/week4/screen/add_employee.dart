@@ -16,7 +16,6 @@ class _AddEmployeeState extends State<AddEmployee>{
   bool isEdit = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final todo = widget.todo;
     if(todo != null){
@@ -63,7 +62,6 @@ class _AddEmployeeState extends State<AddEmployee>{
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     _nameStream.close();
     _ageStream.close();
     _salaryStream.close();
@@ -74,7 +72,6 @@ class _AddEmployeeState extends State<AddEmployee>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GestureDetector(
       onTap: (){
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();

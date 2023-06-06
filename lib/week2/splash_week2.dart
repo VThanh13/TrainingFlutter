@@ -17,7 +17,7 @@ class _SplashWeek2State extends State<SplashWeek2>{
     
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).pushReplacement(
-        CupertinoPageRoute(builder: (ctx) => const LoginWeek2()));
+        CupertinoPageRoute(builder: (ctx) => const LoginWeek2(),),);
     });
   }
   @override
@@ -71,7 +71,7 @@ class _SplashWeek2State extends State<SplashWeek2>{
                         fit: BoxFit.fill,
                       ),
                     ),
-                  )
+                  ),
                 ),
             ],
           ),

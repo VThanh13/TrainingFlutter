@@ -6,7 +6,6 @@ class ShoppingController extends GetxController{
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     fetchProduct();
   }

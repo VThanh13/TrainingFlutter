@@ -12,7 +12,6 @@ class ViewJob extends StatefulWidget{
 class _ViewJobState extends State<ViewJob>{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text('SQLite CRUD'),

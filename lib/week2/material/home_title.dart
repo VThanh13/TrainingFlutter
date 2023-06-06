@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 class HomeTitle extends StatefulWidget{
   const HomeTitle({Key? key, required this.textValue, required this.conWidth})
   : super(key: key);
-
   final String textValue;
   final double conWidth;
 
@@ -22,7 +21,6 @@ class _HomeTitle extends State<HomeTitle>{
   }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       height: 22,
       width: conWidth,
@@ -42,5 +40,4 @@ class _HomeTitle extends State<HomeTitle>{
       ),
     );
   }
-
 }

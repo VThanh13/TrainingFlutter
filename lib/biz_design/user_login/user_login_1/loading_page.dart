@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../user_login_3/login1.dart';
+import '../user_login_3/login_or_register.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -17,7 +17,10 @@ class _LoadingPageState extends State<LoadingPage> {
 
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).pushReplacement(
-          CupertinoPageRoute(builder: (ctx) => const Login1()));
+        CupertinoPageRoute(
+          builder: (ctx) => const LoginOrRegister(),
+        ),
+      );
     });
   }
 

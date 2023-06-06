@@ -17,7 +17,6 @@ class _HomeWeek3 extends State<HomeWeek3>{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     NetworkRequest.fetchPhotos().then((dataFromServer) => {
       setState((){
@@ -27,7 +26,6 @@ class _HomeWeek3 extends State<HomeWeek3>{
   }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text('Demo'),
@@ -78,5 +76,4 @@ class _HomeWeek3 extends State<HomeWeek3>{
       ),
     );
   }
-
 }

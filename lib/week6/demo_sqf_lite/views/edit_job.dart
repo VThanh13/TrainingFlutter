@@ -26,7 +26,6 @@ class _EditJobState extends State<EditJob>{
 
   @override
   void initState() {
-    // TODO: implement initState
     setState(() {
       _nameController.text = widget.job.name??'';
       _peopleController.text = widget.job.people??'';
@@ -36,7 +35,6 @@ class _EditJobState extends State<EditJob>{
   }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GestureDetector(
       onTap: (){
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();

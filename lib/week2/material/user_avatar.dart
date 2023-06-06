@@ -23,5 +23,4 @@ class _UserAvatar extends State<UserAvatar>{
       ),
     );
   }
-
 }

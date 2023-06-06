@@ -82,13 +82,11 @@ class _HomeSQLState extends State<HomeSQLWeek6>{
 
   @override
   void initState() {
-    // TODO: implement initState
     getAllJobDetails();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text('SQLite CRUD'),

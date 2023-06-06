@@ -9,8 +9,6 @@ class ShoppingPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final cardController = Get.put(CardController());
-
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.teal,
       body: SafeArea(
@@ -96,5 +94,4 @@ class ShoppingPage extends StatelessWidget{
       ),
     );
   }
-
 }

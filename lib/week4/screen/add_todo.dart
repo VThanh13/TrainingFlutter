@@ -17,7 +17,6 @@ class _AddTodoState extends State<AddTodo>{
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final todo = widget.todo;
     if(todo != null){

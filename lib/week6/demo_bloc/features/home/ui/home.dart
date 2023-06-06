@@ -25,7 +25,6 @@ class _HomeBlocState extends State<HomeDemoBloc> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text('Demo Bloc'),

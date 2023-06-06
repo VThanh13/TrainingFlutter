@@ -51,6 +51,7 @@ flutter:
     - assets/images/biz_design/image_41.png
     - assets/images/biz_design/image_1.png
     - assets/images/biz_design/image_12.png
+    - assets/images/biz_design/image_11.png
     - assets/images/biz_design/bloc_image_1.png
     - assets/images/biz_design/bloc_image_2.png
     - assets/images/biz_design/bloc_image_3.png
@@ -63,6 +64,8 @@ flutter:
     - assets/images/biz_design/image_13.png
     - assets/images/biz_design/image_40.png
     - assets/images/biz_design/Vector_1.png
+    - assets/images/biz_design/background.png
+    - assets/images/biz_design/Rectangle_12.png
 
   fonts:
     - family: Roboto

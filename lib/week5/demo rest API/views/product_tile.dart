@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:code/week5/demo%20rest%20API/models/product.dart';
 
-
-class ProductTile extends StatelessWidget{
+class ProductTile extends StatelessWidget {
   const ProductTile(this.product, {super.key});
   final Product product;
 
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Card(
       elevation: 2,
       child: Padding(
@@ -32,18 +29,20 @@ class ProductTile extends StatelessWidget{
                   ),
                 ),
                 Positioned(
-                    right:0,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                        icon: const Icon(Icons.favorite_border),
-                        onPressed: (){},
-                      ),
-                ),
+                  right: 0,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: IconButton(
+                      icon: const Icon(Icons.favorite_border),
+                      onPressed: () {},
+                    ),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 8,
+            ),
             Text(
               product.name,
               maxLines: 2,
@@ -52,8 +51,10 @@ class ProductTile extends StatelessWidget{
               ),
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 8,),
-            if(product.rating != null)
+            const SizedBox(
+              height: 8,
+            ),
+            if (product.rating != null)
               Container(
                 decoration: BoxDecoration(
                   color: Colors.green,
@@ -63,22 +64,28 @@ class ProductTile extends StatelessWidget{
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(product.rating.toString(),
-                    style: const TextStyle(color: Colors.white),),
-                    const Icon(Icons.star,
-                    size: 16,
-                    color: Colors.white,)
+                    Text(
+                      product.rating.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    const Icon(
+                      Icons.star,
+                      size: 16,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),
-            const SizedBox(height: 8,),
-            Text('\$ ${product.price}',
-            style: const TextStyle(fontSize: 32),)
-
+            const SizedBox(
+              height: 8,
+            ),
+            Text(
+              '\$ ${product.price}',
+              style: const TextStyle(fontSize: 32),
+            ),
           ],
         ),
       ),
     );
   }
-
 }

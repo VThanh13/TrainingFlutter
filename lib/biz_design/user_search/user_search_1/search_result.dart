@@ -9,8 +9,7 @@ import 'package:code/biz_design/user_search/user_search_1/search_result_material
 import 'package:code/biz_design/user_search/user_search_1/search_result_material/user_position.dart';
 import 'package:flutter/material.dart';
 
-import '../../user_login/user_login_1/footer.dart';
-import '../../user_login/user_login_1/header_02.dart';
+import '../../common/header_02.dart';
 import '../user_search_2/search_research_no_hit.dart';
 
 class SearchResult extends StatefulWidget {
@@ -261,7 +260,6 @@ class _SearchResultState extends State<SearchResult>
                 ],
               ),
             ),
-            const Footer(),
           ],
         ),
       ),

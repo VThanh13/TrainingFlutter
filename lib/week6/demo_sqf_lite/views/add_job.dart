@@ -24,7 +24,6 @@ class _AddJobState extends State<AddJob>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GestureDetector(
       onTap: (){
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
@@ -164,5 +163,4 @@ class _AddJobState extends State<AddJob>{
       ),
     );
   }
-
 }
