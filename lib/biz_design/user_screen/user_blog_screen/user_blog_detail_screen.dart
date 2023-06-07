@@ -105,9 +105,10 @@ class _UserBlogDetailScreenState extends State<UserBlogDetailScreen> {
                             ),
                             IconButton(
                               onPressed: () {
-                                blogBloc.add(
-                                  BlogClickCommentToBlogDetailCommentEvent(),
-                                );
+                                // blogBloc.add(
+                                //   BlogClickCommentToBlogDetailCommentEvent(),
+                                // );
+                                show();
                               },
                               icon: const Icon(
                                 Icons.messenger_outline,
@@ -155,10 +156,22 @@ class _UserBlogDetailScreenState extends State<UserBlogDetailScreen> {
               ),
             );
           case BlogClickCommentToBlogDetailCommentState:
-            return const BlogCommentDetailScreen();
+            return show();
           default:
         }
         return const SizedBox();
+      },
+    );
+  }
+
+  show() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Padding(padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: const BlogCommentDetailScreen(),);
       },
     );
   }

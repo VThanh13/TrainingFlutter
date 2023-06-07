@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../common/more_search_option.dart';
 import '../../common/tag_search_content.dart';
 import '../../common/text_field_search_custom.dart';
-import '../../user_search/user_search_1/search_result.dart';
+import '../../user_search/search_recently_login_user/search_result.dart';
 
 class TopSearch extends StatefulWidget {
   const TopSearch({Key? key}) : super(key: key);
@@ -29,43 +29,35 @@ class _TopSearchState extends State<TopSearch> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 70,
+                  height: 50,
                   width: double.maxFinite,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Image(
-                            image: AssetImage(
-                                'assets/images/biz_design/Vector_1.png'),
-                          ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.cancel_presentation_sharp,
+                          size: 25,
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(108, 8, 0, 0),
-                        child: Text(
-                          '絞り込み検索',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                            color: Color(0xff000000),
-                          ),
+                      const Text(
+                        '絞り込み検索',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Color(0xff000000),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(68, 12, 0, 0),
-                        child: Text(
-                          '全てクリア',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff001AFF),
-                          ),
+                      const Text(
+                        '全てクリア',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff001AFF),
                         ),
                       ),
                     ],

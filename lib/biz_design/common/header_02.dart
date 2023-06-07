@@ -10,32 +10,24 @@ class Header02 extends StatefulWidget {
 class _Header02State extends State<Header02> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 82,
-          width: double.maxFinite,
-          color: const Color(0xffF2F2F2),
-        ),
-        Positioned(
-          left: 13,
-          top: 41,
-          child: SizedBox(
-            height: 22,
-            width: 12,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              color: const Color(0xff212862),
+    return SizedBox(
+      height: 82,
+      width: double.maxFinite,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              size: 25,
+              color: Color(0xff212862),
             ),
           ),
-        ),
-        const Positioned(
-          left: 150,
-          top: 37,
-          child: SizedBox(
+          const SizedBox(
             height: 34,
             width: 81,
             child: FittedBox(
@@ -45,21 +37,16 @@ class _Header02State extends State<Header02> {
               ),
             ),
           ),
-        ),
-        Positioned(
-          right: 9,
-          top: 37,
-          child: SizedBox(
-            height: 26,
-            width: 26,
-            child: IconButton(
-              icon: const Icon(Icons.settings_outlined),
-              onPressed: () {},
-              color: const Color(0xff212862),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.settings_outlined,
+              size: 25,
+              color: Color(0xff212862),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
