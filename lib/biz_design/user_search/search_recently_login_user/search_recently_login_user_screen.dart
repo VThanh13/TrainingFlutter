@@ -55,10 +55,9 @@ class _SearchLoginUserState extends State<SearchLoginUser> {
                   height: 52,
                   urlImage: 'assets/images/biz_design/image_11.png',
                 ),
-                SizedBox(width: 3,),
+                SizedBox(width: 3),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       width: 115,

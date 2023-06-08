@@ -17,9 +17,10 @@ class UserInfo extends StatelessWidget {
           top: 14,
           left: 10,
           child: AvatarUser(
-              width: 80,
-              height: 76,
-              urlImage: 'assets/images/biz_design/image_1.png'),
+            width: 80,
+            height: 76,
+            urlImage: 'assets/images/biz_design/image_1.png',
+          ),
         ),
         const Positioned(
           top: 13,
@@ -151,10 +152,11 @@ class UserInfo extends StatelessWidget {
                 child: Text(
                   'はじめまして\nよろしくお願いいたします。',
                   style: TextStyle(
-                      color: Color(0xff333333),
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                      overflow: TextOverflow.visible),
+                    color: Color(0xff333333),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    overflow: TextOverflow.visible,
+                  ),
                   maxLines: 2,
                 ),
               ),

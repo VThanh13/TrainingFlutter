@@ -1,3 +1,4 @@
+import 'package:code/biz_design/user_screen/user_event_community_screen/event_community_people.dart';
 import 'package:code/biz_design/user_screen/user_event_community_screen/user_event_community_bloc/event_community_bloc.dart';
 import 'package:code/biz_design/user_screen/user_event_community_screen/user_event_community_bloc/event_community_event.dart';
 import 'package:code/biz_design/user_screen/user_event_community_screen/user_event_community_bloc/event_community_state.dart';
@@ -185,7 +186,10 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                             );
                           }),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              eventCommunityBloc
+                                  .add(ClickToEventCommunityPeopleEvent());
+                            },
                             child: const CircleAvatar(
                               radius: 16,
                               backgroundColor: Color(0xff212862),
@@ -216,11 +220,13 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             );
+          case ClickToEventCommunityPeopleState:
+            return const EventCommunityPeople();
           default:
         }
         return const SizedBox();

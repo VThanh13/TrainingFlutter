@@ -11,8 +11,8 @@ class _UserMovieScreenState extends State<UserMovieScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 2,
-        itemBuilder: (context, index){
+        itemCount: 2,
+        itemBuilder: (context, index) {
           return SizedBox(
             width: double.maxFinite,
             height: 260,
@@ -23,18 +23,30 @@ class _UserMovieScreenState extends State<UserMovieScreen> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
-                      child: Text('私の自己紹介動画です', style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14, color: Color(0xff060606),
-                      ),),
+                      child: Text(
+                        '私の自己紹介動画です',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: Color(0xff060606),
+                        ),
+                      ),
                     ),
-                    IconButton(onPressed: (){},
-                        icon: const Icon(Icons.more_horiz,
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.more_horiz,
                         size: 20,
-                        color: Color(0xff060606),),),
+                        color: Color(0xff060606),
+                      ),
+                    ),
                   ],
                 ),
-                const Image(image: AssetImage('assets/images/biz_design/image_12.png',),),
+                const Image(
+                  image: AssetImage(
+                    'assets/images/biz_design/image_12.png',
+                  ),
+                ),
               ],
             ),
           );

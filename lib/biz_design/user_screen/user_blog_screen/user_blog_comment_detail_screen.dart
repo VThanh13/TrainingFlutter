@@ -86,9 +86,7 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 10,
-                            color: Color(
-                              0xff060606,
-                            ),
+                            color: Color(0xff060606),
                           ),
                         ),
                       ),

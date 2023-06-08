@@ -13,7 +13,8 @@ class SearchUserRankingScreen extends StatefulWidget {
   const SearchUserRankingScreen({Key? key}) : super(key: key);
 
   @override
-  State<SearchUserRankingScreen> createState() => _SearchUserRankingScreenState();
+  State<SearchUserRankingScreen> createState() =>
+      _SearchUserRankingScreenState();
 }
 
 class _SearchUserRankingScreenState extends State<SearchUserRankingScreen> {
@@ -60,48 +61,48 @@ class _SearchUserRankingScreenState extends State<SearchUserRankingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            Container(
-                      height: 18,
-                      width: 62,
-                      margin: const EdgeInsets.only(bottom: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffFFF8F3),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                        border: Border.all(
-                          width: 1,
-                          color: const Color(0xffE1E1E1),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 3),
-                            child: Icon(
-                              Icons.generating_tokens_outlined,
-                              size: 10,
-                              color: Colors.orange,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 10,
-                            ),
-                            child: Text(
-                              '${index + 1}位',
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                Container(
+                  height: 18,
+                  width: 62,
+                  margin: const EdgeInsets.only(bottom: 5),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffFFF8F3),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(5),
                     ),
+                    border: Border.all(
+                      width: 1,
+                      color: const Color(0xffE1E1E1),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 3),
+                        child: Icon(
+                          Icons.generating_tokens_outlined,
+                          size: 10,
+                          color: Colors.orange,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Text(
+                          '${index + 1}位',
+                          style: const TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff000000),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 const Row(
                   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -110,7 +111,7 @@ class _SearchUserRankingScreenState extends State<SearchUserRankingScreen> {
                       height: 52,
                       urlImage: 'assets/images/biz_design/image_11.png',
                     ),
-                    SizedBox(width: 3,),
+                    SizedBox(width: 3),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       //mainAxisAlignment: MainAxisAlignment.center,

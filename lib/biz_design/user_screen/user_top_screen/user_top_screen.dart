@@ -40,6 +40,25 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     'アプリ情報',
   ];
 
+  List listScreenItem = <Widget>[
+    const UserProfileScreen(),
+    const UserNameCardScreen(),
+    const UserMessageScreen(),
+    const UserMovieScreen(),
+    const UserBlogScreen(),
+    const UserInformScreen(),
+    const UserEventCommunityScreen(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+    const SizedBox(),
+  ];
+
   @override
   void initState() {
     _tabController = TabController(length: listTabItem.length, vsync: this);
@@ -88,23 +107,10 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children:  const [
-                  UserProfileScreen(),
-                  UserNameCardScreen(),
-                  UserMessageScreen(),
-                  UserMovieScreen(),
-                  UserBlogScreen(),
-                  UserInformScreen(),
-                  UserEventCommunityScreen(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
-                  SizedBox(),
+                children:  [
+                  ...List.generate(listScreenItem.length, (index){
+                    return listScreenItem[index];
+                  }),
                 ],
               ),
             ),

@@ -1,4 +1,3 @@
-
 import 'package:code/biz_design/user_screen/user_name_card_screen/name_card_menu_screen.dart';
 import 'package:code/biz_design/user_screen/user_name_card_screen/user_message_start_screen.dart';
 import 'package:code/biz_design/user_screen/user_name_card_screen/user_name_card_bloc/name_card_event.dart';
@@ -24,14 +23,15 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
     nameCardBloc.add(NameCardInitialEvent());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NameCardBloc, NameCardState>(
       bloc: nameCardBloc,
-        listenWhen: (previous, current) => current is NameCardActionState,
-        buildWhen: (previous, current) => current is !NameCardActionState,
-        builder: (context, state){
-        switch(state.runtimeType){
+      listenWhen: (previous, current) => current is NameCardActionState,
+      buildWhen: (previous, current) => current is! NameCardActionState,
+      builder: (context, state) {
+        switch (state.runtimeType) {
           case NameCardInitialState:
             return Center(
               child: Column(
@@ -54,7 +54,8 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                             ),
                           ),
                           const Image(
-                            image: AssetImage('assets/images/biz_design/image_13.png'),
+                            image: AssetImage(
+                                'assets/images/biz_design/image_13.png'),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 240),
@@ -64,7 +65,7 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                               text: '一覧をみる',
                               size: 10,
                               tab: () {
-                                nameCardBloc.add(ClickChangeNameCardEvent(),);
+                                nameCardBloc.add(ClickChangeNameCardEvent());
                               },
                             ),
                           ),
@@ -77,12 +78,13 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                                 children: [
                                   const Text(
                                     'あなたの名刺情報送信後、相手があなたのリクエストを認証するまで、相手の名刺情報を閲覧することはできません。\n'
-                                        '\n相手があなたの名刺交換リクエストを承諾すると、マイページから相手の名刺を確認することができます。\n',
+                                    '\n相手があなたの名刺交換リクエストを承諾すると、マイページから相手の名刺を確認することができます。\n',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 10,
-                                        color: Colors.grey),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 10,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +93,8 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                                         text: const TextSpan(
                                           text: 'プライバシーポリシー',
                                           style: TextStyle(
-                                            decoration: TextDecoration.underline,
+                                            decoration:
+                                                TextDecoration.underline,
                                             color: Color(0xff0267FF),
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -101,15 +104,17 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                                       const Text(
                                         '、',
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 10,
-                                            color: Colors.grey),
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10,
+                                          color: Colors.grey,
+                                        ),
                                       ),
                                       RichText(
                                         text: const TextSpan(
                                           text: '利用規約',
                                           style: TextStyle(
-                                            decoration: TextDecoration.underline,
+                                            decoration:
+                                                TextDecoration.underline,
                                             color: Color(0xff0267FF),
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -139,7 +144,7 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                             text: '名刺交換リクエストを送信',
                             size: 14,
                             tab: () {
-                              nameCardBloc.add(ClickSendNameCardEvent(),);
+                              nameCardBloc.add(ClickSendNameCardEvent());
                             },
                           ),
                           const SizedBox(
@@ -159,8 +164,8 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
           default:
         }
         return const SizedBox();
-        },
-        listener: (context, state){}
+      },
+      listener: (context, state) {},
     );
   }
 }

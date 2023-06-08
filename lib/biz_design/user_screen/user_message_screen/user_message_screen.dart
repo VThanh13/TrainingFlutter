@@ -72,9 +72,10 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                         Text(
                                           '田中  武彦',
                                           style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w700,
-                                              color: Color(0xff333333)),
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -107,10 +108,10 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                                   'はじめまして\nよろしくお願いいたします。',
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 12,
-                                                      color: Color(0xff000000)),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12,
+                                                    color: Color(0xff000000),
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -161,12 +162,10 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                         ),
                       ),
                       Container(
-                        height: 40,
-                        width: 350,
-                        margin: const EdgeInsets.only(
-                          top: 10,
-                          bottom: 15,
-                        ),
+                        height: 46,
+                        width: double.maxFinite,
+                        margin: const EdgeInsets.fromLTRB(12, 10, 12, 20),
+                        // padding: EdgeInsets.only(bottom: 5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: const Color(0xffF2F2F2),
@@ -176,8 +175,8 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                           ),
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
                               onPressed: () {},
@@ -187,10 +186,10 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                 color: Color(0xff060606),
                               ),
                             ),
-                            Container(
+                            const SizedBox(
                               width: 250,
-                              margin: const EdgeInsets.only(bottom: 7),
-                              child: const TextField(
+                              child: TextField(
+                                maxLines: 3,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                 ),
@@ -198,11 +197,12 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                             ),
                             IconButton(
                               onPressed: () {
-                                userMessageBloc.add(CheckNameCardIsAcceptEvent());
+                                userMessageBloc
+                                    .add(CheckNameCardIsAcceptEvent());
                               },
                               icon: const Icon(
                                 Icons.send_sharp,
-                                size: 25,
+                                size: 23,
                                 color: Color(0xff212862),
                               ),
                             ),

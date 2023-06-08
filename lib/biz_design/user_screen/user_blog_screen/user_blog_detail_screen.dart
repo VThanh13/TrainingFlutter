@@ -105,9 +105,6 @@ class _UserBlogDetailScreenState extends State<UserBlogDetailScreen> {
                             ),
                             IconButton(
                               onPressed: () {
-                                // blogBloc.add(
-                                //   BlogClickCommentToBlogDetailCommentEvent(),
-                                // );
                                 show();
                               },
                               icon: const Icon(
@@ -171,7 +168,8 @@ class _UserBlogDetailScreenState extends State<UserBlogDetailScreen> {
       builder: (BuildContext context) {
         return Padding(padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: const BlogCommentDetailScreen(),);
+        child: const BlogCommentDetailScreen(),
+        );
       },
     );
   }
