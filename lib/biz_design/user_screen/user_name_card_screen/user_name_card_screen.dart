@@ -33,128 +33,130 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case NameCardInitialState:
-            return Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 460,
-                    width: double.maxFinite,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 20),
-                            child: Text(
-                              'あなたの名刺情報を送信します。',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff333333),
+            return SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height*0.6,
+                      width: double.maxFinite,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(top: 20),
+                              child: Text(
+                                'あなたの名刺情報を送信します。',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff333333),
+                                ),
                               ),
                             ),
-                          ),
-                          const Image(
-                            image: AssetImage(
-                                'assets/images/biz_design/image_13.png'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 240),
-                            child: CustomButton(
-                              height: 25,
-                              width: 114,
-                              text: '一覧をみる',
-                              size: 10,
+                            const Image(
+                              image: AssetImage(
+                                  'assets/images/biz_design/image_13.png'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 240),
+                              child: CustomButton(
+                                height: 25,
+                                width: 114,
+                                text: '一覧をみる',
+                                size: 10,
+                                tab: () {
+                                  nameCardBloc.add(ClickChangeNameCardEvent());
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 16),
+                              child: SizedBox(
+                                height: 98,
+                                width: 333,
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'あなたの名刺情報送信後、相手があなたのリクエストを認証するまで、相手の名刺情報を閲覧することはできません。\n'
+                                      '\n相手があなたの名刺交換リクエストを承諾すると、マイページから相手の名刺を確認することができます。\n',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 10,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        RichText(
+                                          text: const TextSpan(
+                                            text: 'プライバシーポリシー',
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              color: Color(0xff0267FF),
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                        const Text(
+                                          '、',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        RichText(
+                                          text: const TextSpan(
+                                            text: '利用規約',
+                                            style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              color: Color(0xff0267FF),
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                        const Text(
+                                          'を確認のうえ送信してください。',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 28,
+                            ),
+                            CustomButton(
+                              height: 38,
+                              width: 272,
+                              text: '名刺交換リクエストを送信',
+                              size: 14,
                               tab: () {
-                                nameCardBloc.add(ClickChangeNameCardEvent());
+                                nameCardBloc.add(ClickSendNameCardEvent());
                               },
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16),
-                            child: SizedBox(
-                              height: 98,
-                              width: 333,
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    'あなたの名刺情報送信後、相手があなたのリクエストを認証するまで、相手の名刺情報を閲覧することはできません。\n'
-                                    '\n相手があなたの名刺交換リクエストを承諾すると、マイページから相手の名刺を確認することができます。\n',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 10,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      RichText(
-                                        text: const TextSpan(
-                                          text: 'プライバシーポリシー',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: Color(0xff0267FF),
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      const Text(
-                                        '、',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 10,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      RichText(
-                                        text: const TextSpan(
-                                          text: '利用規約',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: Color(0xff0267FF),
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      const Text(
-                                        'を確認のうえ送信してください。',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 10,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                            const SizedBox(
+                              height: 100,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 28,
-                          ),
-                          CustomButton(
-                            height: 38,
-                            width: 272,
-                            text: '名刺交換リクエストを送信',
-                            size: 14,
-                            tab: () {
-                              nameCardBloc.add(ClickSendNameCardEvent());
-                            },
-                          ),
-                          const SizedBox(
-                            height: 70,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           case ClickChangeNameCardState:

@@ -1,6 +1,8 @@
+import 'package:auto_route/annotations.dart';
 import 'package:code/biz_design/user_screen/user_top_screen/user_top_screen.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class UserTop extends StatefulWidget {
   const UserTop({Key? key}) : super(key: key);
 

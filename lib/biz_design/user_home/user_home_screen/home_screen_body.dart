@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../user_home_2/top_search_screen.dart';
+import '../../router/app_router.gr.dart';
 import 'home_body_content/event_community.dart';
 import 'home_body_content/n_biz_channel.dart';
 import 'home_body_content/new_user_notification.dart';
@@ -74,7 +75,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       ),
                       IconButton(
                         onPressed: () {
-                          navigateToTopSearch();
+                          AutoRouter.of(context).push(const TopSearch());
                         },
                         icon: const Icon(
                           Icons.keyboard_double_arrow_right,
@@ -111,13 +112,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         builder: (BuildContext context) {
           return const BottomSheetMenu();
         });
-  }
-
-  void navigateToTopSearch() {
-    final route = MaterialPageRoute(
-      builder: (context) => const TopSearch(),
-    );
-    Navigator.push(context, route);
   }
 }
 
@@ -160,69 +154,72 @@ class _BottomSheetMenuState extends State<BottomSheetMenu> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 150.0,
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              Container(
-                height: 1,
-                width: 293,
-                margin: const EdgeInsets.only(left: 20, right: 26),
-                color: const Color(0xffDD4A30),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.cancel_outlined,
-                  size: 30,
+      height: MediaQuery.of(context).size.height * 0.8,
+      width: double.maxFinite,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Container(
+                  height: 1,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  margin: const EdgeInsets.only(left: 20, right: 26),
+                  color: const Color(0xffDD4A30),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          ...List.generate(
-            _listContent.length,
-            (index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: InkWell(
-                  onTap: () {},
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 50,
-                      ),
-                      Icon(
-                        _listIcon[index],
-                        size: 25,
-                        color: const Color(0xffDD4A30),
-                      ),
-                      const SizedBox(
-                        width: 17,
-                      ),
-                      Text(
-                        _listContent[index],
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff060606),
-                        ),
-                      ),
-                    ],
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.cancel_outlined,
+                    size: 30,
                   ),
                 ),
-              );
-            },
-          ),
-        ],
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ...List.generate(
+              _listContent.length,
+              (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 50,
+                        ),
+                        Icon(
+                          _listIcon[index],
+                          size: 25,
+                          color: const Color(0xffDD4A30),
+                        ),
+                        const SizedBox(
+                          width: 17,
+                        ),
+                        Text(
+                          _listContent[index],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff060606),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

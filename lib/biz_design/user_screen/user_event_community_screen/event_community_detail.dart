@@ -44,8 +44,8 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
             return SingleChildScrollView(
               child: Container(
                 color: const Color(0xffF9F9F9),
-                height: 481,
-                width: 355,
+                height: 490,
+                width: double.maxFinite,
                 margin: const EdgeInsets.only(left: 8, right: 8),
                 padding: const EdgeInsets.only(left: 9, right: 9),
                 child: Column(

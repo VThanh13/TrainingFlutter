@@ -70,8 +70,9 @@ class _UserBlogDetailScreenState extends State<UserBlogDetailScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 349,
+                    Container(
+                    height: 350,
+                    margin: const EdgeInsets.only(top: 25),
                     width: double.maxFinite,
                     child: FittedBox(
                       fit: BoxFit.cover,

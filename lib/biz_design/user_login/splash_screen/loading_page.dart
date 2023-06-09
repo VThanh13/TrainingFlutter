@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../login_or_register_screen/login_or_register.dart';
 
+import '../../router/app_router.gr.dart';
 
+@RoutePage()
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
@@ -16,11 +17,7 @@ class _LoadingPageState extends State<LoadingPage> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Navigator.of(context).pushReplacement(
-        CupertinoPageRoute(
-          builder: (ctx) => const LoginOrRegister(),
-        ),
-      );
+      AutoRouter.of(context).push(const LoginOrRegister());
     });
   }
 
@@ -33,53 +30,49 @@ class _LoadingPageState extends State<LoadingPage> {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height,
-              width: double.maxFinite,
-            ),
-            const Positioned(
-              left: 148,
-              top: 0,
-              child: Image(
-                image: AssetImage('assets/images/biz_design/Ellipse_19.png'),
-              ),
-            ),
-            const Positioned(
-              left: 0,
-              top: 537,
-              child: Image(
-                image: AssetImage('assets/images/biz_design/Ellipse_18.png'),
-              ),
-            ),
-            Positioned(
-              top: 352,
-              left: 77,
-              child: Container(
-                height: 100,
-                width: 236,
-                padding: const EdgeInsets.only(bottom: 18),
-                child: const FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Image(
-                    image: AssetImage('assets/images/biz_design/n-Biz.png'),
-                  ),
+              width: MediaQuery.of(context).size.width,
+              child: const FittedBox(
+                fit: BoxFit.cover,
+                child: Image(
+                  image: AssetImage(
+                      'assets/images/biz_design/background.png'),
                 ),
               ),
             ),
-            const Positioned(
-              top: 312,
-              left: 61,
-              child: SizedBox(
-                height: 10,
-                width: 252,
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'ビジネスが加速するマッチングサービス',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
+            Padding(
+              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.4),
+              child: const Column(
+                children: [
+                  Center(
+                    child: SizedBox(
+                      height: 10,
+                      width: 252,
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          'ビジネスが加速するマッチングサービス',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  SizedBox(height: 10,),
+                  Center(
+                    child: SizedBox(
+                      height: 100,
+                      width: 236,
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Image(
+                          image: AssetImage('assets/images/biz_design/n-Biz.png'),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

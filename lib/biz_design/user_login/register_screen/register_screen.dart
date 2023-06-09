@@ -1,13 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code/biz_design/common/custom_button.dart';
+import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:code/biz_design/user_login/register_screen/register_screen_list_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../login_screen/login_screen.dart';
 import 'bloc/register_screen_bloc.dart';
 import 'bloc/register_screen_event.dart';
 import 'bloc/register_screen_state.dart';
 
+@RoutePage()
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -34,12 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         buildWhen: (previous, current) => current is! ExpScreenActionState,
         listener: (context, state) {
           if (state is ExpScreenNavigateLogin2State) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-            );
+            AutoRouter.of(context).push(const LoginRoute());
           }
         },
         builder: (context, state) {
@@ -48,11 +45,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               return SingleChildScrollView(
                 child: Stack(
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      width: double.maxFinite,
-                      child: const Image(
-                        image: AssetImage('assets/images/biz_design/background.png'),
+                    const SizedBox(
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: Image(
+                          image: AssetImage(
+                              'assets/images/biz_design/background.png'),
+                        ),
                       ),
                     ),
                     Column(
@@ -122,6 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 700,
+                        bottom: 50
                       ),
                       child: Center(
                         child: InkWell(

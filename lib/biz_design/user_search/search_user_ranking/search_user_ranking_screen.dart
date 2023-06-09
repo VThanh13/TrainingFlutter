@@ -55,7 +55,7 @@ class _SearchUserRankingScreenState extends State<SearchUserRankingScreen> {
       itemCount: _visibleItemCount,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: const EdgeInsets.only(left: 8, right: 5),
+          padding: const EdgeInsets.only(left: 8, right: 5, top: 10),
           child: SizedBox(
             width: double.maxFinite,
             child: Column(

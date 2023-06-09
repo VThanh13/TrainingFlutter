@@ -1,13 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code/biz_design/common/custom_button.dart';
+import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../login_screen/login_screen.dart';
-import '../register_screen/register_screen.dart';
 import 'bloc/login_or_register.bloc.dart';
 import 'bloc/login_or_register_event.dart';
 import 'bloc/login_or_register_state.dart';
 
+@RoutePage()
 class LoginOrRegister extends StatefulWidget {
   const LoginOrRegister({Key? key}) : super(key: key);
 
@@ -34,19 +35,9 @@ class _Login1State extends State<LoginOrRegister> {
         buildWhen: (previous, current) => current is! Login1ActionState,
         listener: (context, state) {
           if (state is Login1NavigateLogin2State) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-            );
+            AutoRouter.of(context).push(const LoginRoute());
           } else if (state is Login1NavigateExpScreenState) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const RegisterScreen(),
-              ),
-            );
+            AutoRouter.of(context).push(const RegisterRoute());
           }
         },
         builder: (context, state) {
@@ -56,18 +47,21 @@ class _Login1State extends State<LoginOrRegister> {
                 child: Stack(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height,
+                     height: MediaQuery.of(context).size.height,
                       width: double.maxFinite,
-                      child: const Image(
-                        image: AssetImage(
-                            'assets/images/biz_design/background.png'),
+                      child: const FittedBox(
+                        fit: BoxFit.cover,
+                        child: Image(
+                          image: AssetImage(
+                              'assets/images/biz_design/background.png'),
+                        ),
                       ),
                     ),
                     Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(top: 282),
-                          child: Center(
+                        Padding(
+                          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
+                          child: const Center(
                             child: SizedBox(
                               height: 10,
                               width: 252,

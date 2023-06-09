@@ -1,7 +1,9 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen_body.dart';
 
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -57,9 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child:  Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child:  Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

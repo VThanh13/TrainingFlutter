@@ -45,99 +45,101 @@ class _EventCommunityPeopleState extends State<EventCommunityPeople> {
         builder: (context, state){
           switch(state.runtimeType){
             case ClickToEventCommunityPeopleState:
-              return Container(
-                height: 483,
-                width: 300,
-                margin: const EdgeInsets.fromLTRB(10, 26, 10, 20),
-                padding: const EdgeInsets.fromLTRB(10, 14, 10, 0),
-                color: const Color(0xffF9F9F9),
-                child: Column(
-                  children: [
-                    const Row(
-                      children: [
-                        Text(
-                          '参加者',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff060606),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 12),
-                          child: Text(
-                            '532人',
+              return SingleChildScrollView(
+                child: Container(
+                  height: 485,
+                  width: double.maxFinite,
+                  margin: const EdgeInsets.fromLTRB(10, 26, 10, 20),
+                  padding: const EdgeInsets.fromLTRB(10, 14, 10, 0),
+                  color: const Color(0xffF9F9F9),
+                  child: Column(
+                    children: [
+                      const Row(
+                        children: [
+                          Text(
+                            '参加者',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: Color(0xff060606),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    SizedBox(
-                      height: 350,
-                      width: 400,
-                      child: GridView.builder(
-                          gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 8,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
+                          Padding(
+                            padding: EdgeInsets.only(left: 12),
+                            child: Text(
+                              '532人',
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff060606),
+                              ),
+                            ),
                           ),
-                          itemCount: _listAvatar.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return CupertinoAlertDialog(
-                                        content: const Text(
-                                          'アクション完了テキストが入ります',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff060606),
-                                          ),
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              eventCommunityBloc.add(
-                                                  EventCommunityInitialEvent());
-                                            },
-                                            child: const Text(
-                                              '戻る',
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: Color(0xffDD4A30),
-                                              ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      SizedBox(
+                        height: 350,
+                        width: 400,
+                        child: GridView.builder(
+                            gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 8,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                            ),
+                            itemCount: _listAvatar.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return CupertinoAlertDialog(
+                                          content: const Text(
+                                            'アクション完了テキストが入ります',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff060606),
                                             ),
                                           ),
-                                        ],
-                                      );
-                                    });
-                              },
-                              child: SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: AvatarUser(
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                eventCommunityBloc.add(
+                                                    EventCommunityInitialEvent());
+                                              },
+                                              child: const Text(
+                                                '戻る',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Color(0xffDD4A30),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      });
+                                },
+                                child: SizedBox(
                                   height: 30,
                                   width: 30,
-                                  urlImage: _listAvatar[index],
+                                  child: AvatarUser(
+                                    height: 30,
+                                    width: 30,
+                                    urlImage: _listAvatar[index],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
                 ),
               );
             case EventCommunityInitialState:

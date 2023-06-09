@@ -1,9 +1,11 @@
+import 'package:auto_route/annotations.dart';
 import 'package:code/biz_design/user_search/search_recently_login_user/search_recently_login_user_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/header_02.dart';
 import '../search_user_ranking/search_user_ranking_screen.dart';
 
+@RoutePage()
 class SearchResult extends StatefulWidget {
   const SearchResult({Key? key}) : super(key: key);
 

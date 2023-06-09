@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code/biz_design/common/avatar_user.dart';
 import 'package:code/biz_design/common/custom_button.dart';
+import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
-import '../../../user_screen/user_top_screen/user_top.dart';
 import '../material_home_screen/home_divider.dart';
 import '../material_home_screen/item_content.dart';
 
@@ -66,12 +67,7 @@ class PickUpPerson extends StatelessWidget {
                     text: 'プロフィールをみる',
                     size: 10,
                     tab: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const UserTop(),
-                        ),
-                      );
+                      AutoRouter.of(context).push(const UserTop());
                     },
                   ),
                 ],

@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:code/biz_design/common/custom_button.dart';
+import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../user_home/user_home_screen/home_screen.dart';
 
+@RoutePage()
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -20,16 +22,21 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Column(
+          child: Stack(
             children: [
-              Container(
-                margin: const EdgeInsets.only(left: 148),
-                child: const Image(
-                  image: AssetImage('assets/images/biz_design/Ellipse_19.png'),
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: double.maxFinite,
+                child: const FittedBox(
+                  fit: BoxFit.cover,
+                  child: Image(
+                    image: AssetImage(
+                        'assets/images/biz_design/background.png'),
+                  ),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.fromLTRB(52, 92, 52, 0),
+                margin: EdgeInsets.fromLTRB(52, MediaQuery.of(context).size.height*0.4, 52, 0),
                 child: Center(
                   child: Column(
                     children: [
@@ -86,17 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: 'ログイン',
                         size: 14,
                         tab: () {
-                          navigateToTopScreen();
+                          AutoRouter.of(context).push(const HomeRoute());
                         },
                       ),
                     ],
                   ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 41, right: 165),
-                child: const Image(
-                  image: AssetImage('assets/images/biz_design/Ellipse_18.png'),
                 ),
               ),
             ],
@@ -104,12 +105,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  void navigateToTopScreen() {
-    final route = MaterialPageRoute(
-      builder: (context) => const HomeScreen(),
-    );
-    Navigator.push(context, route);
   }
 }
