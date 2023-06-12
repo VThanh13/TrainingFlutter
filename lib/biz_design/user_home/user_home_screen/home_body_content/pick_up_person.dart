@@ -65,7 +65,6 @@ class PickUpPerson extends StatelessWidget {
                     height: 25,
                     width: 125,
                     text: 'プロフィールをみる',
-                    size: 10,
                     tab: () {
                       AutoRouter.of(context).push(const UserTop());
                     },

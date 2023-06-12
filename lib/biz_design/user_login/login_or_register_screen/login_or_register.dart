@@ -99,7 +99,6 @@ class _Login1State extends State<LoginOrRegister> {
                           padding: const EdgeInsets.only(top: 63),
                           child: Center(
                             child: CustomButton(
-                              height: 38,
                               width: 272,
                               text: '無料アカウントを作成',
                               size: 14,
@@ -113,8 +112,6 @@ class _Login1State extends State<LoginOrRegister> {
                           padding: const EdgeInsets.only(top: 21),
                           child: Center(
                             child: CustomButton(
-                              height: 38,
-                              width: 272,
                               text: 'アカウントをお持ちの方はこちら',
                               size: 14,
                               tab: () {

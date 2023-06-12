@@ -4,12 +4,12 @@ class ItemContent extends StatelessWidget {
   const ItemContent(
       {required this.textValue,
       required this.iconValue,
-      required this.size,
+        this.size,
       Key? key})
       : super(key: key);
   final String textValue;
   final IconData iconValue;
-  final double size;
+  final double ?size;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ItemContent extends StatelessWidget {
         Icon(
           iconValue,
           color: const Color(0xffDD4A30),
-          size: size,
+          size: size ?? 20,
         ),
         const SizedBox(
           width: 5,

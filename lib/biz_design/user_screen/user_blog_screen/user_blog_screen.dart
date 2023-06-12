@@ -14,10 +14,14 @@ class UserBlogScreen extends StatefulWidget {
 
 class _UserBlogScreenState extends State<UserBlogScreen>
     with SingleTickerProviderStateMixin {
-  final ScrollController _scrollController = ScrollController();
+  late final ScrollController _scrollController;
+  late final PageStorageKey _storageKey;
+  double? _savedPosition;
   final BlogBloc blogBloc = BlogBloc();
   @override
   void initState() {
+    _storageKey = const PageStorageKey('user_profile_scroll_position');
+    _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
     blogBloc.add(BlogInitialEvent());
     super.initState();
@@ -62,38 +66,48 @@ class _UserBlogScreenState extends State<UserBlogScreen>
         builder: (context, state) {
           switch (state.runtimeType) {
             case BlogInitialState:
-              return GridView.builder(
-                controller: _scrollController,
-                itemCount: _listImageUrl.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 0,
-                  mainAxisSpacing: 0,
-                ),
-                itemBuilder: (context, index) {
-                  for (int i = 0; i <= _listImageUrl.length;) {
-                    return InkWell(
-                      onTap: () {
-                        blogBloc.add(BlogClickImageToBlogDetailEvent());
-                        image = _listImageUrl[index];
-                      },
-                      child: SizedBox(
-                        height: 115,
-                        width: 118,
-                        child: FittedBox(
-                          fit: BoxFit.cover,
-                          child: Image(
-                            image: AssetImage(
-                              _listImageUrl[index],
+              return FutureBuilder(
+                future: Future.delayed(Duration.zero),
+                  builder: (BuildContext context, AsyncSnapshot<void> snapshot){
+                  if(_savedPosition != null){
+                    _scrollController.animateTo(_savedPosition!,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
+                  }
+                  return GridView.builder(
+                    key: _storageKey,
+                    controller: _scrollController,
+                    itemCount: _listImageUrl.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 0,
+                    ),
+                    itemBuilder: (context, index) {
+                      for (int i = 0; i <= _listImageUrl.length;) {
+                        return InkWell(
+                          onTap: () {
+                            blogBloc.add(BlogClickImageToBlogDetailEvent());
+                            image = _listImageUrl[index];
+                          },
+                          child: SizedBox(
+                            height: 115,
+                            width: 118,
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image(
+                                image: AssetImage(
+                                  _listImageUrl[index],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
-                  }
-                  return null;
-                },
-              );
+                        );
+                      }
+                      return null;
+                    },
+                  );
+              });
             case BlogClickImageToBlogDetailState:
               return UserBlogDetailScreen(image: image,);
             default:

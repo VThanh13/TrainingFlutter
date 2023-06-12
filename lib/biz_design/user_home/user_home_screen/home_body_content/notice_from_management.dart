@@ -21,7 +21,6 @@ class NoticeFromManagement extends StatelessWidget {
               const ItemContent(
                 textValue: '運営からのお知らせ',
                 iconValue: Icons.newspaper_rounded,
-                size: 20,
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
@@ -29,7 +28,6 @@ class NoticeFromManagement extends StatelessWidget {
                   height: 25,
                   width: 114,
                   text: '一覧をみる',
-                  size: 10,
                   tab: () {},
                 ),
               ),

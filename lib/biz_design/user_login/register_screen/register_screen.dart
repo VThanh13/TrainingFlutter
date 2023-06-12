@@ -106,7 +106,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 92,
                             height: 25,
                             tab: () {},
-                            size: 10,
                           ),
                           CustomButton(
                             text: 'お問い合わせページへ',

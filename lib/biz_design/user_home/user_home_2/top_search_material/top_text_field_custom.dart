@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TopTextField extends StatefulWidget {
-  const TopTextField({required this.width, required this.hintText, Key? key})
+  const TopTextField({this.width, required this.hintText, Key? key})
       : super(key: key);
   final String hintText;
-  final double width;
+  final double ?width;
 
   @override
   State<TopTextField> createState() => _TopTextFieldState();
@@ -14,7 +14,7 @@ class _TopTextFieldState extends State<TopTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
+      width: widget.width ?? double.maxFinite,
       child: TextField(
         cursorColor: const Color(0xffDD4A30),
         decoration: InputDecoration(

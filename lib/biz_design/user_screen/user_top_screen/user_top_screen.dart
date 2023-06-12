@@ -6,7 +6,7 @@ import 'package:code/biz_design/user_screen/user_top_screen/user_top_material/us
 import 'package:code/biz_design/user_screen/user_top_screen/user_top_material/user_top_divider.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/header_02.dart';
+import '../../common/tab_bar_custom.dart';
 import '../user_message_screen/user_message_screen.dart';
 import '../user_movie_screen/user_movie_screen.dart';
 import '../user_name_card_screen/user_name_card_screen.dart';
@@ -74,7 +74,10 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
   Widget build(BuildContext context) {
     return Column(
           children: [
-            const Header02(),
+            const TabBarCustom(
+              isSettingButton: true,
+              isBackButton: true,
+            ),
             const UserInfo(),
             const UserTopDivider(),
             SizedBox(

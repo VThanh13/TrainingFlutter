@@ -16,90 +16,119 @@ class UserInformScreen extends StatefulWidget {
 class _UserInformScreenState extends State<UserInformScreen> {
   final UserInformBloc userInformBloc = UserInformBloc();
 
+  late final ScrollController _scrollController;
+  late final PageStorageKey _storageKey;
+  double? _savedPosition;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   void initState() {
     userInformBloc.add(UserInformInitialEvent());
     super.initState();
+    _storageKey = const PageStorageKey('user_profile_scroll_position');
+    _scrollController = ScrollController();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<UserInformBloc, UserInformState>(
       bloc: userInformBloc,
-      buildWhen: (previous, current) => current is !UserInformActionState,
-        listenWhen: (previous, current) => current is UserInformActionState,
-        builder: (context, state){
-        switch(state.runtimeType){
+      buildWhen: (previous, current) => current is! UserInformActionState,
+      listenWhen: (previous, current) => current is UserInformActionState,
+      builder: (context, state) {
+        switch (state.runtimeType) {
           case UserInformInitialState:
             return Padding(
               padding: const EdgeInsets.only(
                 top: 10,
               ),
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: (){
-                        userInformBloc.add(ClickToUserNotificationDetailEvent());
-                      },
-                      child: Container(
-                        width: double.maxFinite,
-                        padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-                        color: index % 2 != 0
-                            ? const Color(0xffFAFAFA)
-                            : const Color(0xffE5E5E5),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
+              child: FutureBuilder(
+                future: Future.delayed(Duration.zero),
+                builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                  if (_savedPosition != null) {
+                    _scrollController.animateTo(
+                      _savedPosition!,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                    );
+                  }
+                  return ListView.builder(
+                      key: _storageKey,
+                      itemCount: 10,
+                      controller: _scrollController,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            userInformBloc
+                                .add(ClickToUserNotificationDetailEvent());
+                          },
+                          child: Container(
+                            width: double.maxFinite,
+                            padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+                            color: index % 2 != 0
+                                ? const Color(0xffFAFAFA)
+                                : const Color(0xffE5E5E5),
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  '2020.00.00（月）',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                AvatarUser(
-                                  width: 36,
-                                  height: 34,
-                                  urlImage: 'assets/images/biz_design/image_1.png',
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 5),
-                                  child: Text(
-                                    '田中  武彦',
-                                    style: TextStyle(
-                                      fontSize: 8,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff060606),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '2020.00.00（月）',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.grey,
+                                      ),
                                     ),
+                                    AvatarUser(
+                                      width: 36,
+                                      height: 34,
+                                      urlImage:
+                                          'assets/images/biz_design/image_1.png',
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 5),
+                                      child: Text(
+                                        '田中  武彦',
+                                        style: TextStyle(
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff060606),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  '告知タイトルが入ります、告知タイトルが入ります',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                    color: Color(0xff060606),
                                   ),
                                 ),
                               ],
                             ),
-                            Text(
-                              '告知タイトルが入ります、告知タイトルが入ります',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                color: Color(0xff060606),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                          ),
+                        );
+                      });
+                },
+              ),
             );
           case ClickToUserNotificationDetailState:
             return const UserInformDetail();
           default:
         }
         return const SizedBox();
-        },
-        listener: (context, state){},
+      },
+      listener: (context, state) {},
     );
   }
 }

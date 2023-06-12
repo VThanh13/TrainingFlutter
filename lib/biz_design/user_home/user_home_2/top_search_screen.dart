@@ -4,8 +4,7 @@ import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:code/biz_design/user_home/user_home_2/top_search_material/top_text_field_custom.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/tag_search_content.dart';
-
+import '../../common/tag_search_custom.dart';
 
 @RoutePage()
 class TopSearch extends StatefulWidget {
@@ -75,8 +74,6 @@ class _TopSearchState extends State<TopSearch> {
                 const SearchFreeWord(),
                 Center(
                   child: CustomButton(
-                    height: 38,
-                    width: 272,
                     text: '検索する',
                     size: 14,
                     tab: () {
@@ -97,8 +94,9 @@ class _TopSearchState extends State<TopSearch> {
 }
 
 class SearchItem extends StatefulWidget {
-  const SearchItem({required this.listItem,
-    required this.textController,Key? key}) : super(key: key);
+  const SearchItem(
+      {required this.listItem, required this.textController, Key? key})
+      : super(key: key);
   final List listItem;
   final TextEditingController textController;
 
@@ -111,7 +109,7 @@ class _SearchItemState extends State<SearchItem> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ...widget.listItem.asMap().entries.map((entry){
+        ...widget.listItem.asMap().entries.map((entry) {
           int index = entry.key;
           String item = entry.value;
           return Column(
@@ -119,18 +117,26 @@ class _SearchItemState extends State<SearchItem> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(item, style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff060606),
-                  ),),
-                  IconButton(onPressed: (){
-                    setState(() {
-                      widget.listItem.removeAt(index);
-                    });
-                  },
-                    icon: const Icon(Icons.cancel_outlined,
-                      size: 30,color: Color(0xff060606),),),
+                  Text(
+                    item,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff060606),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.listItem.removeAt(index);
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.cancel_outlined,
+                      size: 30,
+                      color: Color(0xff060606),
+                    ),
+                  ),
                 ],
               ),
               const Divider(
@@ -147,9 +153,7 @@ class _SearchItemState extends State<SearchItem> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  widget.listItem.add(
-                      widget.textController.text
-                  );
+                  widget.listItem.add(widget.textController.text);
                   widget.textController.text = '';
                 });
               },
@@ -166,11 +170,11 @@ class _SearchItemState extends State<SearchItem> {
                 decoration: const InputDecoration(
                     hintText: 'マッチングしたい職業を追加',
                     hintStyle: TextStyle(
-                      fontSize: 13, fontWeight: FontWeight.w400,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
                       color: Colors.grey,
                     ),
-                    border: InputBorder.none
-                ),
+                    border: InputBorder.none),
               ),
             ),
           ],
@@ -179,8 +183,6 @@ class _SearchItemState extends State<SearchItem> {
     );
   }
 }
-
-
 
 class SearchJob extends StatefulWidget {
   const SearchJob({Key? key}) : super(key: key);
@@ -197,8 +199,7 @@ class _SearchJobState extends State<SearchJob> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 40,
+        const TagSearchCustom(
           textValue: '職業',
         ),
         SearchItem(listItem: listJobItem, textController: jobItem),
@@ -222,8 +223,7 @@ class _SearchIndustryState extends State<SearchIndustry> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 76,
+        const TagSearchCustom(
           textValue: '業種・職種',
         ),
         SearchItem(listItem: listIndustry, textController: industryController),
@@ -247,8 +247,7 @@ class _SearchAreaState extends State<SearchArea> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 51,
+        const TagSearchCustom(
           textValue: 'エリア',
         ),
         SearchItem(listItem: listArea, textController: areaController),
@@ -272,11 +271,12 @@ class _SearchQualificationState extends State<SearchQualification> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 65,
+        const TagSearchCustom(
           textValue: '保有資格',
         ),
-        SearchItem(listItem: listQualification, textController: qualificationController),
+        SearchItem(
+            listItem: listQualification,
+            textController: qualificationController),
       ],
     );
   }
@@ -290,8 +290,7 @@ class SearchAnnualIncome extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TagSearchContent(
-          width: 41,
+        TagSearchCustom(
           textValue: '年収',
         ),
         Row(
@@ -336,14 +335,12 @@ class SearchAge extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TagSearchContent(
-          width: 41,
+        TagSearchCustom(
           textValue: '年齢',
         ),
         Padding(
           padding: EdgeInsets.only(right: 8, left: 8),
           child: TopTextField(
-            width: double.maxFinite,
             hintText: '35',
           ),
         ),
@@ -370,11 +367,12 @@ class _SearchIndustryOtherState extends State<SearchIndustryOther> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 173,
+        const TagSearchCustom(
           textValue: '相手が探している業種・職種',
         ),
-        SearchItem(listItem: listIndustryOther, textController: industryOtherController),
+        SearchItem(
+            listItem: listIndustryOther,
+            textController: industryOtherController),
       ],
     );
   }
@@ -395,11 +393,11 @@ class _SearchAreaPersonState extends State<SearchAreaPerson> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TagSearchContent(
-          width: 147,
+        const TagSearchCustom(
           textValue: '相手が探しているエリア',
         ),
-        SearchItem(listItem: listAreaPerson, textController: areaPersonController),
+        SearchItem(
+            listItem: listAreaPerson, textController: areaPersonController),
       ],
     );
   }
@@ -413,8 +411,7 @@ class SearchFreeWord extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TagSearchContent(
-          width: 89,
+        TagSearchCustom(
           textValue: 'フリーワード',
         ),
         Padding(

@@ -88,7 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 40,
                       ),
                       CustomButton(
-                        height: 38,
                         width: 272,
                         text: 'ログイン',
                         size: 14,

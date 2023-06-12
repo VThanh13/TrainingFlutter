@@ -18,7 +18,6 @@ class NBizChannel extends StatelessWidget {
           child: const ItemContent(
             textValue: 'n-Biz Channel',
             iconValue: Icons.video_call_outlined,
-            size: 20,
           ),
         ),
         SizedBox(

@@ -23,14 +23,13 @@ class EventCommunity extends StatelessWidget {
               const ItemContent(
                   textValue: 'イベント・コミュニティ',
                   iconValue: Icons.calendar_today_outlined,
-                  size: 20),
+                  ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: CustomButton(
                   height: 25,
                   width: 114,
                   text: '一覧をみる',
-                  size: 10,
                   tab: () {},
                 ),
               ),

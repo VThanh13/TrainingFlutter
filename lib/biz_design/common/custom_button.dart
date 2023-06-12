@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton(
-      {required this.height,
-      required this.width,
+      {this.height,
+      this.width,
       required this.text,
-      required this.size,
+        this.size,
       required this.tab,
       Key? key})
       : super(key: key);
-  final double height;
-  final double width;
-  final double size;
+  final double ?height;
+  final double ?width;
+  final double ?size;
   final String text;
   final dynamic tab;
 
@@ -23,8 +23,8 @@ class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
-      width: widget.width,
+      height: widget.height ?? 38,
+      width: widget.width ?? 272,
       child: ElevatedButton(
         onPressed: widget.tab,
         style: ElevatedButton.styleFrom(
@@ -39,7 +39,7 @@ class _CustomButtonState extends State<CustomButton> {
           textAlign: TextAlign.center,
           maxLines: 1,
           style: TextStyle(
-            fontSize: widget.size,
+            fontSize: widget.size ?? 10,
             color: const Color(0xffFFFFFF),
             fontWeight: FontWeight.w700,
           ),

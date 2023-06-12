@@ -64,7 +64,6 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                                 height: 25,
                                 width: 114,
                                 text: '一覧をみる',
-                                size: 10,
                                 tab: () {
                                   nameCardBloc.add(ClickChangeNameCardEvent());
                                 },
@@ -140,8 +139,6 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                               height: 28,
                             ),
                             CustomButton(
-                              height: 38,
-                              width: 272,
                               text: '名刺交換リクエストを送信',
                               size: 14,
                               tab: () {

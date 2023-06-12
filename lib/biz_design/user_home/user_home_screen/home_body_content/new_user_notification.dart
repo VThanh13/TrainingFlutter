@@ -28,14 +28,13 @@ class _NewUserNotificationState extends State<NewUserNotification> {
               const ItemContent(
                   textValue: '新着ユーザー告知',
                   iconValue: Icons.volume_up_outlined,
-                  size: 20,),
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: CustomButton(
                   height: 25,
                   width: 114,
                   text: '一覧をみる',
-                  size: 10,
                   tab: () {},
                 ),
               ),
