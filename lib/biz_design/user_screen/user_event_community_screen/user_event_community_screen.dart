@@ -61,7 +61,7 @@ class _UserEventCommunityScreenState extends State<UserEventCommunityScreen> {
                   return ListView.builder(
                       controller: _scrollController,
                       key: _storageKey,
-                      itemCount: 3,
+                      itemCount: 7,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {

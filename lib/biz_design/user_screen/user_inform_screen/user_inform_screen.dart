@@ -13,12 +13,11 @@ class UserInformScreen extends StatefulWidget {
   State<UserInformScreen> createState() => _UserInformScreenState();
 }
 
-class _UserInformScreenState extends State<UserInformScreen> {
+class _UserInformScreenState extends State<UserInformScreen> with AutomaticKeepAliveClientMixin<UserInformScreen> {
   final UserInformBloc userInformBloc = UserInformBloc();
 
   late final ScrollController _scrollController;
   late final PageStorageKey _storageKey;
-  double? _savedPosition;
 
   @override
   void dispose() {
@@ -35,7 +34,11 @@ class _UserInformScreenState extends State<UserInformScreen> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocConsumer<UserInformBloc, UserInformState>(
       bloc: userInformBloc,
       buildWhen: (previous, current) => current is! UserInformActionState,
@@ -43,36 +46,23 @@ class _UserInformScreenState extends State<UserInformScreen> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case UserInformInitialState:
-            return Padding(
-              padding: const EdgeInsets.only(
-                top: 10,
-              ),
-              child: FutureBuilder(
-                future: Future.delayed(Duration.zero),
-                builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-                  if (_savedPosition != null) {
-                    _scrollController.animateTo(
-                      _savedPosition!,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                  return ListView.builder(
-                      key: _storageKey,
-                      itemCount: 10,
-                      controller: _scrollController,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            userInformBloc
-                                .add(ClickToUserNotificationDetailEvent());
-                          },
-                          child: Container(
-                            width: double.maxFinite,
-                            padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-                            color: index % 2 != 0
-                                ? const Color(0xffFAFAFA)
-                                : const Color(0xffE5E5E5),
+            return CustomScrollView(
+              key: _storageKey,
+              controller: _scrollController,
+              slivers: [
+                SliverPadding(
+                  padding: const EdgeInsets.only(top: 10),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                        return Container(
+                          width: double.maxFinite,
+                          padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+                          color: index % 2 != 0 ? const Color(0xffFAFAFA) : const Color(0xffE5E5E5),
+                          child: InkWell(
+                            onTap: () {
+                              userInformBloc.add(ClickToUserNotificationDetailEvent());
+                            },
                             child: const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -90,8 +80,7 @@ class _UserInformScreenState extends State<UserInformScreen> {
                                     AvatarUser(
                                       width: 36,
                                       height: 34,
-                                      urlImage:
-                                          'assets/images/biz_design/image_1.png',
+                                      urlImage: 'assets/images/biz_design/image_1.png',
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(left: 5),
@@ -118,9 +107,12 @@ class _UserInformScreenState extends State<UserInformScreen> {
                             ),
                           ),
                         );
-                      });
-                },
-              ),
+                      },
+                      childCount: 10,
+                    ),
+                  ),
+                ),
+              ],
             );
           case ClickToUserNotificationDetailState:
             return const UserInformDetail();

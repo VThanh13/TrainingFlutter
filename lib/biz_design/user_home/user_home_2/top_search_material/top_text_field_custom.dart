@@ -17,6 +17,8 @@ class _TopTextFieldState extends State<TopTextField> {
       width: widget.width ?? double.maxFinite,
       child: TextField(
         cursorColor: const Color(0xffDD4A30),
+        maxLines: 5,
+        minLines: 1,
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: const TextStyle(

@@ -94,17 +94,15 @@ class _TopSearchState extends State<TopSearch> {
 }
 
 class SearchItem extends StatefulWidget {
-  const SearchItem(
-      {required this.listItem, required this.textController, Key? key})
-      : super(key: key);
+  const SearchItem({required this.listItem, Key? key}) : super(key: key);
   final List listItem;
-  final TextEditingController textController;
 
   @override
   State<SearchItem> createState() => _SearchItemState();
 }
 
 class _SearchItemState extends State<SearchItem> {
+  final TextEditingController textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -153,8 +151,8 @@ class _SearchItemState extends State<SearchItem> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  widget.listItem.add(widget.textController.text);
-                  widget.textController.text = '';
+                  widget.listItem.add(textController.text);
+                  textController.text = '';
                 });
               },
               icon: const Icon(
@@ -166,7 +164,7 @@ class _SearchItemState extends State<SearchItem> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextField(
-                controller: widget.textController,
+                controller: textController,
                 decoration: const InputDecoration(
                     hintText: 'マッチングしたい職業を追加',
                     hintStyle: TextStyle(
@@ -202,7 +200,9 @@ class _SearchJobState extends State<SearchJob> {
         const TagSearchCustom(
           textValue: '職業',
         ),
-        SearchItem(listItem: listJobItem, textController: jobItem),
+        SearchItem(
+          listItem: listJobItem,
+        ),
       ],
     );
   }
@@ -226,7 +226,9 @@ class _SearchIndustryState extends State<SearchIndustry> {
         const TagSearchCustom(
           textValue: '業種・職種',
         ),
-        SearchItem(listItem: listIndustry, textController: industryController),
+        SearchItem(
+          listItem: listIndustry,
+        ),
       ],
     );
   }
@@ -234,7 +236,6 @@ class _SearchIndustryState extends State<SearchIndustry> {
 
 class SearchArea extends StatefulWidget {
   const SearchArea({Key? key}) : super(key: key);
-
   @override
   State<SearchArea> createState() => _SearchAreaState();
 }
@@ -250,7 +251,9 @@ class _SearchAreaState extends State<SearchArea> {
         const TagSearchCustom(
           textValue: 'エリア',
         ),
-        SearchItem(listItem: listArea, textController: areaController),
+        SearchItem(
+          listItem: listArea,
+        ),
       ],
     );
   }
@@ -258,7 +261,6 @@ class _SearchAreaState extends State<SearchArea> {
 
 class SearchQualification extends StatefulWidget {
   const SearchQualification({Key? key}) : super(key: key);
-
   @override
   State<SearchQualification> createState() => _SearchQualificationState();
 }
@@ -275,8 +277,8 @@ class _SearchQualificationState extends State<SearchQualification> {
           textValue: '保有資格',
         ),
         SearchItem(
-            listItem: listQualification,
-            textController: qualificationController),
+          listItem: listQualification,
+        ),
       ],
     );
   }
@@ -284,7 +286,6 @@ class _SearchQualificationState extends State<SearchQualification> {
 
 class SearchAnnualIncome extends StatelessWidget {
   const SearchAnnualIncome({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const Column(
@@ -354,7 +355,6 @@ class SearchAge extends StatelessWidget {
 
 class SearchIndustryOther extends StatefulWidget {
   const SearchIndustryOther({Key? key}) : super(key: key);
-
   @override
   State<SearchIndustryOther> createState() => _SearchIndustryOtherState();
 }
@@ -371,8 +371,8 @@ class _SearchIndustryOtherState extends State<SearchIndustryOther> {
           textValue: '相手が探している業種・職種',
         ),
         SearchItem(
-            listItem: listIndustryOther,
-            textController: industryOtherController),
+          listItem: listIndustryOther,
+        ),
       ],
     );
   }
@@ -380,7 +380,6 @@ class _SearchIndustryOtherState extends State<SearchIndustryOther> {
 
 class SearchAreaPerson extends StatefulWidget {
   const SearchAreaPerson({Key? key}) : super(key: key);
-
   @override
   State<SearchAreaPerson> createState() => _SearchAreaPersonState();
 }
@@ -397,7 +396,8 @@ class _SearchAreaPersonState extends State<SearchAreaPerson> {
           textValue: '相手が探しているエリア',
         ),
         SearchItem(
-            listItem: listAreaPerson, textController: areaPersonController),
+          listItem: listAreaPerson,
+        ),
       ],
     );
   }
@@ -405,7 +405,6 @@ class _SearchAreaPersonState extends State<SearchAreaPerson> {
 
 class SearchFreeWord extends StatelessWidget {
   const SearchFreeWord({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const Column(
