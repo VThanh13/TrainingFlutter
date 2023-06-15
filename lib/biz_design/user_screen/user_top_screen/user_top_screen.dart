@@ -1,5 +1,6 @@
 import 'package:code/biz_design/user_screen/profile_setting/disable_profile_setting.dart';
 import 'package:code/biz_design/user_screen/user_blog_screen/user_blog_screen.dart';
+import 'package:code/biz_design/user_screen/user_card_exchange/card_exchange_screen.dart';
 import 'package:code/biz_design/user_screen/user_event_community_screen/user_event_community_screen.dart';
 import 'package:code/biz_design/user_screen/user_inform_screen/user_inform_screen.dart';
 import 'package:code/biz_design/user_screen/user_profile_screen/user_profile_screen.dart';
@@ -51,7 +52,7 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     const UserEventCommunityScreen(),
     const SizedBox(),
     const DisableProfileSetting(),
-    const SizedBox(),
+    const CardExchangeScreen(),
     const SizedBox(),
     const SizedBox(),
     const SizedBox(),
