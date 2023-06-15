@@ -9,21 +9,21 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:code/biz_design/user_home/user_home_2/top_search_screen.dart'
+import 'package:code/biz_design/screen/account/user_home/user_home_2/top_search_screen.dart'
     as _i1;
-import 'package:code/biz_design/user_home/user_home_screen/home_screen.dart'
+import 'package:code/biz_design/screen/account/user_home/user_home_screen/home_screen.dart'
     as _i2;
-import 'package:code/biz_design/user_login/login_or_register_screen/login_or_register.dart'
+import 'package:code/biz_design/screen/auth/welcome_screen/welcome_screen.dart'
     as _i3;
-import 'package:code/biz_design/user_login/login_screen/login_screen.dart'
+import 'package:code/biz_design/screen/auth/login_screen/login_screen.dart'
     as _i4;
-import 'package:code/biz_design/user_login/register_screen/register_screen.dart'
+import 'package:code/biz_design/screen/auth/register_screen/register_screen.dart'
     as _i5;
-import 'package:code/biz_design/user_login/splash_screen/loading_page.dart'
+import 'package:code/biz_design/screen/auth/splash_screen/loading_page.dart'
     as _i6;
-import 'package:code/biz_design/user_screen/user_top_screen/user_top.dart'
+import 'package:code/biz_design/screen/account/user_top_screen/user_top.dart'
     as _i7;
-import 'package:code/biz_design/user_search/search_recently_login_user/search_result.dart'
+import 'package:code/biz_design/screen/account/search_top/search_result.dart'
     as _i8;
 
 abstract class $AppRouter extends _i9.RootStackRouter {

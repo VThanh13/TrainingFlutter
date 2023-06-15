@@ -6,8 +6,6 @@ import 'package:flutter/cupertino.dart';
 abstract class HomeEvent{}
 
 class HomeInitialEvent extends HomeEvent{
-
-
 }
 
 class HomeProductWishlistButtonClickedEvent extends HomeEvent{
