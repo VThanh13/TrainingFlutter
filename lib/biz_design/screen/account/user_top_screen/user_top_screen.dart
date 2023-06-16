@@ -1,3 +1,4 @@
+import 'package:code/biz_design/screen/account/event_manage/event_manage.dart';
 import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_info.dart';
 import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_top_divider.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import '../inform_screen/inform_screen.dart';
 import '../message_screen/message_screen.dart';
 import '../movie_screen/movie_screen.dart';
 import '../name_card/name_card_screen.dart';
+import '../notification_screen/notification_screen.dart';
 import '../profile_screen/profile_screen.dart';
 import '../profile_setting/disable_profile_setting.dart';
 
@@ -52,8 +54,8 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     const SizedBox(),
     const DisableProfileSetting(),
     const CardExchangeScreen(),
-    const SizedBox(),
-    const SizedBox(),
+    const NotificationScreen(),
+    const EventManage(),
     const SizedBox(),
     const SizedBox(),
     const SizedBox(),

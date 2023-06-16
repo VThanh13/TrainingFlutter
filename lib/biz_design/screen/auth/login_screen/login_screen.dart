@@ -14,6 +14,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  bool _validateEmail = false;
+  bool _validatePass = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,16 +46,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: Column(
                     children: [
-                      const TextField(
-                        cursorColor: Color(0xffDD4A30),
+                      TextField(
+                        controller: _emailController,
+                        cursorColor: const Color(0xffDD4A30),
                         decoration: InputDecoration(
                           hintText: 'メールアドレス',
-                          icon: Icon(
+                          errorText: _validateEmail ? 'Email can\'t be null': null,
+                          icon: const Icon(
                             Icons.mail_outline,
                             color: Color(0xffDD4A30),
                           ),
                           border: InputBorder.none,
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
                             color: Color(0xffBBBBBB),
@@ -62,16 +70,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         indent: 0,
                         thickness: 1,
                       ),
-                      const TextField(
-                        cursorColor: Color(0xffDD4A30),
+                      TextField(
+                        controller: _passwordController,
+                        cursorColor: const Color(0xffDD4A30),
                         decoration: InputDecoration(
+                          errorText: _validatePass ? 'Password can\'t be null' : null,
                           hintText: 'パスワード',
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.lock,
                             color: Color(0xffDD4A30),
                           ),
                           border: InputBorder.none,
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
                             color: Color(0xffBBBBBB),
@@ -92,7 +102,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: 'ログイン',
                         size: 14,
                         tab: () {
-                          AutoRouter.of(context).push(const HomeRoute());
+                          setState(() {
+                            _emailController.text.isEmpty? _validateEmail = true : _validateEmail = false;
+                            _passwordController.text.isEmpty? _validatePass = true : _validatePass = false;
+                          });
+                          if(_validateEmail == false && _validatePass == false){
+                            AutoRouter.of(context).push(const HomeRoute());
+                          }
                         },
                       ),
                     ],
