@@ -2,6 +2,8 @@ import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_bloc.d
 import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_event.dart';
 import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_state.dart';
 import 'package:code/biz_design/screen/account/event_manage/create_group.dart';
+import 'package:code/biz_design/screen/account/event_manage/event_detail.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +17,8 @@ class EventManage extends StatefulWidget {
   State<EventManage> createState() => _EventManageState();
 }
 
-class _EventManageState extends State<EventManage> with SingleTickerProviderStateMixin {
+class _EventManageState extends State<EventManage>
+    with SingleTickerProviderStateMixin {
   EventManageBloc eventManageBloc = EventManageBloc();
   late TabController _tabController;
 
@@ -31,14 +34,15 @@ class _EventManageState extends State<EventManage> with SingleTickerProviderStat
     super.dispose();
     _tabController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EventManageBloc, EventManageState>(
         bloc: eventManageBloc,
         listenWhen: (previous, current) => current is EventManageActionState,
-        buildWhen: (previous, current) => current is !EventManageActionState,
-        builder: (context, state){
-          switch(state.runtimeType){
+        buildWhen: (previous, current) => current is! EventManageActionState,
+        builder: (context, state) {
+          switch (state.runtimeType) {
             case EventManageInitialState:
               return SizedBox(
                 height: 500,
@@ -59,160 +63,273 @@ class _EventManageState extends State<EventManage> with SingleTickerProviderStat
                         unselectedLabelColor: const Color(0xff060606),
                         tabs: const [
                           Tab(
-                            child: Text('主催グループ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 10
-                            ),),
+                            child: Text(
+                              '主催グループ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 10),
+                            ),
                           ),
                           Tab(
-                            child: Text('参加グループ',
+                            child: Text(
+                              '参加グループ',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 10
-                              ),),
+                                  fontWeight: FontWeight.w600, fontSize: 10),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    Expanded(child: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  IconButton(
-                                    onPressed: (){
-                                      eventManageBloc.add(ClickToCreateGroupEvent());
-                                    },
-                                      icon: const Icon(Icons.add_circle,
-                                      size: 20,),),
-                                  const Text('グループを作成',style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff060606),
-                                  ),),
-                                  IconButton(onPressed: (){
-                                    eventManageBloc.add(ClickToChooseCateEvent());
-                                  },
+                    Expanded(
+                      child: TabBarView(
+                        controller: _tabController,
+                        children: [
+                          SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        eventManageBloc
+                                            .add(ClickToCreateGroupEvent());
+                                      },
                                       icon: const Icon(
-                                        Icons.margin_outlined, size: 20,
-                                      ),),
-                                  const Text('カテゴリーから選択',style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff060606),
-                                  ),),
-                                  const SizedBox(width: 10,),
-                                ],
-                              ),
-                              const Divider(
-                                height: 0,
-                                color: Color(0xff000000),
-                                indent: 0,
-                                thickness: 1,
-                              ),
-                              SizedBox(
-                                width: double.maxFinite,
-                                height: MediaQuery.of(context).size.height - 443,
-                                child: ListView.builder(
-                                    itemCount: 10,
-                                    itemBuilder: (context, index){
-                                      return Container(
-                                        width: double.maxFinite,
-                                        padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
-                                        color: index % 2 == 0
-                                            ? const Color(0xffFAFAFA)
-                                            : const Color(0xffE5E5E5),
-                                        child: InkWell(
-                                          onTap: (){},
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  const Row(
-                                                    children: [
-                                                      Text(
-                                                        '2020.00.00（月）',
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight: FontWeight.w400,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                      AvatarUser(
-                                                        width: 36,
-                                                        height: 34,
-                                                        urlImage:
-                                                        'assets/images/biz_design/image_1.png',
-                                                      ),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(left: 5),
-                                                        child: Text(
-                                                          '田中  武彦',
+                                        Icons.add_circle,
+                                        size: 20,
+                                      ),
+                                    ),
+                                    const Text(
+                                      'グループを作成',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff060606),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        eventManageBloc
+                                            .add(ClickToChooseCateEvent());
+                                      },
+                                      icon: const Icon(
+                                        Icons.margin_outlined,
+                                        size: 20,
+                                      ),
+                                    ),
+                                    const Text(
+                                      'カテゴリーから選択',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff060606),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                  ],
+                                ),
+                                const Divider(
+                                  height: 0,
+                                  color: Color(0xff000000),
+                                  indent: 0,
+                                  thickness: 1,
+                                ),
+                                SizedBox(
+                                  width: double.maxFinite,
+                                  height:
+                                      MediaQuery.of(context).size.height - 443,
+                                  child: ListView.builder(
+                                      itemCount: 10,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          width: double.maxFinite,
+                                          padding: const EdgeInsets.fromLTRB(
+                                              15, 10, 0, 10),
+                                          color: index % 2 == 0
+                                              ? const Color(0xffFAFAFA)
+                                              : const Color(0xffE5E5E5),
+                                          child: InkWell(
+                                            onTap: () {
+                                              eventManageBloc
+                                                  .add(ClickToDetailEvent());
+                                            },
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    const Row(
+                                                      children: [
+                                                        Text(
+                                                          '2020.00.00（月）',
                                                           style: TextStyle(
                                                             fontSize: 12,
-                                                            fontWeight: FontWeight.w600,
-                                                            color: Color(0xff060606),
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors.grey,
                                                           ),
                                                         ),
+                                                        AvatarUser(
+                                                          width: 36,
+                                                          height: 34,
+                                                          urlImage:
+                                                              'assets/images/biz_design/image_1.png',
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 5),
+                                                          child: Text(
+                                                            '田中  武彦',
+                                                            style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: Color(
+                                                                  0xff060606),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    IconButton(
+                                                      onPressed: () {
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return CupertinoAlertDialog(
+                                                                title:
+                                                                    const Text(
+                                                                  '投稿を通報します',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                ),
+                                                                content:
+                                                                    const Text(
+                                                                  'この投稿を運営事務局に通報します。\n違反が認められた場合、投稿は削除されます。',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    fontSize:
+                                                                        11,
+                                                                  ),
+                                                                ),
+                                                                actions: [
+                                                                  Column(
+                                                                    children: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child:
+                                                                            const Text(
+                                                                          '通報する',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color:
+                                                                                Color(0xff001AFF),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child:
+                                                                            const Text(
+                                                                          '通報しない',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color:
+                                                                                Color(0xff001AFF),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            });
+                                                      },
+                                                      icon: const Icon(
+                                                        Icons.more_horiz,
+                                                        size: 25,
                                                       ),
-                                                    ],
-                                                  ),
-                                                  IconButton(
-                                                    onPressed: () {
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.more_horiz,
-                                                      size: 25,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Container(
+                                                  height: 12,
+                                                  width: 46,
+                                                  color:
+                                                      const Color(0xffE56565),
+                                                  child: const Center(
+                                                    child: Text(
+                                                      'ビジネス',
+                                                      style: TextStyle(
+                                                        fontSize: 7,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color:
+                                                            Color(0xffFFFFFF),
+                                                      ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
-                                              Container(
-                                                height: 12,
-                                                  width: 46,
-                                                color: const Color(0xffE56565),
-                                                child: const Center(
-                                                  child: Text('ビジネス',
+                                                ),
+                                                const Text(
+                                                  'イベント・コミュニティタイトルが入ります、イベント・コミュニティタイトルが入ります',
                                                   style: TextStyle(
-                                                    fontSize: 7,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Color(0xffFFFFFF),
-                                                  ),),
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14,
+                                                    color: Color(0xff060606),
+                                                  ),
                                                 ),
-                                              ),
-                                              const Text(
-                                                'イベント・コミュニティタイトルが入ります、イベント・コミュニティタイトルが入ります',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 14,
-                                                  color: Color(0xff060606),
-                                                ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    }),
-                              )
-                            ],
+                                        );
+                                      }),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 200,
-                          width: double.maxFinite,
-                          child: Text('2'),
-                        ),
-                      ],
-                    ),),
+                          const SizedBox(
+                            height: 200,
+                            width: double.maxFinite,
+                            child: Text('2'),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -220,10 +337,12 @@ class _EventManageState extends State<EventManage> with SingleTickerProviderStat
               return const CreateGroupEvent();
             case ClickToChooseCateState:
               return const ChooseCateEvent();
+            case ClickToDetailEventState:
+              return const EventDetail();
             default:
           }
           return const SizedBox();
         },
-        listener: (context, state){});
+        listener: (context, state) {});
   }
 }

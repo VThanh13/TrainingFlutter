@@ -1,3 +1,4 @@
+import 'package:code/biz_design/screen/account/blog_manage/blog_manage.dart';
 import 'package:code/biz_design/screen/account/event_manage/event_manage.dart';
 import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_info.dart';
 import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_top_divider.dart';
@@ -56,7 +57,7 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     const CardExchangeScreen(),
     const NotificationScreen(),
     const EventManage(),
-    const SizedBox(),
+    const BlogManageScreen(),
     const SizedBox(),
     const SizedBox(),
     const SizedBox(),

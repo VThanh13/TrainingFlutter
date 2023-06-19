@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/common/avatar_user.dart';
+import 'event_manage.dart';
 
 class CreateGroupEvent extends StatefulWidget {
   const CreateGroupEvent({Key? key}) : super(key: key);
@@ -26,24 +27,24 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
   bool isSelected3 = false;
   bool showValue = false;
 
-
   @override
   void initState() {
     super.initState();
     eventManageBloc.add(ClickToCreateGroupEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
       child: BlocConsumer(
           bloc: eventManageBloc,
           listenWhen: (previous, current) => current is EventManageActionState,
-          buildWhen: (previous, current) => current is !EventManageActionState,
-          builder: (context, state){
-            switch(state.runtimeType){
+          buildWhen: (previous, current) => current is! EventManageActionState,
+          builder: (context, state) {
+            switch (state.runtimeType) {
               case ClickToCreateGroupState:
                 return SingleChildScrollView(
                   child: Column(
@@ -52,14 +53,37 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(onPressed: (){},
-                            icon: const Icon(Icons.cancel_outlined,
-                              size: 25,),),
+                          IconButton(
+                            onPressed: () {
+                              eventManageBloc.add(EventManageInitialEvent());
+                            },
+                            icon: const Icon(
+                              Icons.cancel_outlined,
+                              size: 25,
+                            ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(right: 15),
-                            child: CustomButton(width:82, height:25,text: '投稿する', tab: (){}),
+                            child: CustomButton(
+                                width: 82,
+                                height: 25,
+                                text: '投稿する',
+                                tab: () {
+                                  setState(() {
+                                    _titleController.text.isEmpty
+                                        ? validateTitle = true
+                                        : validateTitle = false;
+                                    _contentController.text.isEmpty
+                                        ? validateContent = true
+                                        : validateContent = false;
+                                  });
+                                  if (validateTitle == false &&
+                                      validateContent == false) {
+                                    eventManageBloc
+                                        .add(EventManageInitialEvent());
+                                  }
+                                }),
                           ),
-
                         ],
                       ),
                       Row(
@@ -131,19 +155,25 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                         indent: 0,
                         thickness: 1,
                       ),
-                      const Padding(padding: EdgeInsets.only(left: 15, top: 16),
-                      child: Text('カテゴリーを選択',style: TextStyle(
-                        fontSize: 12, fontWeight: FontWeight.w400,
-                      ),),),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 15, top: 16),
+                        child: Text(
+                          'カテゴリーを選択',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
                       Row(
                         children: [
                           InkWell(
-                            onTap: (){
-                              if(isSelected1 == false){
+                            onTap: () {
+                              if (isSelected1 == false) {
                                 setState(() {
                                   isSelected1 = true;
                                 });
-                              }else{
+                              } else {
                                 setState(() {
                                   isSelected1 = false;
                                 });
@@ -157,26 +187,30 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                                 color: const Color(0xff4D4AD6),
                                 border: Border.all(
                                   width: 1,
-                                  color: isSelected1 == false? const Color(0xff4D4AD6) : const Color(0xffDD4A30),
+                                  color: isSelected1 == false
+                                      ? const Color(0xff4D4AD6)
+                                      : const Color(0xffDD4A30),
                                 ),
                               ),
                               child: const Center(
-                                child: Text('ビジネス',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xffFFFFFF),
-                                ),),
+                                child: Text(
+                                  'ビジネス',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xffFFFFFF),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              if(isSelected2 == false){
+                            onTap: () {
+                              if (isSelected2 == false) {
                                 setState(() {
                                   isSelected2 = true;
                                 });
-                              }else{
+                              } else {
                                 setState(() {
                                   isSelected2 = false;
                                 });
@@ -190,26 +224,30 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                                 color: const Color(0xff4D4AD6),
                                 border: Border.all(
                                   width: 1,
-                                  color: isSelected2 == false? const Color(0xff4D4AD6) : const Color(0xffDD4A30),
+                                  color: isSelected2 == false
+                                      ? const Color(0xff4D4AD6)
+                                      : const Color(0xffDD4A30),
                                 ),
                               ),
                               child: const Center(
-                                child: Text('趣味/音楽',
+                                child: Text(
+                                  '趣味/音楽',
                                   style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xffFFFFFF),
-                                  ),),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              if(isSelected3 == false){
+                            onTap: () {
+                              if (isSelected3 == false) {
                                 setState(() {
                                   isSelected3 = true;
                                 });
-                              }else{
+                              } else {
                                 setState(() {
                                   isSelected3 = false;
                                 });
@@ -223,16 +261,20 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                                 color: const Color(0xff4D4AD6),
                                 border: Border.all(
                                   width: 1,
-                                  color: isSelected3 == false? const Color(0xff4D4AD6) : const Color(0xffDD4A30),
+                                  color: isSelected3 == false
+                                      ? const Color(0xff4D4AD6)
+                                      : const Color(0xffDD4A30),
                                 ),
                               ),
                               child: const Center(
-                                child: Text('趣味/スポーツ',
+                                child: Text(
+                                  '趣味/スポーツ',
                                   style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xffFFFFFF),
-                                  ),),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -240,29 +282,35 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                       ),
                       Row(
                         children: [
-                          Checkbox(value: showValue,
-                              onChanged: (bool? value){
-                            setState(() {
-                              showValue = value!;
-                            });
-                              }
+                          Checkbox(
+                              value: showValue,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  showValue = value!;
+                                });
+                              }),
+                          const Text(
+                            'シークレットグループに設定する（参加ユーザー以外閲覧できません）',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 10,
+                            ),
                           ),
-                          const Text('シークレットグループに設定する（参加ユーザー以外閲覧できません）',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 10,
-                          ),)
                         ],
                       ),
-                      const SizedBox(height: 50,),
+                      const SizedBox(
+                        height: 50,
+                      ),
                     ],
                   ),
                 );
+              case EventManageInitialState:
+                return const EventManage();
               default:
             }
             return const SizedBox();
           },
-          listener: (context, state){}),
+          listener: (context, state) {}),
     );
   }
 }

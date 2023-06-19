@@ -7,6 +7,8 @@ import 'package:code/biz_design/screen/account/user_home/user_home_2/top_search_
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'event_manage.dart';
+
 class ChooseCateEvent extends StatefulWidget {
   const ChooseCateEvent({Key? key}) : super(key: key);
 
@@ -23,18 +25,19 @@ class _ChooseCateEventState extends State<ChooseCateEvent> {
     super.initState();
     eventManageBloc.add(ClickToChooseCateEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
       child: BlocConsumer(
           bloc: eventManageBloc,
           listenWhen: (previous, current) => current is EventManageActionState,
-          buildWhen: (previous, current) => current is !EventManageActionState,
-          builder: (context, state){
-            switch(state.runtimeType){
+          buildWhen: (previous, current) => current is! EventManageActionState,
+          builder: (context, state) {
+            switch (state.runtimeType) {
               case ClickToChooseCateState:
                 return SingleChildScrollView(
                   padding: const EdgeInsets.only(left: 10, right: 10),
@@ -44,16 +47,26 @@ class _ChooseCateEventState extends State<ChooseCateEvent> {
                       const TagSearchCustom(textValue: 'カテゴリーを選択'),
                       SearchItem(listItem: _listCategory),
                       const SizedBox(height: 60),
-                      Center(child: CustomButton(height: 32, width: 169,text: '選択したカテゴリーを表示', tab: (){})),
+                      Center(
+                        child: CustomButton(
+                            height: 32,
+                            width: 169,
+                            text: '選択したカテゴリーを表示',
+                            tab: () {
+                              eventManageBloc.add(EventManageInitialEvent());
+                            }),
+                      ),
                       const SizedBox(height: 80),
                     ],
                   ),
                 );
+              case EventManageInitialState:
+                return const EventManage();
               default:
             }
             return const SizedBox();
           },
-          listener: (context, state){}),
+          listener: (context, state) {}),
     );
   }
 }
