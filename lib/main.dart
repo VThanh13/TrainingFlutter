@@ -1,5 +1,6 @@
-import 'package:code/biz_design/router/app_router.dart';
 import 'package:flutter/material.dart';
+
+import 'biz_design/router/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

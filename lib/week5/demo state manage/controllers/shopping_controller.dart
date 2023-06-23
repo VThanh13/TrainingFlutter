@@ -1,7 +1,8 @@
-import 'package:code/week5/demo%20state%20manage/models/product.dart';
 import 'package:get/get.dart';
 
-class ShoppingController extends GetxController{
+import '../models/product.dart';
+
+class ShoppingController extends GetxController {
   var products = <Product>[].obs;
 
   @override
@@ -10,7 +11,7 @@ class ShoppingController extends GetxController{
     fetchProduct();
   }
 
-  void fetchProduct() async{
+  void fetchProduct() async {
     await Future.delayed(const Duration(seconds: 1));
     var productResult = [
       Product(
@@ -33,6 +34,5 @@ class ShoppingController extends GetxController{
           price: 50),
     ];
     products.value = productResult;
-
   }
 }

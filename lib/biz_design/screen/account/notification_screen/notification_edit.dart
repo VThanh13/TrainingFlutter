@@ -1,14 +1,19 @@
-import 'package:code/biz_design/core/blocs/notification_bloc/notification_bloc.dart';
-import 'package:code/biz_design/core/blocs/notification_bloc/notification_event.dart';
-import 'package:code/biz_design/core/blocs/notification_bloc/notification_state.dart';
-import 'package:code/biz_design/core/common/avatar_user.dart';
-import 'package:code/biz_design/screen/account/notification_screen/notification_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/notification_bloc/notification_bloc.dart';
+import '../../../core/blocs/notification_bloc/notification_event.dart';
+import '../../../core/blocs/notification_bloc/notification_state.dart';
+// ignore: unused_import
+import '../../../core/common/avatar_user.dart';
+import '../../../models/notification_model/notification_model.dart';
+import 'notification_screen.dart';
+
+// ignore: must_be_immutable
 class EditNotification extends StatefulWidget {
-  const EditNotification({Key? key}) : super(key: key);
+  EditNotification({this.detail, Key? key}) : super(key: key);
+  late NotificationModel? detail;
 
   @override
   State<EditNotification> createState() => _EditNotificationState();
@@ -122,21 +127,38 @@ class _EditNotificationState extends State<EditNotification> {
                           const SizedBox(
                             width: 10,
                           ),
-                          const AvatarUser(
-                            width: 30,
-                            height: 30,
-                            urlImage: 'assets/images/biz_design/image_1.png',
+                          SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(50),
+                              ),
+                              child: Image(
+                                image: widget.detail != null
+                                    ? NetworkImage(widget.detail!.userAvatar)
+                                    : const NetworkImage(
+                                        'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/438.jpg'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           ),
-                          Container(
-                            width: 1,
-                            height: 30,
-                            color: Colors.lightBlueAccent,
-                            margin: const EdgeInsets.only(left: 5, right: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: Container(
+                              width: 1,
+                              height: 30,
+                              color: Colors.lightBlueAccent,
+                              margin: const EdgeInsets.only(left: 5, right: 10),
+                            ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 80,
                             child: TextField(
-                              controller: _titleController,
+                              controller: _titleController
+                                ..text = widget.detail != null
+                                    ? widget.detail!.title
+                                    : '',
                               decoration: InputDecoration(
                                 hintText: 'タイトルを入力してください',
                                 hintStyle: const TextStyle(
@@ -163,7 +185,10 @@ class _EditNotificationState extends State<EditNotification> {
                           child: TextField(
                             maxLines: 10,
                             minLines: 1,
-                            controller: _contentController,
+                            controller: _contentController
+                              ..text = widget.detail != null
+                                  ? widget.detail!.content
+                                  : '',
                             decoration: InputDecoration(
                               hintText: '本文を入力してください',
                               hintStyle: const TextStyle(
@@ -256,7 +281,7 @@ class _EditNotificationState extends State<EditNotification> {
                   ),
                 );
               case ClickToDetailNotificationState:
-                return const NotificationDetail();
+                return const NotificationScreen();
               default:
             }
             return const SizedBox();

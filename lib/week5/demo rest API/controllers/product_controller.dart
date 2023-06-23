@@ -1,8 +1,9 @@
-import 'package:code/week5/demo%20rest%20API/models/product.dart';
-import 'package:code/week5/demo%20rest%20API/service/remote_service.dart';
 import 'package:get/get.dart';
 
-class ProductController extends GetxController{
+import '../models/product.dart';
+import '../service/remote_service.dart';
+
+class ProductController extends GetxController {
   List<Product> productList = [];
   var isLoading = true.obs;
 
@@ -12,13 +13,13 @@ class ProductController extends GetxController{
     fetchProducts();
   }
 
-  void fetchProducts() async{
-
-    try{
+  void fetchProducts() async {
+    try {
       isLoading(true);
-    var products = await RemoteService.fetchProducts();
-    productList = products;
-    }finally{
+      var products = await RemoteService.fetchProducts();
+      productList = products;
+    } finally {
       isLoading(false);
     }
-}}
+  }
+}

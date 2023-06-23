@@ -1,13 +1,13 @@
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_event.dart';
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_state.dart';
-import 'package:code/biz_design/screen/account/blog_manage/blog_manage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/blog_manage_bloc/blog_manage_bloc.dart';
+import '../../../core/blocs/blog_manage_bloc/blog_manage_event.dart';
+import '../../../core/blocs/blog_manage_bloc/blog_manage_state.dart';
 import '../../../core/common/avatar_user.dart';
 import '../../../core/common/custom_button.dart';
 import '../user_top_screen/widgets/user_top_divider.dart';
+import 'blog_manage.dart';
 
 class BlogCommentScreen extends StatefulWidget {
   const BlogCommentScreen({Key? key}) : super(key: key);
@@ -62,7 +62,7 @@ class _BlogCommentScreenState extends State<BlogCommentScreen> {
                             height: 10,
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height -380,
+                            height: MediaQuery.of(context).size.height - 380,
                             width: double.maxFinite,
                             child: SingleChildScrollView(
                               padding:

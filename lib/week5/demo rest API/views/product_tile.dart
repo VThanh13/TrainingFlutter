@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:code/week5/demo%20rest%20API/models/product.dart';
+import '../models/product.dart';
 
 class ProductTile extends StatelessWidget {
   const ProductTile(this.product, {super.key});

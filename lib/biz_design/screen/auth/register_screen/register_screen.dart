@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:code/biz_design/router/app_router.gr.dart';
-import 'package:code/biz_design/screen/auth/register_screen/widgets/list_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +6,8 @@ import '../../../core/blocs/register_bloc/register_screen_bloc.dart';
 import '../../../core/blocs/register_bloc/register_screen_event.dart';
 import '../../../core/blocs/register_bloc/register_screen_state.dart';
 import '../../../core/common/custom_button.dart';
+import '../../../router/app_router.gr.dart';
+import 'widgets/list_image.dart';
 
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
@@ -85,7 +85,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: const FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Image(
-                                  image: AssetImage('assets/images/biz_design/n-Biz.png'),
+                                  image: AssetImage(
+                                      'assets/images/biz_design/n-Biz.png'),
                                 ),
                               ),
                             ),
@@ -118,10 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 700,
-                        bottom: 50
-                      ),
+                      padding: const EdgeInsets.only(top: 700, bottom: 50),
                       child: Center(
                         child: InkWell(
                           onTap: () {
@@ -150,4 +148,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-

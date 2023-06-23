@@ -1,7 +1,7 @@
-import 'package:code/week5/demo%20rest%20API/controllers/product_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+
+import '../controllers/product_controller.dart';
 
 class HomeDemoAPI extends StatelessWidget {
   const HomeDemoAPI({super.key});

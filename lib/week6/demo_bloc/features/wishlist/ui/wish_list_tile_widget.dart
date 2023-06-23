@@ -1,13 +1,15 @@
-import 'package:code/week6/demo_bloc/features/home/models/product_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../home/models/product_model.dart';
 import '../bloc/wish_list_bloc.dart';
 import '../bloc/wish_list_event.dart';
 
 class WishListTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
   final WishListBloc wishListBloc;
-  const WishListTileWidget({Key? key, required this.productDataModel, required this.wishListBloc}) : super(key: key);
+  const WishListTileWidget(
+      {Key? key, required this.productDataModel, required this.wishListBloc})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,39 +29,41 @@ class WishListTileWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(productDataModel.imageUrl),
-                    fit: BoxFit.cover
-                )
-            ),
+                    fit: BoxFit.cover)),
           ),
-          const SizedBox(height: 20,),
-          Text(productDataModel.name, style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold
-          ),),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            productDataModel.name,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
           Text(productDataModel.description),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$  ${productDataModel.price.toString()}"  , style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold
-              ),
+              Text(
+                "\$  ${productDataModel.price.toString()}",
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
-                  IconButton(onPressed: (){
-                    wishListBloc.add(WishListRemoveFromWishListEvent(
-                      clickedProduct: productDataModel
-                    ));
-                    wishListBloc.add(WishListInitialEvent());
-                  },
+                  IconButton(
+                      onPressed: () {
+                        wishListBloc.add(WishListRemoveFromWishListEvent(
+                            clickedProduct: productDataModel));
+                        wishListBloc.add(WishListInitialEvent());
+                      },
                       icon: const Icon(Icons.favorite)),
-                  IconButton(onPressed: (){
-                    wishListBloc.add(WishListProductCartButtonClickedEvent(
-                      clickedProduct: productDataModel
-                    ));
-                  },
+                  IconButton(
+                      onPressed: () {
+                        wishListBloc.add(WishListProductCartButtonClickedEvent(
+                            clickedProduct: productDataModel));
+                      },
                       icon: const Icon(Icons.add_shopping_cart)),
                 ],
               )

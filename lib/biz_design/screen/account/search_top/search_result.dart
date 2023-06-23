@@ -1,11 +1,9 @@
 import 'package:auto_route/annotations.dart';
-import 'package:code/biz_design/screen/account/search_top/widgets/result_items.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/common/tab_bar_custom.dart';
 
-
-
+import 'widgets/result_items.dart';
 
 @RoutePage()
 class SearchResult extends StatefulWidget {

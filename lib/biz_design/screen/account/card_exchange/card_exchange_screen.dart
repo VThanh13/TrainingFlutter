@@ -1,12 +1,13 @@
-import 'package:code/biz_design/core/common/avatar_user.dart';
-import 'package:code/biz_design/screen/account/card_exchange/search_card_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/blocs/card_exchange_bloc/card_exchange_bloc.dart';
 import '../../../core/blocs/card_exchange_bloc/card_exchange_event.dart';
 import '../../../core/blocs/card_exchange_bloc/card_exchange_state.dart';
+import '../../../core/common/avatar_user.dart';
 import '../../../models/card_exchange_model/card_exchange_model.dart';
 import 'cart_detail_screen.dart';
+import 'search_card_screen.dart';
 
 class CardExchangeScreen extends StatefulWidget {
   const CardExchangeScreen({Key? key}) : super(key: key);

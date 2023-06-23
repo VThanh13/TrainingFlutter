@@ -1,11 +1,10 @@
-import 'package:code/biz_design/screen/account/blog_screen/user_blog_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/blocs/blog_screen_bloc/blog_bloc.dart';
 import '../../../core/blocs/blog_screen_bloc/blog_event.dart';
 import '../../../core/blocs/blog_screen_bloc/blog_state.dart';
-
+import 'user_blog_detail_screen.dart';
 
 class UserBlogScreen extends StatefulWidget {
   const UserBlogScreen({Key? key}) : super(key: key);
@@ -69,49 +68,53 @@ class _UserBlogScreenState extends State<UserBlogScreen>
           switch (state.runtimeType) {
             case BlogInitialState:
               return FutureBuilder(
-                future: Future.delayed(Duration.zero),
-                  builder: (BuildContext context, AsyncSnapshot<void> snapshot){
-                  if(_savedPosition != null){
-                    _scrollController.animateTo(_savedPosition!,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut);
-                  }
-                  return GridView.builder(
-                    key: _storageKey,
-                    controller: _scrollController,
-                    itemCount: _listImageUrl.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 0,
-                      mainAxisSpacing: 0,
-                    ),
-                    itemBuilder: (context, index) {
-                      for (int i = 0; i <= _listImageUrl.length;) {
-                        return InkWell(
-                          onTap: () {
-                            blogBloc.add(BlogClickImageToBlogDetailEvent());
-                            image = _listImageUrl[index];
-                          },
-                          child: SizedBox(
-                            height: 115,
-                            width: 118,
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image(
-                                image: AssetImage(
-                                  _listImageUrl[index],
+                  future: Future.delayed(Duration.zero),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<void> snapshot) {
+                    if (_savedPosition != null) {
+                      _scrollController.animateTo(_savedPosition!,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut);
+                    }
+                    return GridView.builder(
+                      key: _storageKey,
+                      controller: _scrollController,
+                      itemCount: _listImageUrl.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 0,
+                      ),
+                      itemBuilder: (context, index) {
+                        for (int i = 0; i <= _listImageUrl.length;) {
+                          return InkWell(
+                            onTap: () {
+                              blogBloc.add(BlogClickImageToBlogDetailEvent());
+                              image = _listImageUrl[index];
+                            },
+                            child: SizedBox(
+                              height: 115,
+                              width: 118,
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image(
+                                  image: AssetImage(
+                                    _listImageUrl[index],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                      return null;
-                    },
-                  );
-              });
+                          );
+                        }
+                        return null;
+                      },
+                    );
+                  });
             case BlogClickImageToBlogDetailState:
-              return UserBlogDetailScreen(image: image,);
+              return UserBlogDetailScreen(
+                image: image,
+              );
             default:
           }
           return const SizedBox();

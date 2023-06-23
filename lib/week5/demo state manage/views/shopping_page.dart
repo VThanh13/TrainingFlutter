@@ -1,9 +1,10 @@
-import 'package:code/week5/demo%20state%20manage/controllers/card_controller.dart';
-import 'package:code/week5/demo%20state%20manage/controllers/shopping_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ShoppingPage extends StatelessWidget{
+import '../controllers/card_controller.dart';
+import '../controllers/shopping_controller.dart';
+
+class ShoppingPage extends StatelessWidget {
   const ShoppingPage({super.key});
 
   @override
@@ -16,10 +17,10 @@ class ShoppingPage extends StatelessWidget{
           children: [
             Expanded(
               child: GetX<ShoppingController>(
-                builder: (controller){
+                builder: (controller) {
                   return ListView.builder(
                       itemCount: controller.products.length,
-                      itemBuilder: (context, index){
+                      itemBuilder: (context, index) {
                         return Card(
                           margin: const EdgeInsets.all(12),
                           child: Padding(
@@ -28,32 +29,34 @@ class ShoppingPage extends StatelessWidget{
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                     Text(controller.products[index].productName,
-                                        style: const TextStyle(fontSize: 24),
-                                     ),
-                                        Text(controller.products[index].productDescription),
+                                        Text(
+                                          controller
+                                              .products[index].productName,
+                                          style: const TextStyle(fontSize: 24),
+                                        ),
+                                        Text(controller.products[index]
+                                            .productDescription),
                                       ],
                                     ),
-                                    Text('\$${controller.products[index].price}',
-                                    style: const TextStyle(
-                                      fontSize: 24
-                                    ),
+                                    Text(
+                                      '\$${controller.products[index].price}',
+                                      style: const TextStyle(fontSize: 24),
                                     ),
                                   ],
                                 ),
                                 ElevatedButton(
-                                    onPressed: (){
-                                      cardController.addToCard(
-                                        controller.products[index]
-                                      );
-
-                                    }, child: const Text('Add to card'),
-
+                                  onPressed: () {
+                                    cardController
+                                        .addToCard(controller.products[index]);
+                                  },
+                                  child: const Text('Add to card'),
                                 ),
                               ],
                             ),
@@ -63,12 +66,11 @@ class ShoppingPage extends StatelessWidget{
                 },
               ),
             ),
-            GetX<CardController>(builder: (controller){
-              return Text('Total amount: \$ ${controller.totalPrice}',
-              style: const TextStyle(
-                fontSize: 32,
-                color: Colors.white
-              ),);
+            GetX<CardController>(builder: (controller) {
+              return Text(
+                'Total amount: \$ ${controller.totalPrice}',
+                style: const TextStyle(fontSize: 32, color: Colors.white),
+              );
             }),
             const SizedBox(
               height: 100,
@@ -77,20 +79,20 @@ class ShoppingPage extends StatelessWidget{
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){
-
-          }, label: GetX<CardController>(builder: (controller){
-            return Text(controller.count.toString(),
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 24
-            ),
+        onPressed: () {},
+        label: GetX<CardController>(
+          builder: (controller) {
+            return Text(
+              controller.count.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 24),
             );
-      },
-      ),
+          },
+        ),
         backgroundColor: Colors.amber,
-        icon: const Icon(Icons.add_shopping_cart_rounded,
-        color: Colors.black,),
+        icon: const Icon(
+          Icons.add_shopping_cart_rounded,
+          color: Colors.black,
+        ),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:code/biz_design/screen/account/blog_screen/user_blog_comment_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,6 +5,7 @@ import '../../../core/blocs/blog_screen_bloc/blog_bloc.dart';
 import '../../../core/blocs/blog_screen_bloc/blog_event.dart';
 import '../../../core/blocs/blog_screen_bloc/blog_state.dart';
 import '../../../core/common/avatar_user.dart';
+import 'user_blog_comment_detail_screen.dart';
 
 class UserBlogDetailScreen extends StatefulWidget {
   const UserBlogDetailScreen({required this.image, Key? key}) : super(key: key);

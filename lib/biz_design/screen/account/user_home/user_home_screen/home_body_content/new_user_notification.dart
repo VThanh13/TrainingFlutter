@@ -15,6 +15,11 @@ class NewUserNotification extends StatefulWidget {
 
 class _NewUserNotificationState extends State<NewUserNotification> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -26,8 +31,8 @@ class _NewUserNotificationState extends State<NewUserNotification> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const ItemContent(
-                  textValue: '新着ユーザー告知',
-                  iconValue: Icons.volume_up_outlined,
+                textValue: '新着ユーザー告知',
+                iconValue: Icons.volume_up_outlined,
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
@@ -48,20 +53,17 @@ class _NewUserNotificationState extends State<NewUserNotification> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BoxNew(),
-              TextInfo(
-                  textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
+              TextInfo(textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
               Padding(
                 padding: EdgeInsets.only(top: 6),
                 child: BoxNew(),
               ),
-              TextInfo(
-                  textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
+              TextInfo(textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
               Padding(
                 padding: EdgeInsets.only(top: 6),
                 child: BoxNew(),
               ),
-              TextInfo(
-                  textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
+              TextInfo(textValue: 'タイトルが入ります、タイトルが入ります、タイトルが入ります、タイトル...'),
             ],
           ),
         ),

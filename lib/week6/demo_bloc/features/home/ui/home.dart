@@ -1,12 +1,12 @@
-import 'package:code/week6/demo_bloc/features/card/ui/cart.dart';
-import 'package:code/week6/demo_bloc/features/home/bloc/home_event.dart';
-import 'package:code/week6/demo_bloc/features/home/bloc/home_state.dart';
-import 'package:code/week6/demo_bloc/features/home/ui/product_tile_widget.dart';
-import 'package:code/week6/demo_bloc/features/wishlist/ui/wish_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../card/ui/cart.dart';
+import '../../wishlist/ui/wish_list.dart';
 import '../bloc/home_bloc.dart';
+import '../bloc/home_event.dart';
+import '../bloc/home_state.dart';
+import 'product_tile_widget.dart';
 
 class HomeDemoBloc extends StatefulWidget {
   const HomeDemoBloc({super.key});

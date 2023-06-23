@@ -1,10 +1,10 @@
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_event.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/event_manage_bloc/event_manage_bloc.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_event.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_state.dart';
 import '../../../core/common/avatar_user.dart';
 
 class PeopleGroup extends StatefulWidget {
@@ -40,14 +40,15 @@ class _PeopleGroupState extends State<PeopleGroup> {
     super.initState();
     eventManageBloc.add(ClickToPeopleGroupEvent());
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EventManageBloc, EventManageState>(
         bloc: eventManageBloc,
         listenWhen: (previous, current) => current is EventManageActionState,
-        buildWhen: (previous, current) => current is !EventManageActionState,
-        builder: (context, state){
-          switch(state.runtimeType){
+        buildWhen: (previous, current) => current is! EventManageActionState,
+        builder: (context, state) {
+          switch (state.runtimeType) {
             case ClickToPeopleGroupState:
               return SingleChildScrollView(
                 child: Container(
@@ -89,7 +90,7 @@ class _PeopleGroupState extends State<PeopleGroup> {
                         width: 400,
                         child: GridView.builder(
                             gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 8,
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 8,
@@ -148,6 +149,6 @@ class _PeopleGroupState extends State<PeopleGroup> {
           }
           return const SizedBox();
         },
-        listener: (context, state){});
+        listener: (context, state) {});
   }
 }

@@ -1,9 +1,25 @@
-abstract class NotificationState{}
+import 'package:flutter/foundation.dart';
 
-abstract class NotificationActionState extends NotificationState{}
+import '../../../models/notification_model/notification_model.dart';
 
-class NotificationInitialState extends NotificationState{}
+@immutable
+abstract class NotificationState {}
 
-class ClickToDetailNotificationState extends NotificationState{}
+abstract class NotificationActionState extends NotificationState {}
 
-class ClickToEditNotificationState extends NotificationState{}
+class NotificationInitialState extends NotificationState {}
+
+class NotificationLoadingState extends NotificationState {}
+
+class NotificationLoadedState extends NotificationState {
+  final List<NotificationModel> notifications;
+  NotificationLoadedState({
+    required this.notifications,
+  });
+}
+
+class NotificationErrorState extends NotificationState {}
+
+class ClickToDetailNotificationState extends NotificationState {}
+
+class ClickToEditNotificationState extends NotificationState {}

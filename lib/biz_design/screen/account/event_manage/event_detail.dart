@@ -1,13 +1,13 @@
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_event.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_state.dart';
-import 'package:code/biz_design/screen/account/event_manage/event_manage.dart';
-import 'package:code/biz_design/screen/account/event_manage/people_group.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/event_manage_bloc/event_manage_bloc.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_event.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_state.dart';
 import '../../../core/common/avatar_user.dart';
+import 'event_manage.dart';
+import 'people_group.dart';
 
 class EventDetail extends StatefulWidget {
   const EventDetail({Key? key}) : super(key: key);

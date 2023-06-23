@@ -1,14 +1,15 @@
-import 'package:code/biz_design/core/blocs/notification_bloc/notification_event.dart';
-import 'package:code/biz_design/core/blocs/notification_bloc/notification_state.dart';
-import 'package:code/biz_design/screen/account/notification_screen/notification_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/blocs/notification_bloc/notification_bloc.dart';
-import '../../../core/common/avatar_user.dart';
+import '../../../core/blocs/notification_bloc/notification_event.dart';
+import '../../../core/blocs/notification_bloc/notification_state.dart';
+import '../../../models/notification_model/notification_model.dart';
+import 'notification_edit.dart';
 
 class NotificationDetail extends StatefulWidget {
-  const NotificationDetail({Key? key}) : super(key: key);
+  const NotificationDetail({required this.detail, Key? key}) : super(key: key);
+  final NotificationModel detail;
 
   @override
   State<NotificationDetail> createState() => _NotificationDetailState();
@@ -54,28 +55,39 @@ class _NotificationDetailState extends State<NotificationDetail> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Row(
+                              Row(
                                 children: [
-                                  Text(
-                                    '2020.00.00（月）',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text(
+                                      widget.detail.time,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ),
-                                  AvatarUser(
-                                    width: 36,
-                                    height: 34,
-                                    urlImage:
-                                        'assets/images/biz_design/image_1.png',
+                                  SizedBox(
+                                    height: 35,
+                                    width: 35,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            widget.detail.userAvatar),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 5),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: Text(
-                                      '田中  武彦',
-                                      style: TextStyle(
-                                        fontSize: 8,
+                                      widget.detail.userName,
+                                      style: const TextStyle(
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff060606),
                                       ),
@@ -92,39 +104,38 @@ class _NotificationDetailState extends State<NotificationDetail> {
                               ),
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
                             child: Text(
-                              '告知タイトルが入ります、告知タイトルが入ります',
-                              style: TextStyle(
-                                fontSize: 12,
+                              widget.detail.title,
+                              style: const TextStyle(
+                                fontSize: 14,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff060606),
                               ),
                             ),
                           ),
-                          const Center(
+                          Center(
                             child: SizedBox(
                               height: 134,
                               width: 334,
                               child: FittedBox(
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 child: Image(
-                                  image: AssetImage(
-                                      'assets/images/biz_design/Rectangle_28.png'),
+                                  image: NetworkImage(widget.detail.image),
                                 ),
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(
+                          Padding(
+                            padding: const EdgeInsets.only(
                               top: 12,
                             ),
                             child: Text(
-                              '告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、告知テキストがはいります、',
-                              style: TextStyle(
+                              widget.detail.content,
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontSize: 10,
+                                fontSize: 12,
                                 color: Color(0xff333333),
                               ),
                             ),
@@ -158,7 +169,9 @@ class _NotificationDetailState extends State<NotificationDetail> {
                 ),
               );
             case ClickToEditNotificationState:
-              return const EditNotification();
+              return EditNotification(
+                detail: widget.detail,
+              );
             default:
           }
           return const SizedBox();

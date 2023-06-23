@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/common/avatar_user.dart';
 import '../../../../../core/common/custom_button.dart';
+import '../../../../../router/app_router.gr.dart';
 import '../material_home_screen/home_divider.dart';
 import '../material_home_screen/item_content.dart';
 

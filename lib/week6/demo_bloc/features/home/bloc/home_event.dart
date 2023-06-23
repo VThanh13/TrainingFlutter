@@ -1,33 +1,24 @@
-import 'package:code/week6/demo_bloc/features/home/models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../models/product_model.dart';
 
 @immutable
-abstract class HomeEvent{}
+abstract class HomeEvent {}
 
-class HomeInitialEvent extends HomeEvent{
-}
+class HomeInitialEvent extends HomeEvent {}
 
-class HomeProductWishlistButtonClickedEvent extends HomeEvent{
+class HomeProductWishlistButtonClickedEvent extends HomeEvent {
   final ProductDataModel clickedProduct;
   HomeProductWishlistButtonClickedEvent({
     required this.clickedProduct,
-});
-
+  });
 }
 
-class HomeProductCardButtonClickedEvent extends HomeEvent{
+class HomeProductCardButtonClickedEvent extends HomeEvent {
   final ProductDataModel clickedProduct;
-  HomeProductCardButtonClickedEvent({
-    required this.clickedProduct
-});
+  HomeProductCardButtonClickedEvent({required this.clickedProduct});
 }
 
-class HomeWishlistButtonNavigateEvent extends HomeEvent{
+class HomeWishlistButtonNavigateEvent extends HomeEvent {}
 
-}
-
-class HomeCardButtonNavigateEvent extends HomeEvent{
-
-}
-
+class HomeCardButtonNavigateEvent extends HomeEvent {}

@@ -1,8 +1,7 @@
-import 'package:code/biz_design/screen/account/profile_setting/widgets/search_item_tag.dart';
-import 'package:code/biz_design/screen/account/profile_setting/widgets/user_information.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/blocs/profile_setting_bloc/profile_setting_bloc.dart';
 import '../../../core/blocs/profile_setting_bloc/profile_setting_event.dart';
 import '../../../core/blocs/profile_setting_bloc/profile_setting_state.dart';
@@ -11,6 +10,8 @@ import '../user_home/user_home_2/top_search_material/top_text_field_custom.dart'
 import '../user_home/user_home_2/top_search_screen.dart';
 import '../user_home/user_home_screen/material_home_screen/home_divider.dart';
 import 'disable_profile_setting.dart';
+import 'widgets/search_item_tag.dart';
+import 'widgets/user_information.dart';
 
 class ActiveProfileSetting extends StatefulWidget {
   const ActiveProfileSetting({Key? key}) : super(key: key);

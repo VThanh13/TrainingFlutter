@@ -1,8 +1,9 @@
-import 'package:code/week5/practice/controller/tab_controller.dart';
-import 'package:code/week5/practice/screen/first_page.dart';
-import 'package:code/week5/practice/screen/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'practice/controller/tab_controller.dart';
+import 'practice/screen/first_page.dart';
+import 'practice/screen/second_page.dart';
 
 class HomeWeek5 extends StatefulWidget {
   const HomeWeek5({super.key});

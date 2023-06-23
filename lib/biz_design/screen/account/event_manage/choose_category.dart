@@ -1,12 +1,12 @@
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_event.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_state.dart';
-import 'package:code/biz_design/core/common/custom_button.dart';
-import 'package:code/biz_design/core/common/tag_search_custom.dart';
-import 'package:code/biz_design/screen/account/user_home/user_home_2/top_search_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/event_manage_bloc/event_manage_bloc.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_event.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_state.dart';
+import '../../../core/common/custom_button.dart';
+import '../../../core/common/tag_search_custom.dart';
+import '../user_home/user_home_2/top_search_screen.dart';
 import 'event_manage.dart';
 
 class ChooseCateEvent extends StatefulWidget {

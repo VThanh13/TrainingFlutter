@@ -1,14 +1,14 @@
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_event.dart';
-import 'package:code/biz_design/core/blocs/event_manage_bloc/event_manage_state.dart';
-import 'package:code/biz_design/screen/account/event_manage/create_group.dart';
-import 'package:code/biz_design/screen/account/event_manage/event_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/event_manage_bloc/event_manage_bloc.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_event.dart';
+import '../../../core/blocs/event_manage_bloc/event_manage_state.dart';
 import '../../../core/common/avatar_user.dart';
 import 'choose_category.dart';
+import 'create_group.dart';
+import 'event_detail.dart';
 
 class EventManage extends StatefulWidget {
   const EventManage({Key? key}) : super(key: key);

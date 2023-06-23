@@ -1,13 +1,13 @@
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_bloc.dart';
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_event.dart';
-import 'package:code/biz_design/core/blocs/blog_manage_bloc/blog_manage_state.dart';
-import 'package:code/biz_design/core/common/custom_button.dart';
-import 'package:code/biz_design/screen/account/blog_manage/blog_manage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/blocs/blog_manage_bloc/blog_manage_bloc.dart';
+import '../../../core/blocs/blog_manage_bloc/blog_manage_event.dart';
+import '../../../core/blocs/blog_manage_bloc/blog_manage_state.dart';
 import '../../../core/common/avatar_user.dart';
+import '../../../core/common/custom_button.dart';
+import 'blog_manage.dart';
 
 class CreateBlogScreen extends StatefulWidget {
   const CreateBlogScreen({Key? key}) : super(key: key);
@@ -236,7 +236,9 @@ class _CreateBlogScreenState extends State<CreateBlogScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 50,),
+                    const SizedBox(
+                      height: 50,
+                    ),
                   ],
                 ),
               );

@@ -1,6 +1,6 @@
-import 'package:code/biz_design/screen/account/profile_setting/widgets/user_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/blocs/profile_setting_bloc/profile_setting_bloc.dart';
 import '../../../core/blocs/profile_setting_bloc/profile_setting_event.dart';
 import '../../../core/blocs/profile_setting_bloc/profile_setting_state.dart';
@@ -9,7 +9,7 @@ import '../user_home/user_home_2/top_search_material/top_text_field_custom.dart'
 import '../user_home/user_home_2/top_search_screen.dart';
 import '../user_home/user_home_screen/material_home_screen/home_divider.dart';
 import 'active_profile_setting.dart';
-
+import 'widgets/user_information.dart';
 
 class DisableProfileSetting extends StatefulWidget {
   const DisableProfileSetting({Key? key}) : super(key: key);
@@ -53,10 +53,10 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
       child: BlocConsumer<ProfileSettingBloc, ProfileSettingState>(
         bloc: profileSettingBloc,
         listenWhen: (previous, current) => current is ProfileSettingActionState,
-        buildWhen: (previous, current) => current is !ProfileSettingActionState,
-        listener: (context, state){},
-        builder: (context, state){
-          switch(state.runtimeType){
+        buildWhen: (previous, current) => current is! ProfileSettingActionState,
+        listener: (context, state) {},
+        builder: (context, state) {
+          switch (state.runtimeType) {
             case ProfileSettingInitialState:
               return FutureBuilder(
                 future: Future.delayed(Duration.zero),
@@ -99,7 +99,8 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                         const TagSearchCustom(textValue: 'SNS'),
                         const TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
                             hintText: 'facebook ID',
                             hintStyle: TextStyle(
                               fontSize: 10,
@@ -110,7 +111,8 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                         ),
                         const TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
                             hintText: 'Twitter ID',
                             hintStyle: TextStyle(
                               fontSize: 10,
@@ -121,7 +123,8 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                         ),
                         const TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
                             hintText: 'Instagram ID',
                             hintStyle: TextStyle(
                               fontSize: 10,
@@ -132,7 +135,8 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                         ),
                         const TextField(
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide.none),
                             hintText: 'TikTok ID',
                             hintStyle: TextStyle(
                               fontSize: 10,
@@ -157,7 +161,9 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                             children: [
                               InkWell(
                                 child: SizedBox(
-                                  width: (MediaQuery.of(context).size.width - 28) / 3,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 28) /
+                                          3,
                                   child: const Center(
                                     child: Text(
                                       '非公開にする',
@@ -177,7 +183,9 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                               ),
                               InkWell(
                                 child: SizedBox(
-                                  width: (MediaQuery.of(context).size.width - 28) / 3,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 28) /
+                                          3,
                                   child: const Center(
                                     child: Text(
                                       '下書き保存する\n（公開されません）',
@@ -195,11 +203,14 @@ class _DisableProfileSettingState extends State<DisableProfileSetting> {
                                 width: 1,
                               ),
                               InkWell(
-                                onTap: (){
-                                  profileSettingBloc.add(ClickToActiveProfileEvent());
+                                onTap: () {
+                                  profileSettingBloc
+                                      .add(ClickToActiveProfileEvent());
                                 },
                                 child: SizedBox(
-                                  width: (MediaQuery.of(context).size.width - 28) / 3,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 28) /
+                                          3,
                                   child: const Center(
                                     child: Text(
                                       '公開する',

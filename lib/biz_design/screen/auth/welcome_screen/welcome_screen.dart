@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:code/biz_design/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,7 +6,7 @@ import '../../../core/blocs/welcome_bloc/welcome_bloc.dart';
 import '../../../core/blocs/welcome_bloc/welcome_event.dart';
 import '../../../core/blocs/welcome_bloc/welcome_state.dart';
 import '../../../core/common/custom_button.dart';
-
+import '../../../router/app_router.gr.dart';
 
 @RoutePage()
 class LoginOrRegister extends StatefulWidget {
@@ -48,7 +47,7 @@ class _Login1State extends State<LoginOrRegister> {
                 child: Stack(
                   children: [
                     SizedBox(
-                     height: MediaQuery.of(context).size.height,
+                      height: MediaQuery.of(context).size.height,
                       width: double.maxFinite,
                       child: const FittedBox(
                         fit: BoxFit.cover,
@@ -61,7 +60,8 @@ class _Login1State extends State<LoginOrRegister> {
                     Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
+                          padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.3),
                           child: const Center(
                             child: SizedBox(
                               height: 10,

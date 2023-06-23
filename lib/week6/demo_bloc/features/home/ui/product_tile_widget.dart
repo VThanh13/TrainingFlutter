@@ -1,7 +1,8 @@
-import 'package:code/week6/demo_bloc/features/home/bloc/home_bloc.dart';
-import 'package:code/week6/demo_bloc/features/home/bloc/home_event.dart';
-import 'package:code/week6/demo_bloc/features/home/models/product_model.dart';
 import 'package:flutter/material.dart';
+
+import '../bloc/home_bloc.dart';
+import '../bloc/home_event.dart';
+import '../models/product_model.dart';
 
 class ProductTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;

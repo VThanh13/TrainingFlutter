@@ -1,19 +1,19 @@
-import 'package:code/week3/model/photos.dart';
 import 'package:flutter/material.dart';
 
-class DetailPhoto extends StatefulWidget{
-  const DetailPhoto({Key? key, required this.photos}): super(key: key);
+import 'model/photos.dart';
+
+class DetailPhoto extends StatefulWidget {
+  const DetailPhoto({Key? key, required this.photos}) : super(key: key);
   final Photos photos;
 
   @override
   State<DetailPhoto> createState() => _DetailPhotoState();
 }
 
-class _DetailPhotoState extends State<DetailPhoto>{
-
+class _DetailPhotoState extends State<DetailPhoto> {
   late Photos photos;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     photos = widget.photos;
   }
@@ -33,7 +33,8 @@ class _DetailPhotoState extends State<DetailPhoto>{
                 ),
                 Center(
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.only(bottomRight: Radius.circular(30),
+                    borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(30),
                       bottomLeft: Radius.circular(30),
                     ),
                     child: Image.network('${photos.url}'),
@@ -41,12 +42,14 @@ class _DetailPhotoState extends State<DetailPhoto>{
                 ),
                 Positioned(
                   top: 55,
-                  child: Padding(padding: const EdgeInsets.only(left: 10),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
                     child: InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: const Icon(Icons.arrow_back,
+                      child: const Icon(
+                        Icons.arrow_back,
                         color: Colors.black,
                         size: 35,
                       ),
@@ -55,36 +58,42 @@ class _DetailPhotoState extends State<DetailPhoto>{
                 ),
               ],
             ),
-            const SizedBox(height: 5,),
+            const SizedBox(
+              height: 5,
+            ),
             Container(
               margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-              child: Text('Album ${photos.albumId}',
-              style: const TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              ),),
-            ),
-            const SizedBox(height: 5,),
-            Container( 
-              margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-              child: Text('Photo: ${photos.id}',
+              child: Text(
+                'Album ${photos.albumId}',
                 style: const TextStyle(
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.w500,
-              ),
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
-
-            const SizedBox(height: 5,),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child: Text(
+                'Photo: ${photos.id}',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
             Container(
               margin: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-              child: Text('${photos.title}',
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.grey
-              ),
+              child: Text(
+                '${photos.title}',
+                style: const TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
+import '../../notice_management/notice_manage.dart';
 import 'home_screen_body.dart';
 
 @RoutePage()
@@ -12,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _widgetOptions = <Widget>[
     const HomeScreenContent(),
     const Text('Info Page'),
-    const Text('Sound Page'),
+    const NoticeManageScreen(),
     const Text('Home Page'),
     const Text('Info Page'),
     const Text('Sound Page'),
@@ -61,14 +61,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child:  Center(
+          child: Center(
             child: _widgetOptions.elementAt(_selectedIndex),
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
-          ...List.generate(_listBottomIconItems.length, (index){
+          ...List.generate(_listBottomIconItems.length, (index) {
             return BottomNavigationBarItem(
               icon: Icon(_listBottomIconItems[index]),
               label: _listBottomLabelItems[index],
@@ -82,11 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: const Color(0xff212862),
         showUnselectedLabels: true,
         selectedLabelStyle: const TextStyle(
-          fontSize: 6, fontWeight: FontWeight.w700,
+          fontSize: 6,
+          fontWeight: FontWeight.w700,
           color: Color(0xff212862),
         ),
         unselectedLabelStyle: const TextStyle(
-          fontSize: 6, fontWeight: FontWeight.w700,
+          fontSize: 6,
+          fontWeight: FontWeight.w700,
           color: Color(0xff212862),
         ),
         iconSize: 28,

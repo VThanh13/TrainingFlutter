@@ -1,12 +1,12 @@
-import 'package:code/biz_design/screen/account/blog_manage/blog_manage.dart';
-import 'package:code/biz_design/screen/account/event_manage/event_manage.dart';
-import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_info.dart';
-import 'package:code/biz_design/screen/account/user_top_screen/widgets/user_top_divider.dart';
 import 'package:flutter/material.dart';
+
 import '../../../core/common/tab_bar_custom.dart';
+import '../app_information/app_information.dart';
+import '../blog_manage/blog_manage.dart';
 import '../blog_screen/user_blog_screen.dart';
 import '../card_exchange/card_exchange_screen.dart';
 import '../event_community/user_event_community_screen.dart';
+import '../event_manage/event_manage.dart';
 import '../inform_screen/inform_screen.dart';
 import '../message_screen/message_screen.dart';
 import '../movie_screen/movie_screen.dart';
@@ -14,6 +14,9 @@ import '../name_card/name_card_screen.dart';
 import '../notification_screen/notification_screen.dart';
 import '../profile_screen/profile_screen.dart';
 import '../profile_setting/disable_profile_setting.dart';
+import '../video_manage/video_manage.dart';
+import 'widgets/user_info.dart';
+import 'widgets/user_top_divider.dart';
 
 class UserTopScreen extends StatefulWidget {
   const UserTopScreen({Key? key}) : super(key: key);
@@ -22,8 +25,8 @@ class UserTopScreen extends StatefulWidget {
   State<UserTopScreen> createState() => _UserTopScreenState();
 }
 
-class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProviderStateMixin{
-
+class _UserTopScreenState extends State<UserTopScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   List listTabItem = [
     'プロフィール',
@@ -58,9 +61,9 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     const NotificationScreen(),
     const EventManage(),
     const BlogManageScreen(),
+    const VideoManageScreen(),
     const SizedBox(),
-    const SizedBox(),
-    const SizedBox(),
+    const AppInformationScreen(),
   ];
 
   @override
@@ -74,55 +77,56 @@ class _UserTopScreenState extends State<UserTopScreen> with SingleTickerProvider
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-          children: [
-            const TabBarCustom(
-              isSettingButton: true,
-              isBackButton: true,
-            ),
-            const UserInfo(),
-            const UserTopDivider(),
-            SizedBox(
-              height: 48,
-              width: double.maxFinite,
-              child: TabBar(
-                isScrollable: true,
-                controller: _tabController,
-                indicator: const UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    color: Color(0xffDD4A30),
-                    width: 3,
-                  ),
-                ),
-                tabs: [
-                  ...List.generate(
-                    listTabItem.length,
-                    (index) {
-                      return Tab(
-                        child: ItemMenu(
-                          itemName: listTabItem[index],
-                        ),
-                      );
-                    },
-                  ),
-                ],
+      children: [
+        const TabBarCustom(
+          isSettingButton: true,
+          isBackButton: true,
+        ),
+        const UserInfo(),
+        const UserTopDivider(),
+        SizedBox(
+          height: 48,
+          width: double.maxFinite,
+          child: TabBar(
+            isScrollable: true,
+            controller: _tabController,
+            indicator: const UnderlineTabIndicator(
+              borderSide: BorderSide(
+                color: Color(0xffDD4A30),
+                width: 3,
               ),
             ),
-            const UserTopDivider(),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children:  [
-                  ...List.generate(listScreenItem.length, (index){
-                    return listScreenItem[index];
-                  }),
-                ],
+            tabs: [
+              ...List.generate(
+                listTabItem.length,
+                (index) {
+                  return Tab(
+                    child: ItemMenu(
+                      itemName: listTabItem[index],
+                    ),
+                  );
+                },
               ),
-            ),
-          ],
-        );
+            ],
+          ),
+        ),
+        const UserTopDivider(),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              ...List.generate(listScreenItem.length, (index) {
+                return listScreenItem[index];
+              }),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 

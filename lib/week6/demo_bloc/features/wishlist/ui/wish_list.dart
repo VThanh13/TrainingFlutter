@@ -1,10 +1,11 @@
-import 'package:code/week6/demo_bloc/data/wishlist_items.dart';
-import 'package:code/week6/demo_bloc/features/wishlist/bloc/wish_list_bloc.dart';
-import 'package:code/week6/demo_bloc/features/wishlist/bloc/wish_list_event.dart';
-import 'package:code/week6/demo_bloc/features/wishlist/bloc/wish_list_state.dart';
-import 'package:code/week6/demo_bloc/features/wishlist/ui/wish_list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/wishlist_items.dart';
+import '../bloc/wish_list_bloc.dart';
+import '../bloc/wish_list_event.dart';
+import '../bloc/wish_list_state.dart';
+import 'wish_list_tile_widget.dart';
 
 class WishList extends StatefulWidget {
   const WishList({Key? key}) : super(key: key);

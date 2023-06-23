@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
-import 'package:code/biz_design/screen/account/user_top_screen/user_top_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'user_top_screen.dart';
 
 @RoutePage()
 class UserTop extends StatefulWidget {
