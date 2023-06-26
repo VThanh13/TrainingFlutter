@@ -1,18 +1,12 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
 class UserService {
-  Future<dynamic> getUser(String url) async {
-    Dio dio = Dio();
-    return await dio
-        .get(
+  Dio dio = Dio();
+  Future<Response<Map<String, dynamic>>> getUser(String url) async {
+    final response = dio.get<Map<String, dynamic>>(
       url,
       options: Options(responseType: ResponseType.json, method: "GET"),
-    )
-        .then((response) {
-      log(response.toString());
-      return response;
-    });
+    );
+    return response;
   }
 }

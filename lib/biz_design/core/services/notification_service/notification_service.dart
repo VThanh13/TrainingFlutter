@@ -1,31 +1,39 @@
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
 class NotificationService {
   Dio dio = Dio();
 
-  Future<dynamic> getNotification(String url) async {
-    return await dio
-        .get(
+  Future<Response<List<dynamic>>> getNotification(String url) async {
+    final res = await dio.get<List<dynamic>>(
       url,
       options: Options(responseType: ResponseType.json, method: "GET"),
-    )
-        .then((response) {
-      log(response.toString());
-      return response;
-    });
+    );
+    return res;
   }
 
-  Future<dynamic> updateNotification(String url, dynamic data) async {
-    return await dio.put(url,
+  Future<Response<Map<String, dynamic>>> updateNotification(
+      String url, Map<String, dynamic> data) async {
+    final res = dio.put<Map<String, dynamic>>(url,
         options: Options(responseType: ResponseType.json, method: "PUT"),
-        data: data);
+        data: jsonEncode(data));
+    return res;
   }
 
-  Future<dynamic> createNotification(String url, dynamic data) async {
-    return await dio.post(url,
+  Future<Response<Map<String, dynamic>>> createNotification(
+      String url, Map<String, dynamic> data) async {
+    final res = await dio.post<Map<String, dynamic>>(url,
         options: Options(responseType: ResponseType.json, method: "POST"),
-        data: data);
+        data: jsonEncode(data));
+    return res;
+  }
+
+  Future<Response<Map<String, dynamic>>> deleteNotification(String url) async {
+    final res = await dio.delete<Map<String, dynamic>>(
+      url,
+      options: Options(responseType: ResponseType.json, method: "DELETE"),
+    );
+    return res;
   }
 }

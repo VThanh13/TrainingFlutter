@@ -11,6 +11,8 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     on<NotificationInitialEvent>(notificationInitialEvent);
     on<ClickToDetailNotificationEvent>(clickToDetailNotificationEvent);
     on<ClickToEditNotificationEvent>(clickToEditNotificationEvent);
+    on<ClickToDeleteNotificationEvent>(clickToDeleteNotificationEvent);
+    on<ClickToCreateNotificationEvent>(clickToCreateNotificationEvent);
   }
 
   FutureOr<void> notificationInitialEvent(
@@ -30,5 +32,15 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   FutureOr<void> clickToEditNotificationEvent(
       ClickToEditNotificationEvent event, Emitter<NotificationState> emit) {
     emit(ClickToEditNotificationState());
+  }
+
+  FutureOr<void> clickToDeleteNotificationEvent(
+      ClickToDeleteNotificationEvent event, Emitter<NotificationState> emit) {
+    emit(ClickToDeleteNotificationState());
+  }
+
+  FutureOr<void> clickToCreateNotificationEvent(
+      ClickToCreateNotificationEvent event, Emitter<NotificationState> emit) {
+    emit(ClickToCreateNotificationState());
   }
 }

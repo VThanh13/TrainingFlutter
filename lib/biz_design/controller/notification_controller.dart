@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -16,28 +14,33 @@ class NotificationController extends GetxController {
     final response = await NotificationService().getNotification(url);
     if (response.statusCode == 200) {
       notifications.clear();
-      response.data.forEach((element) {
-        notifications.add(NotificationModel.fromJson(element));
-      });
+      notifications.addAll(
+          (response.data ?? []).map((e) => NotificationModel.fromJson(e)));
     }
   }
 
-  Future<void> updateNotification(String id, dynamic data) async {
+  Future<void> updateNotification(String id, Map<String, dynamic> data) async {
     String url = 'https://649143fe2f2c7ee6c2c7e76a.mockapi.io/api/post/$id';
     isInternetConnectFunc();
-    final response = await NotificationService().updateNotification(url, data);
-    if (response.statusCode == 200) {
-      log('Update notification success');
-    }
+    await NotificationService().updateNotification(url, data);
+    // ignore: avoid_print
+    print('Update notification success');
   }
 
-  Future<void> createNotification(dynamic data) async {
+  Future<void> createNotification(Map<String, dynamic> data) async {
     String url = 'https://649143fe2f2c7ee6c2c7e76a.mockapi.io/api/post';
     isInternetConnectFunc();
-    final response = await NotificationService().createNotification(url, data);
-    if (response.statusCode == 200) {
-      log('Create notification success');
-    }
+    await NotificationService().createNotification(url, data);
+    // ignore: avoid_print
+    print('Create notification success');
+  }
+
+  Future<void> deleteNotification(String id) async {
+    String url = 'https://649143fe2f2c7ee6c2c7e76a.mockapi.io/api/post/$id';
+    isInternetConnectFunc();
+    await NotificationService().deleteNotification(url);
+    // ignore: avoid_print
+    print('Delete notification success');
   }
 
   Future<void> isInternetConnectFunc() async {

@@ -23,3 +23,7 @@ class NotificationErrorState extends NotificationState {}
 class ClickToDetailNotificationState extends NotificationState {}
 
 class ClickToEditNotificationState extends NotificationState {}
+
+class ClickToCreateNotificationState extends NotificationState {}
+
+class ClickToDeleteNotificationState extends NotificationState {}
