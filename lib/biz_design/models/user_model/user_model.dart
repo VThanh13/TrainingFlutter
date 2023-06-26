@@ -4,18 +4,16 @@
 
 import 'dart:convert';
 
-List<UserModel> userModelFromJson(String str) =>
-    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-String userModelToJson(List<UserModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  List<dynamic> businessComment;
-  List<dynamic> industryConnect;
-  List<dynamic> area;
-  List<dynamic> career;
-  List<dynamic> personSkill;
+  List<String> businessComment;
+  List<String> industryConnect;
+  List<String> area;
+  Map<String, String> career;
+  List<String> personSkill;
   String qualification;
   String director;
   String annualIncome;
@@ -41,12 +39,13 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         businessComment:
-            List<dynamic>.from(json["businessComment"].map((x) => x)),
+            List<String>.from(json["businessComment"].map((x) => x)),
         industryConnect:
-            List<dynamic>.from(json["industryConnect"].map((x) => x)),
-        area: List<dynamic>.from(json["area"].map((x) => x)),
-        career: List<dynamic>.from(json["career"].map((x) => x)),
-        personSkill: List<dynamic>.from(json["personSkill"].map((x) => x)),
+            List<String>.from(json["industryConnect"].map((x) => x)),
+        area: List<String>.from(json["area"].map((x) => x)),
+        career: Map.from(json["career"])
+            .map((k, v) => MapEntry<String, String>(k, v)),
+        personSkill: List<String>.from(json["personSkill"].map((x) => x)),
         qualification: json["qualification"],
         director: json["director"],
         annualIncome: json["annualIncome"],
@@ -60,7 +59,8 @@ class UserModel {
         "businessComment": List<dynamic>.from(businessComment.map((x) => x)),
         "industryConnect": List<dynamic>.from(industryConnect.map((x) => x)),
         "area": List<dynamic>.from(area.map((x) => x)),
-        "career": List<dynamic>.from(career.map((x) => x)),
+        "career":
+            Map.from(career).map((k, v) => MapEntry<String, dynamic>(k, v)),
         "personSkill": List<dynamic>.from(personSkill.map((x) => x)),
         "qualification": qualification,
         "director": director,

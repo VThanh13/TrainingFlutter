@@ -103,10 +103,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         builder: (context) {
                           return Obx(
                             () => ListView.builder(
-                              itemCount: notificationController
-                                      .isInternetConnect.value
-                                  ? notificationController.notifications.length
-                                  : 5,
+                              itemCount:
+                                  notificationController.notifications.length,
                               itemBuilder: (context, index) {
                                 return Container(
                                   width: double.maxFinite,
@@ -172,9 +170,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                     ),
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
+                                                const SizedBox(width: 5),
                                                 SizedBox(
                                                   height: 35,
                                                   width: 35,

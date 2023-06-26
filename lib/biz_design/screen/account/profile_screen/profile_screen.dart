@@ -120,8 +120,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             const TagSearchCustom(
                               textValue: '実績、経歴',
                             ),
-                            ShowItemsListToColumn(
-                                list: userController.userModel.career),
+                            Column(
+                              children: [
+                                ...List.generate(
+                                  userController.userModel.career.length,
+                                  (index) => Row(
+                                    children: [
+                                      Text(userController.list[index])
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                             const SizedBox(
                               height: 6,
                             ),
@@ -199,9 +209,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 })
                               ],
                             ),
-                            const SizedBox(
-                              height: 30,
-                            ),
+                            const SizedBox(height: 30),
                           ],
                         ),
                       ),
