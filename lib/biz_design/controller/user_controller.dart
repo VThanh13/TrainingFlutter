@@ -14,20 +14,7 @@ class UserController extends GetxController {
     isInternetConnectFunc();
     final user = await UserService().getUser(url);
     if (user.statusCode == 200) {
-      userModel = UserModel(
-          businessComment: List<String>.from(user.data!['businessComment']),
-          industryConnect: List<String>.from(user.data!['industryConnect']),
-          area: List<String>.from(user.data!['area']),
-          career: Map<String, String>.from(user.data!['career']),
-          personSkill: List<String>.from(user.data!['personSkill']),
-          qualification: user.data!['qualification'],
-          director: user.data!['director'],
-          annualIncome: user.data!['annualIncome'],
-          asset: user.data!['asset'],
-          placeOfBirth: user.data!['placeOfBirth'],
-          hobby: user.data!['hobby'],
-          id: user.data!['id']);
-      //print(userModel.career.containsKey(userModel.career.keys));
+      userModel = UserModel.fromJson(user.data!);
       userModel.career.forEach(
         // ignore: unnecessary_set_literal
         (key, value) => {
