@@ -37,8 +37,10 @@ class _SearchItemTagState extends State<SearchItemTag> {
                 children: [
                   Stack(
                     children: [
-                      SizedBox(height: 54,
-                        width: textPainter.width + 32,),
+                      SizedBox(
+                        height: 54,
+                        width: textPainter.width + 32,
+                      ),
                       Positioned(
                         left: 0,
                         bottom: 0,
@@ -48,22 +50,23 @@ class _SearchItemTagState extends State<SearchItemTag> {
                           padding: const EdgeInsets.only(left: 5, right: 5),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: const Color(0xff333333),
-                                width: 0.3,
-                              )
-                          ),
+                            color: const Color(0xff333333),
+                            width: 0.3,
+                          )),
                           child: Center(
                             child: Text(
-                              item, style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey,
-                            ),
+                              item,
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
-                        ),),
+                        ),
+                      ),
                       Positioned(
-                        left: textPainter.width-5,
+                        left: textPainter.width - 5,
                         child: IconButton(
                           onPressed: () {
                             setState(() {
@@ -75,7 +78,8 @@ class _SearchItemTagState extends State<SearchItemTag> {
                             size: 30,
                             color: Color(0xff060606),
                           ),
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -83,10 +87,11 @@ class _SearchItemTagState extends State<SearchItemTag> {
             }),
           ],
         ),
-
         Column(
           children: [
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const Divider(
               height: 0,
               color: Color(0xffDD4A30),
@@ -112,6 +117,8 @@ class _SearchItemTagState extends State<SearchItemTag> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     controller: textController,
+                    style: TextStyle(
+                        color: Theme.of(context).textTheme.titleSmall!.color),
                     decoration: const InputDecoration(
                         hintText: 'マッチングしたい職業を追加',
                         hintStyle: TextStyle(

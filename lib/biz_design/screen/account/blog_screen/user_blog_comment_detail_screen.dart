@@ -20,9 +20,10 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
         WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
       },
       child: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height*0.83,
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.83,
           width: double.maxFinite,
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,37 +32,40 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
                   height: 10,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height*0.75,
+                  height: MediaQuery.of(context).size.height * 0.75,
                   width: double.maxFinite,
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           children: [
-                            AvatarUser(
+                            const AvatarUser(
                               width: 33,
                               height: 31,
                               urlImage: 'assets/images/biz_design/image_1.png',
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: Text(
                                 '田中 武彦',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 12,
-                                  color: Color(0xff060606),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .color,
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: double.maxFinite,
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15, right: 10),
+                            padding: const EdgeInsets.only(left: 15, right: 10),
                             child: Text(
                               'テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、'
                               'テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、テキスト、'
@@ -75,19 +79,23 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff000000),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 15),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
                           child: Text(
                             '7時間前',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 10,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -95,36 +103,42 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
                           padding: EdgeInsets.fromLTRB(12, 15, 12, 10),
                           child: UserTopDivider(),
                         ),
-                        const Row(
+                        Row(
                           children: [
-                            AvatarUser(
+                            const AvatarUser(
                               width: 33,
                               height: 31,
                               urlImage: 'assets/images/biz_design/image_11.png',
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: Text(
                                 '高橋 恵',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 12,
-                                  color: Color(0xff060606),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .color,
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: double.maxFinite,
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15, right: 10),
+                            padding: const EdgeInsets.only(left: 15, right: 10),
                             child: Text(
                               'コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント、コメント',
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff000000),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
@@ -133,29 +147,37 @@ class _BlogCommentDetailScreenState extends State<BlogCommentDetailScreen> {
                           padding: const EdgeInsets.only(left: 15),
                           child: Row(
                             children: [
-                              const Text(
+                              Text(
                                 '3時間前',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 10,
-                                  color: Color(
-                                    0xff060606,
-                                  ),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .color,
                                 ),
                               ),
                               IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.favorite_border,
                                   size: 20,
+                                  color: Theme.of(context)
+                                      .appBarTheme
+                                      .iconTheme!
+                                      .color,
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 '85',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xff060606),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .color,
                                 ),
                               ),
                             ],

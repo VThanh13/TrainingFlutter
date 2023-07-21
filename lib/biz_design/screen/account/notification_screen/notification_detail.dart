@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
 import '../../../controller/notification_controller.dart';
 import '../../../core/blocs/notification_bloc/notification_bloc.dart';
@@ -28,8 +27,7 @@ class _NotificationDetailState extends State<NotificationDetail> {
     notificationBloc.add(ClickToDetailNotificationEvent());
   }
 
-  NotificationController notificationController =
-      Get.put(NotificationController());
+  NotificationController notificationController = NotificationController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +43,10 @@ class _NotificationDetailState extends State<NotificationDetail> {
                 children: [
                   Container(
                     width: double.maxFinite,
-                    color: const Color(0xffF9F9F9),
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                    ),
-                    margin: const EdgeInsets.only(
-                      left: 6,
-                      right: 6,
-                      bottom: 20,
-                    ),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    margin:
+                        const EdgeInsets.only(left: 6, right: 6, bottom: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -92,10 +84,13 @@ class _NotificationDetailState extends State<NotificationDetail> {
                                   padding: const EdgeInsets.only(left: 10),
                                   child: Text(
                                     widget.detail.userName,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
-                                      color: Color(0xff060606),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .color,
                                     ),
                                   ),
                                 ),
@@ -201,10 +196,7 @@ class _NotificationDetailState extends State<NotificationDetail> {
                                       );
                                     });
                               },
-                              icon: const Icon(
-                                Icons.more_horiz,
-                                size: 25,
-                              ),
+                              icon: const Icon(Icons.more_horiz, size: 25),
                             ),
                           ],
                         ),
@@ -212,10 +204,11 @@ class _NotificationDetailState extends State<NotificationDetail> {
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
                             widget.detail.title,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -237,10 +230,11 @@ class _NotificationDetailState extends State<NotificationDetail> {
                           ),
                           child: Text(
                             widget.detail.content,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 12,
-                              color: Color(0xff333333),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -256,12 +250,15 @@ class _NotificationDetailState extends State<NotificationDetail> {
                                 Icons.edit,
                               ),
                             ),
-                            const Text(
+                            Text(
                               '編集する',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff060606),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ],

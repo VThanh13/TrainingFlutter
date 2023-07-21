@@ -41,8 +41,8 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
       },
       child: FutureBuilder(
         future: Future.delayed(Duration.zero),
-        builder: (BuildContext context, AsyncSnapshot<void> snapshot){
-          if(_savedPosition != null){
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+          if (_savedPosition != null) {
             _scrollController.animateTo(_savedPosition!,
                 duration: const Duration(microseconds: 500),
                 curve: Curves.easeInOut);
@@ -50,32 +50,38 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
           return SingleChildScrollView(
             controller: _scrollController,
             key: _storageKey,
-            padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: BlocConsumer<UserMessageBloc, UserMessageState>(
               bloc: userMessageBloc,
               listenWhen: (previous, current) =>
-              current is UserMessageActionState,
+                  current is UserMessageActionState,
               buildWhen: (previous, current) =>
-              current is! UserMessageActionState,
+                  current is! UserMessageActionState,
               listener: (context, state) {},
               builder: (context, state) {
                 switch (state.runtimeType) {
                   case UserMessageInitialState:
                     return SizedBox(
-                      height: MediaQuery.of(context).size.height -335,
+                      height: MediaQuery.of(context).size.height - 335,
                       child: Column(
                         children: [
-                          SizedBox(
+                          Container(
                             height: MediaQuery.of(context).size.height - 400,
+                            color: Theme.of(context).scaffoldBackgroundColor,
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  const Text(
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
                                     '2020.00.00',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 10,
-                                      color: Color(0xff000000),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .color,
                                     ),
                                   ),
                                   const SizedBox(
@@ -83,20 +89,23 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                   ),
                                   Row(
                                     children: [
-                                      const Column(
+                                      Column(
                                         children: [
-                                          AvatarUser(
+                                          const AvatarUser(
                                             width: 54,
                                             height: 51,
                                             urlImage:
-                                            'assets/images/biz_design/image_1.png',
+                                                'assets/images/biz_design/image_1.png',
                                           ),
                                           Text(
                                             '田中  武彦',
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.w700,
-                                              color: Color(0xff333333),
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .color,
                                             ),
                                           ),
                                         ],
@@ -106,7 +115,7 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                       ),
                                       Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.end,
+                                            CrossAxisAlignment.end,
                                         children: [
                                           Container(
                                             height: 74,
@@ -119,18 +128,19 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                             ),
                                             child: const Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Padding(
                                                   padding:
-                                                  EdgeInsets.only(left: 20),
+                                                      EdgeInsets.only(left: 20),
                                                   child: Text(
                                                     'はじめまして\nよろしくお願いいたします。',
                                                     textAlign: TextAlign.start,
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       fontSize: 12,
                                                       color: Color(0xff000000),
                                                     ),
@@ -139,10 +149,13 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                               ],
                                             ),
                                           ),
-                                          const Text(
+                                          Text(
                                             '17:35',
                                             style: TextStyle(
-                                              color: Color(0xff333333),
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .color,
                                               fontSize: 8,
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -157,7 +170,8 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                                     margin: const EdgeInsets.only(top: 38),
                                     color: const Color(0xffE3E3E3),
                                     child: const Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           '名刺交換が取り消しされたためメッセージのやりとりはできません。',
@@ -186,7 +200,6 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                             height: 46,
                             width: double.maxFinite,
                             margin: const EdgeInsets.fromLTRB(12, 10, 12, 0),
-                            // padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: const Color(0xffF2F2F2),
@@ -238,7 +251,7 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                       padding: EdgeInsets.only(top: 56),
                       child: Text(
                         '名刺交換リクエストが承諾されていません。'
-                            '\nリクエスト承諾後にメッセージを送信することができます。',
+                        '\nリクエスト承諾後にメッセージを送信することができます。',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12,

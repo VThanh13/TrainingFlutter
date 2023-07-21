@@ -57,10 +57,10 @@ class _AppInformationScreenState extends State<AppInformationScreen> {
                     ),
                     Text(
                       _listContent[index],
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff060606),
+                        color: Theme.of(context).textTheme.titleSmall?.color,
                       ),
                     ),
                   ],

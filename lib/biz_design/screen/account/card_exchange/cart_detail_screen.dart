@@ -49,10 +49,10 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                   ),
                   Text(
                     widget.cardDetail.name,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xff060606),
+                      color: Theme.of(context).textTheme.titleSmall?.color,
                     ),
                   ),
                 ],

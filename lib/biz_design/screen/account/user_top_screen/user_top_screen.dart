@@ -80,52 +80,56 @@ class _UserTopScreenState extends State<UserTopScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TabBarCustom(
-          isSettingButton: true,
-          isBackButton: true,
-        ),
-        const UserInfo(),
-        const UserTopDivider(),
-        SizedBox(
-          height: 48,
-          width: double.maxFinite,
-          child: TabBar(
-            isScrollable: true,
-            controller: _tabController,
-            indicator: const UnderlineTabIndicator(
-              borderSide: BorderSide(
-                color: Color(0xffDD4A30),
-                width: 3,
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Column(
+        children: [
+          const TabBarCustom(
+            isSettingButton: true,
+            isBackButton: true,
+          ),
+          const UserInfo(),
+          const UserTopDivider(),
+          Container(
+            height: 48,
+            width: double.maxFinite,
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: TabBar(
+              isScrollable: true,
+              controller: _tabController,
+              indicator: const UnderlineTabIndicator(
+                borderSide: BorderSide(
+                  color: Color(0xffDD4A30),
+                  width: 3,
+                ),
               ),
+              tabs: [
+                ...List.generate(
+                  listTabItem.length,
+                  (index) {
+                    return Tab(
+                      child: ItemMenu(
+                        itemName: listTabItem[index],
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-            tabs: [
-              ...List.generate(
-                listTabItem.length,
-                (index) {
-                  return Tab(
-                    child: ItemMenu(
-                      itemName: listTabItem[index],
-                    ),
-                  );
-                },
-              ),
-            ],
           ),
-        ),
-        const UserTopDivider(),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              ...List.generate(listScreenItem.length, (index) {
-                return listScreenItem[index];
-              }),
-            ],
+          const UserTopDivider(),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                ...List.generate(listScreenItem.length, (index) {
+                  return listScreenItem[index];
+                }),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -140,10 +144,10 @@ class ItemMenu extends StatelessWidget {
       child: Center(
         child: Text(
           itemName,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 12,
-            color: Color(0xff060606),
+            color: Theme.of(context).textTheme.titleSmall!.color,
           ),
         ),
       ),

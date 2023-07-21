@@ -165,6 +165,8 @@ class _SearchItemState extends State<SearchItem> {
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextField(
                 controller: textController,
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.titleSmall?.color),
                 decoration: const InputDecoration(
                     hintText: 'マッチングしたい職業を追加',
                     hintStyle: TextStyle(

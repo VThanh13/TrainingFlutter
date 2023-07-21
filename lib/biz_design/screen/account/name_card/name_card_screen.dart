@@ -37,20 +37,24 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
               child: Center(
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.6,
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.6,
                       width: double.maxFinite,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(top: 20),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
                               child: Text(
                                 'あなたの名刺情報を送信します。',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xff333333),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .color,
                                 ),
                               ),
                             ),
@@ -87,7 +91,8 @@ class _UserNameCardScreenState extends State<UserNameCardScreen> {
                                       ),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         RichText(
                                           text: const TextSpan(

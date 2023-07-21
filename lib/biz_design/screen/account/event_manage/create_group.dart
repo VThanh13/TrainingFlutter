@@ -106,6 +106,11 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                             width: MediaQuery.of(context).size.width - 80,
                             child: TextField(
                               controller: _titleController,
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall
+                                      ?.color),
                               decoration: InputDecoration(
                                 hintText: 'タイトルを入力してください',
                                 hintStyle: const TextStyle(
@@ -133,6 +138,11 @@ class _CreateGroupEventState extends State<CreateGroupEvent> {
                             maxLines: 10,
                             minLines: 1,
                             controller: _contentController,
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall
+                                    ?.color),
                             decoration: InputDecoration(
                               hintText: '本文を入力してください',
                               hintStyle: const TextStyle(

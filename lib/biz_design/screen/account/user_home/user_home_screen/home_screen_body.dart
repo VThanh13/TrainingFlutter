@@ -22,7 +22,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Container(
           height: 82,
           width: double.maxFinite,
-          color: const Color(0xffF2F2F2),
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: const Center(
             child: SizedBox(
               height: 34,

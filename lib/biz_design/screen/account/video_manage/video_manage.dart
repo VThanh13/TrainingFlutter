@@ -52,14 +52,17 @@ class _VideoManageScreenState extends State<VideoManageScreen> {
                             },
                             icon: const Icon(Icons.add_circle),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
                             child: Text(
                               'ブログを作成',
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xff000000),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
@@ -86,12 +89,15 @@ class _VideoManageScreenState extends State<VideoManageScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text(
+                                      Text(
                                         '私の自己紹介動画です',
                                         style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xff060606),
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall!
+                                              .color,
                                         ),
                                       ),
                                       IconButton(

@@ -6,7 +6,7 @@ import 'blue_border_tag.dart';
 
 class UserInformation extends StatefulWidget {
   const UserInformation({this.isActive = false, Key? key}) : super(key: key);
-  final bool ?isActive;
+  final bool? isActive;
 
   @override
   State<UserInformation> createState() => _UserInformationState();
@@ -18,34 +18,35 @@ class _UserInformationState extends State<UserInformation> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.isActive == true?
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            BlueBorderTag(
-              textValue: '公開中',
-              size: 10,
-              height: 21,
-            ),
-            BlueBorderTag(
-              textValue: '本人書類確認済み',
-              size: 10,
-              height: 21,
-            ),
-            BlueBorderTag(
-              textValue: 'プレミアム会員',
-              size: 10,
-              height: 21,
-            ),
-          ],
-        ): const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            BlueBorderTag(textValue: '公開中'),
-            BlueBorderTag(textValue: '本人書類確認済み'),
-            BlueBorderTag(textValue: 'プレミアム会員'),
-          ],
-        ),
+        widget.isActive == true
+            ? const Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  BlueBorderTag(
+                    textValue: '公開中',
+                    size: 10,
+                    height: 21,
+                  ),
+                  BlueBorderTag(
+                    textValue: '本人書類確認済み',
+                    size: 10,
+                    height: 21,
+                  ),
+                  BlueBorderTag(
+                    textValue: 'プレミアム会員',
+                    size: 10,
+                    height: 21,
+                  ),
+                ],
+              )
+            : const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BlueBorderTag(textValue: '公開中'),
+                  BlueBorderTag(textValue: '本人書類確認済み'),
+                  BlueBorderTag(textValue: 'プレミアム会員'),
+                ],
+              ),
         const SizedBox(
           height: 24,
         ),
@@ -64,17 +65,17 @@ class _UserInformationState extends State<UserInformation> {
                       const AvatarUser(
                         width: 92,
                         height: 92,
-                        urlImage:
-                        'assets/images/biz_design/image_1.png',
+                        urlImage: 'assets/images/biz_design/image_1.png',
                       ),
                       Positioned(
                         left: 55,
                         top: 55,
                         child: IconButton(
                           onPressed: () {},
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.add_circle_sharp,
-                            color: Color(0xff212862),
+                            color:
+                                Theme.of(context).appBarTheme.iconTheme!.color,
                             size: 30,
                           ),
                         ),
@@ -116,12 +117,13 @@ class _UserInformationState extends State<UserInformation> {
                     Row(
                       children: [
                         const TagSearchCustom(textValue: 'お名前'),
-                        widget.isActive == true ?activeTag() : const SizedBox(),
+                        widget.isActive == true
+                            ? activeTag()
+                            : const SizedBox(),
                       ],
                     ),
                     const Row(
-                      mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TopTextField(
                           hintText: '田中',
@@ -136,7 +138,9 @@ class _UserInformationState extends State<UserInformation> {
                     Row(
                       children: [
                         const TagSearchCustom(textValue: '年齢'),
-                        widget.isActive == true? activeTag() : const SizedBox(),
+                        widget.isActive == true
+                            ? activeTag()
+                            : const SizedBox(),
                       ],
                     ),
                     const TopTextField(
@@ -151,49 +155,49 @@ class _UserInformationState extends State<UserInformation> {
         Row(
           children: [
             const TagSearchCustom(textValue: '一言コメント（公開されます）'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
-        widget.isActive == true ?
-        const TopTextField(
-          hintText: 'はじめまして\nよろしくお願いいたします。',
-          readOnly: true,
-        ):
-        const TopTextField(
-          hintText: 'はじめまして\nよろしくお願いいたします。',
-        ),
+        widget.isActive == true
+            ? const TopTextField(
+                hintText: 'はじめまして\nよろしくお願いいたします。',
+                readOnly: true,
+              )
+            : const TopTextField(
+                hintText: 'はじめまして\nよろしくお願いいたします。',
+              ),
         Row(
           children: [
             const TagSearchCustom(textValue: '職業'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
         const TopTextField(hintText: '会社員'),
         Row(
           children: [
             const TagSearchCustom(textValue: '業種・職種'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
         const TopTextField(hintText: '建設業 > 営業'),
         Row(
           children: [
             const TagSearchCustom(textValue: '会社名'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
         const TopTextField(hintText: '五洋建設株式会社'),
         Row(
           children: [
             const TagSearchCustom(textValue: 'エリア設定'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
         const TopTextField(hintText: '東京都 杉並区'),
         Row(
           children: [
             const TagSearchCustom(textValue: '名刺設定'),
-            widget.isActive == true ?activeTag() : const SizedBox(),
+            widget.isActive == true ? activeTag() : const SizedBox(),
           ],
         ),
         Row(
@@ -205,8 +209,7 @@ class _UserInformationState extends State<UserInformation> {
               child: FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Image(
-                  image: AssetImage(
-                      'assets/images/biz_design/image_13.png'),
+                  image: AssetImage('assets/images/biz_design/image_13.png'),
                 ),
               ),
             ),
@@ -242,6 +245,7 @@ class _UserInformationState extends State<UserInformation> {
       ],
     );
   }
+
   Widget activeTag() {
     return Container(
       height: 17,

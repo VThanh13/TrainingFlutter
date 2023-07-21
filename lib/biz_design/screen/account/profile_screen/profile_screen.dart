@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+
 import '../../../controller/user_controller.dart';
 import '../../../core/blocs/profile_bloc/profile_bloc.dart';
 import '../../../core/blocs/profile_bloc/profile_event.dart';
 import '../../../core/blocs/profile_bloc/profile_state.dart';
 import '../../../core/common/tag_search_custom.dart';
 import '../user_top_screen/widgets/user_top_divider.dart';
+import 'widget/profile_widget.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
@@ -30,32 +31,31 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     Colors.black,
   ];
 
-  late final ScrollController _scrollController;
-
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+
     profileBloc.add(ProfileInitialEvent());
     userController.getUserInfo();
   }
 
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
   ProfileBloc profileBloc = ProfileBloc();
 
-  UserController userController = Get.put(UserController());
+  UserController userController = UserController();
 
   @override
   Widget build(BuildContext context) {
     // ignore: unrelated_type_equality_checks
-    return BlocConsumer<ProfileBloc, ProfileState>(
+    return BlocBuilder<ProfileBloc, ProfileState>(
         bloc: profileBloc,
-        listenWhen: (previous, current) => current is ProfileActionState,
+        //listenWhen: (previous, current) => current is ProfileActionState,
         buildWhen: (previous, current) => current is! ProfileActionState,
         builder: (context, state) {
           // ignore: unrelated_type_equality_checks
@@ -70,9 +70,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 controller: _scrollController,
                 child: Column(
                   children: [
-                    SizedBox(
+                    Container(
                       width: double.maxFinite,
                       height: MediaQuery.of(context).size.height * 0.6,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       child: SingleChildScrollView(
                         padding:
                             const EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -85,21 +86,17 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 3),
                               child: ShowItemsListToColumn(
-                                  list:
-                                      userController.userModel.businessComment),
+                                  list: profileBloc.user.businessComment),
                             ),
                             const Padding(
                               padding: EdgeInsets.only(top: 10),
                               child: UserTopDivider(),
                             ),
-                            const TagSearchCustom(
-                              textValue: '繋がりたい業種・職種',
-                            ),
+                            const TagSearchCustom(textValue: '繋がりたい業種・職種'),
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
                               child: ShowItemsListToRow(
-                                  list:
-                                      userController.userModel.industryConnect),
+                                  list: profileBloc.user.industryConnect),
                             ),
                             const Padding(
                               padding: EdgeInsets.only(top: 10),
@@ -111,88 +108,60 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
                               child: ShowItemsListToRow(
-                                  list: userController.userModel.area),
+                                  list: profileBloc.user.area),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             const UserTopDivider(),
-                            const TagSearchCustom(
-                              textValue: '実績、経歴',
-                            ),
+                            const TagSearchCustom(textValue: '実績、経歴'),
                             Column(
                               children: [
                                 ...List.generate(
-                                  userController.userModel.career.length,
+                                  profileBloc.user.career.length,
                                   (index) => Row(
                                     children: [
-                                      Text(userController.list[index])
+                                      Text(profileBloc.listCareer[index])
                                     ],
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(
-                              height: 6,
-                            ),
+                            const SizedBox(height: 6),
                             const UserTopDivider(),
-                            const TagSearchCustom(
-                              textValue: '保有スキル',
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
+                            const TagSearchCustom(textValue: '保有スキル'),
+                            const SizedBox(height: 6),
                             ShowItemsListToRow(
-                                list: userController.userModel.personSkill),
+                                list: profileBloc.user.personSkill),
                             const SizedBox(
                               height: 10,
                             ),
                             const UserTopDivider(),
-                            const TagSearchCustom(
-                              textValue: '保有資格',
-                            ),
+                            const TagSearchCustom(textValue: '保有資格'),
                             FormatText(
-                                textValue:
-                                    userController.userModel.qualification),
-                            const SizedBox(
-                              height: 6,
-                            ),
+                                textValue: profileBloc.user.qualification),
+                            const SizedBox(height: 6),
                             const UserTopDivider(),
                             const TagSearchCustom(textValue: '役職'),
-                            FormatText(
-                                textValue: userController.userModel.director),
-                            const SizedBox(
-                              height: 5,
-                            ),
+                            FormatText(textValue: profileBloc.user.director),
+                            const SizedBox(height: 5),
                             const UserTopDivider(),
                             const TagSearchCustom(textValue: '年収'),
                             FormatText(
-                                textValue:
-                                    userController.userModel.annualIncome),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                                textValue: profileBloc.user.annualIncome),
+                            const SizedBox(height: 10),
                             const TagSearchCustom(textValue: '資産'),
-                            FormatText(
-                                textValue: userController.userModel.asset),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            FormatText(textValue: profileBloc.user.asset),
+                            const SizedBox(height: 10),
                             const UserTopDivider(),
                             const TagSearchCustom(textValue: '出身地'),
                             FormatText(
-                                textValue:
-                                    userController.userModel.placeOfBirth),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                                textValue: profileBloc.user.placeOfBirth),
+                            const SizedBox(height: 10),
                             const UserTopDivider(),
                             const TagSearchCustom(textValue: '趣味'),
-                            FormatText(
-                                textValue: userController.userModel.hobby),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            FormatText(textValue: profileBloc.user.hobby),
+                            const SizedBox(height: 10),
                             const UserTopDivider(),
                             const TagSearchCustom(textValue: 'SNS'),
                             Row(
@@ -217,6 +186,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   ],
                 ),
               );
+            } else if (state is ProfileErrorState) {
+              return const Center(child: Text('Error!'));
             }
             return const SizedBox();
           } else {
@@ -224,99 +195,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               child: Text('No internet'),
             );
           }
-        },
-        listener: (context, state) {});
-  }
-}
-
-class FormatText extends StatelessWidget {
-  const FormatText({required this.textValue, Key? key}) : super(key: key);
-  final String textValue;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      textValue,
-      style: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: Color(0xff060606),
-        overflow: TextOverflow.visible,
-      ),
-      maxLines: 5,
-    );
-  }
-}
-
-class ShowItemsListToRow extends StatelessWidget {
-  const ShowItemsListToRow({required this.list, super.key});
-  final List list;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ...List.generate(list.length, (index) {
-          final textPainter = TextPainter(
-            text: TextSpan(
-              text: list[index],
-              style: const TextStyle(
-                color: Color(0xff060606),
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            textDirection: TextDirection.ltr,
-          )..layout();
-          return Container(
-            height: 19,
-            width: textPainter.width + 15,
-            margin: const EdgeInsets.only(right: 10),
-            padding: const EdgeInsets.fromLTRB(7, 0, 7, 0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.3,
-                color: const Color(0xffDD4A30),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                list[index],
-                style: const TextStyle(
-                  color: Color(0xff060606),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          );
-        })
-      ],
-    );
-  }
-}
-
-class ShowItemsListToColumn extends StatelessWidget {
-  const ShowItemsListToColumn({required this.list, super.key});
-  final List list;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ...List.generate(list.length, (index) {
-          return Text(
-            list[index],
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Color(0xff060606),
-              overflow: TextOverflow.visible,
-            ),
-          );
-        })
-      ],
-    );
+        });
+    //listener: (context, state) {});
   }
 }

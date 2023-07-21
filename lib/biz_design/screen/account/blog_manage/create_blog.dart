@@ -60,9 +60,10 @@ class _CreateBlogScreenState extends State<CreateBlogScreen> {
                           onPressed: () {
                             blogManageBloc.add(BlogManageInitialEvent());
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.cancel_outlined,
-                            color: Color(0xff060606),
+                            color:
+                                Theme.of(context).appBarTheme.iconTheme!.color,
                             size: 25,
                           ),
                         ),
@@ -138,6 +139,11 @@ class _CreateBlogScreenState extends State<CreateBlogScreen> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width - 80,
                           child: TextField(
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color),
                             controller: _titleController,
                             decoration: InputDecoration(
                               hintText: 'タイトルを入力してください',
@@ -162,6 +168,11 @@ class _CreateBlogScreenState extends State<CreateBlogScreen> {
                         width: MediaQuery.of(context).size.width - 30,
                         height: 200,
                         child: TextField(
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .color),
                           maxLines: 10,
                           minLines: 1,
                           controller: _contentController,
@@ -181,14 +192,14 @@ class _CreateBlogScreenState extends State<CreateBlogScreen> {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                       child: Text(
                         '画像を登録',
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          color: Color(0xff060606),
+                          color: Theme.of(context).textTheme.titleSmall!.color,
                         ),
                       ),
                     ),

@@ -193,8 +193,8 @@ class UserDescription extends StatelessWidget {
           padding: const EdgeInsets.only(left: 5),
           child: Text(
             userDescription,
-            style: const TextStyle(
-              color: Color(0xff333333),
+            style: TextStyle(
+              color: Theme.of(context).textTheme.titleSmall?.color,
               fontSize: 10,
               fontWeight: FontWeight.w700,
               overflow: TextOverflow.visible,
@@ -249,10 +249,10 @@ class UserName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       userName,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w700,
-        color: Color(0xff060606),
+        color: Theme.of(context).textTheme.titleSmall?.color,
       ),
     );
   }

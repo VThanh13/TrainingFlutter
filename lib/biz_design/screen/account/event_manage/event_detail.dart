@@ -50,7 +50,7 @@ class _EventDetailState extends State<EventDetail> {
             case ClickToDetailEventState:
               return SingleChildScrollView(
                 child: Container(
-                  color: const Color(0xffF9F9F9),
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   height: 500,
                   width: double.maxFinite,
                   margin: const EdgeInsets.only(left: 8, right: 8),
@@ -61,12 +61,13 @@ class _EventDetailState extends State<EventDetail> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             '2020.00.00（月）',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 12,
-                              color: Color(0xff333333),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                           IconButton(
@@ -180,10 +181,13 @@ class _EventDetailState extends State<EventDetail> {
                                     );
                                   });
                             },
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.more_horiz,
                               size: 30,
-                              color: Color(0xff060606),
+                              color: Theme.of(context)
+                                  .appBarTheme
+                                  .iconTheme!
+                                  .color,
                             ),
                           ),
                         ],
@@ -203,54 +207,61 @@ class _EventDetailState extends State<EventDetail> {
                           ),
                         ),
                       ),
-                      const Text(
+                      Text(
                         'プロジェクト名、プロジェクト名、プロジェクト名',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xff060606),
+                          color: Theme.of(context).textTheme.titleSmall!.color,
                         ),
                       ),
-                      const Row(
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          AvatarUser(
+                          const AvatarUser(
                             width: 36,
                             height: 34,
                             urlImage: 'assets/images/biz_design/image_1.png',
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 5),
+                            padding: const EdgeInsets.only(left: 5),
                             child: Text(
                               '高橋 恵',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xff060606),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         children: [
                           Text(
                             '参加者',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 12),
+                            padding: const EdgeInsets.only(left: 12),
                             child: Text(
                               '532人',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xff060606),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
@@ -292,7 +303,7 @@ class _EventDetailState extends State<EventDetail> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Center(
+                      Center(
                         child: SizedBox(
                           height: 252,
                           width: 337,
@@ -301,7 +312,8 @@ class _EventDetailState extends State<EventDetail> {
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -392,12 +404,13 @@ class _EventDetailState extends State<EventDetail> {
                               Icons.edit,
                             ),
                           ),
-                          const Text(
+                          Text(
                             '編集する',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ],

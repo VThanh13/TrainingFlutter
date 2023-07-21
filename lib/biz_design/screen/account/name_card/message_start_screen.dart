@@ -30,50 +30,53 @@ class _MessageStartScreenState extends State<MessageStartScreen> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case ClickSendNameCardState:
-            return Center(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 86,
-                  ),
-                  const Text(
-                    '名刺交換リクエストが承諾されました。'
-                    '\nメッセージを送信することができます。',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xff000000),
+            return Container(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 86,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      nameCardBloc.add(NameCardInitialEvent());
-                    },
-                    child: Container(
-                      height: 37,
-                      width: 242,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xffDD4A30),
-                          width: 0.5,
-                        ),
-                        borderRadius: BorderRadius.circular(5),
+                    Text(
+                      '名刺交換リクエストが承諾されました。'
+                      '\nメッセージを送信することができます。',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).textTheme.titleSmall!.color,
                       ),
-                      child: const Center(
-                        child: Text(
-                          'メッセージを開始する',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        nameCardBloc.add(NameCardInitialEvent());
+                      },
+                      child: Container(
+                        height: 37,
+                        width: 242,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xffDD4A30),
+                            width: 0.5,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'メッセージを開始する',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           case NameCardInitialState:

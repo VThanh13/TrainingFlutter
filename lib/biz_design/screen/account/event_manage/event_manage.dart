@@ -60,13 +60,16 @@ class _EventManageState extends State<EventManage>
                           color: const Color(0xffDD4A30),
                         ),
                         labelColor: const Color(0xffFFF8F3),
-                        unselectedLabelColor: const Color(0xff060606),
+                        unselectedLabelColor:
+                            Theme.of(context).textTheme.titleSmall!.color,
                         tabs: const [
                           Tab(
                             child: Text(
                               '主催グループ',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 10),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10,
+                              ),
                             ),
                           ),
                           Tab(
@@ -99,12 +102,15 @@ class _EventManageState extends State<EventManage>
                                         size: 20,
                                       ),
                                     ),
-                                    const Text(
+                                    Text(
                                       'グループを作成',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xff060606),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.color,
                                       ),
                                     ),
                                     IconButton(
@@ -117,12 +123,15 @@ class _EventManageState extends State<EventManage>
                                         size: 20,
                                       ),
                                     ),
-                                    const Text(
+                                    Text(
                                       'カテゴリーから選択',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xff060606),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.color,
                                       ),
                                     ),
                                     const SizedBox(
@@ -139,7 +148,7 @@ class _EventManageState extends State<EventManage>
                                 SizedBox(
                                   width: double.maxFinite,
                                   height:
-                                      MediaQuery.of(context).size.height - 443,
+                                      MediaQuery.of(context).size.height - 417,
                                   child: ListView.builder(
                                       itemCount: 10,
                                       itemBuilder: (context, index) {
@@ -283,6 +292,7 @@ class _EventManageState extends State<EventManage>
                                                       icon: const Icon(
                                                         Icons.more_horiz,
                                                         size: 25,
+                                                        color: Colors.black,
                                                       ),
                                                     ),
                                                   ],

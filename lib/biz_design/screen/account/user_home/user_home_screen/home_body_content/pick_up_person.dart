@@ -42,7 +42,7 @@ class PickUpPerson extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 42,
                     width: 269,
                     child: FittedBox(
@@ -53,7 +53,7 @@ class PickUpPerson extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff000000),
+                          color: Theme.of(context).textTheme.titleSmall?.color,
                         ),
                       ),
                     ),

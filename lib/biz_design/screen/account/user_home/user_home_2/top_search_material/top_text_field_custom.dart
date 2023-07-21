@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TopTextField extends StatefulWidget {
-  const TopTextField({this.width, required this.hintText, this.readOnly, Key? key})
+  const TopTextField(
+      {this.width, required this.hintText, this.readOnly, Key? key})
       : super(key: key);
   final String hintText;
-  final double ?width;
-  final bool ?readOnly;
+  final double? width;
+  final bool? readOnly;
 
   @override
   State<TopTextField> createState() => _TopTextFieldState();
@@ -21,18 +22,19 @@ class _TopTextFieldState extends State<TopTextField> {
         maxLines: 5,
         minLines: 1,
         readOnly: widget.readOnly ?? false,
+        style: TextStyle(color: Theme.of(context).textTheme.titleSmall!.color),
         decoration: InputDecoration(
           hintText: widget.hintText,
-          errorText: widget.readOnly != null? '入力されていません。': null,
+          errorText: widget.readOnly != null ? '入力されていません。' : null,
           errorStyle: const TextStyle(
             fontSize: 8,
             fontWeight: FontWeight.w600,
             color: Color(0xffFF0000),
           ),
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Color(0xff060606),
+            color: Theme.of(context).textTheme.titleSmall!.color,
           ),
           enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(

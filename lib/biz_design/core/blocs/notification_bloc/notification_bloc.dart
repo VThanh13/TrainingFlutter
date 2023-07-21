@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../controller/notification_controller.dart';
+import '../../../models/notification_model/notification_model.dart';
 import 'notification_event.dart';
 import 'notification_state.dart';
 
@@ -15,13 +16,23 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     on<ClickToCreateNotificationEvent>(clickToCreateNotificationEvent);
   }
 
+  List<NotificationModel> notifications = [];
+  List<NotificationModel> moreItems = [];
+
   FutureOr<void> notificationInitialEvent(
       NotificationInitialEvent event, Emitter<NotificationState> emit) async {
     emit(NotificationLoadingState());
-    await Future.delayed(const Duration(seconds: 1));
     NotificationController notificationController = NotificationController();
-    emit(NotificationLoadedState(
-        notifications: notificationController.notifications));
+
+    try {
+      await notificationController.getNotifications();
+      notifications = notificationController.notifications;
+      moreItems = notificationController.moreItems;
+      emit(NotificationLoadedState(
+          notifications: notificationController.notifications));
+    } catch (e) {
+      emit(NotificationErrorState());
+    }
   }
 
   FutureOr<void> clickToDetailNotificationEvent(

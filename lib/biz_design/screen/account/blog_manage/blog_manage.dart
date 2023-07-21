@@ -54,23 +54,26 @@ class _BlogManageScreenState extends State<BlogManageScreen> {
                             },
                             icon: const Icon(Icons.add_circle),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
                             child: Text(
                               'ブログを作成',
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xff000000),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .color,
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const Divider(
+                    Divider(
                       height: 0,
-                      color: Color(0xff000000),
+                      color: Theme.of(context).dividerColor,
                       indent: 0,
                       thickness: 1,
                     ),
@@ -88,20 +91,26 @@ class _BlogManageScreenState extends State<BlogManageScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Row(
+                                      Row(
                                         children: [
-                                          AvatarUser(
+                                          const AvatarUser(
                                             width: 32,
                                             height: 32,
                                             urlImage:
                                                 'assets/images/biz_design/image_14.png',
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
                                           ),
                                           Text(
                                             '田中 武彦',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w700,
                                               fontSize: 12,
-                                              color: Color(0xff060606),
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .color,
                                             ),
                                           ),
                                         ],
@@ -279,6 +288,7 @@ class _BlogManageScreenState extends State<BlogManageScreen> {
                                               icon: const Icon(
                                                 Icons.favorite_border,
                                                 size: 25,
+                                                color: Colors.black,
                                               ),
                                             ),
                                             const Text(
@@ -297,6 +307,7 @@ class _BlogManageScreenState extends State<BlogManageScreen> {
                                               icon: const Icon(
                                                 Icons.messenger_outline_sharp,
                                                 size: 25,
+                                                color: Colors.black,
                                               ),
                                             ),
                                             const Text(

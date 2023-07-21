@@ -42,7 +42,7 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
           case ClickToEventCommunityDetailState:
             return SingleChildScrollView(
               child: Container(
-                color: const Color(0xffF9F9F9),
+                color: Theme.of(context).scaffoldBackgroundColor,
                 height: 490,
                 width: double.maxFinite,
                 margin: const EdgeInsets.only(left: 8, right: 8),
@@ -53,20 +53,22 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        Text(
                           '2020.00.00（月）',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
-                            color: Color(0xff333333),
+                            color:
+                                Theme.of(context).textTheme.titleSmall!.color,
                           ),
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.more_horiz,
                             size: 30,
-                            color: Color(0xff060606),
+                            color:
+                                Theme.of(context).appBarTheme.iconTheme!.color,
                           ),
                         ),
                       ],
@@ -86,31 +88,32 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                         ),
                       ),
                     ),
-                    const Text(
+                    Text(
                       'プロジェクト名、プロジェクト名、プロジェクト名',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xff060606),
+                        color: Theme.of(context).textTheme.titleSmall!.color,
                       ),
                     ),
-                    const Row(
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        AvatarUser(
+                        const AvatarUser(
                           width: 36,
                           height: 34,
                           urlImage: 'assets/images/biz_design/image_1.png',
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 5),
+                          padding: const EdgeInsets.only(left: 5),
                           child: Text(
                             '田中  武彦',
                             style: TextStyle(
                               fontSize: 8,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -146,24 +149,26 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                         )
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Text(
                           '参加者',
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff060606),
+                            color:
+                                Theme.of(context).textTheme.titleSmall!.color,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 12),
+                          padding: const EdgeInsets.only(left: 12),
                           child: Text(
                             '532人',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),
@@ -206,7 +211,7 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Center(
+                    Center(
                       child: SizedBox(
                         height: 252,
                         width: 337,
@@ -215,7 +220,8 @@ class _EventCommunityDetailState extends State<EventCommunityDetail> {
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 10,
-                            color: Color(0xff060606),
+                            color:
+                                Theme.of(context).textTheme.titleSmall!.color,
                           ),
                         ),
                       ),

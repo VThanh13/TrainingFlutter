@@ -52,27 +52,29 @@ class _EventCommunityPeopleState extends State<EventCommunityPeople> {
                 width: double.maxFinite,
                 margin: const EdgeInsets.fromLTRB(10, 26, 10, 20),
                 padding: const EdgeInsets.fromLTRB(10, 14, 10, 0),
-                color: const Color(0xffF9F9F9),
+                color: Theme.of(context).scaffoldBackgroundColor,
                 child: Column(
                   children: [
-                    const Row(
+                    Row(
                       children: [
                         Text(
                           '参加者',
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff060606),
+                            color:
+                                Theme.of(context).textTheme.titleSmall!.color,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 12),
+                          padding: const EdgeInsets.only(left: 12),
                           child: Text(
                             '532人',
                             style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xff060606),
+                              color:
+                                  Theme.of(context).textTheme.titleSmall!.color,
                             ),
                           ),
                         ),

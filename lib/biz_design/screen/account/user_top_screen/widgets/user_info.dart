@@ -12,7 +12,7 @@ class UserInfo extends StatelessWidget {
         Container(
           height: 104,
           width: double.maxFinite,
-          color: const Color(0xffEAE9E9),
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
         const Positioned(
           top: 14,
@@ -23,7 +23,7 @@ class UserInfo extends StatelessWidget {
             urlImage: 'assets/images/biz_design/image_1.png',
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 13,
           left: 98,
           child: Text(
@@ -31,11 +31,11 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              color: Color(0xff060606),
+              color: Theme.of(context).textTheme.titleSmall?.color,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           left: 98,
           top: 33,
           child: Text(
@@ -43,11 +43,11 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w700,
-              color: Color(0xff333333),
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           left: 98,
           top: 48,
           child: Text(
@@ -55,11 +55,11 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w400,
-              color: Color(0xff939598),
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           left: 98,
           top: 63,
           child: Text(
@@ -67,11 +67,11 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w400,
-              color: Color(0xff939598),
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           left: 98,
           top: 78,
           child: Text(
@@ -79,11 +79,11 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w700,
-              color: Color(0xff333333),
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 17,
           left: 173,
           child: Text(
@@ -91,7 +91,7 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w400,
-              color: Colors.grey,
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
@@ -113,14 +113,14 @@ class UserInfo extends StatelessWidget {
           right: 10,
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon: Icon(
               Icons.more_horiz,
-              color: Color(0xff060606),
+              color: Theme.of(context).appBarTheme.iconTheme!.color,
               size: 25,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           right: 10,
           top: 31,
           child: Text(
@@ -128,7 +128,7 @@ class UserInfo extends StatelessWidget {
             style: TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w700,
-              color: Color(0xff333333),
+              color: Theme.of(context).textTheme.titleSmall!.color,
             ),
           ),
         ),
@@ -147,13 +147,13 @@ class UserInfo extends StatelessWidget {
                 color: const Color(0xffDD4A30),
               ),
             ),
-            child: const Center(
+            child: Center(
               child: Padding(
-                padding: EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 child: Text(
                   'はじめまして\nよろしくお願いいたします。',
                   style: TextStyle(
-                    color: Color(0xff333333),
+                    color: Theme.of(context).textTheme.titleSmall!.color,
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
                     overflow: TextOverflow.visible,

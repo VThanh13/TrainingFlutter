@@ -80,6 +80,7 @@ class _CardExchangeScreenState extends State<CardExchangeScreen> {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: const TextField(
+                              style: TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                   hintText: 'ユーザー名検索',
                                   hintStyle: TextStyle(
@@ -175,7 +176,10 @@ class _CardExchangeScreenState extends State<CardExchangeScreen> {
                                               successState.cards[index]
                                                           .status ==
                                                       '名刺交換済み'
-                                                  ? const Icon(Icons.more_horiz)
+                                                  ? const Icon(
+                                                      Icons.more_horiz,
+                                                      color: Colors.black,
+                                                    )
                                                   : const SizedBox(),
                                             ],
                                           ),
